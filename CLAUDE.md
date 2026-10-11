@@ -66,9 +66,14 @@ Event {
    - **Example.** Kate's will leaves her fortune to Aron. Remove the reveal and the secret may still come
      out through the will, so the alternate plot doesn't save Aron after all. Without the outcome events,
      the agent can't see this.
-   - **Research note.** Timshel ("thou mayest") is said *after* the act. One reading is that the book puts
-     free will in what Cal does after his sin, not in avoiding the sin. M7 should test that reading against
-     "Cal could have chosen not to tell."
+   - **Timshel's role (decided).** Timshel is neither the end event nor something the agent changes. It is
+     the last node of the *real* book's graph, so that picture is complete. Alternate plots may not contain
+     it at all: if Aron lives, there is no deathbed blessing. In M7, Timshel is Steinbeck's own answer to
+     the research question, and the agent compares its findings against it.
+     - Steinbeck's answer is a claim about the *future*. Adam says "thou mayest" after the harm is done:
+       Cal can still choose who he becomes.
+     - The research question is about the *past*: could Cal have avoided the harm, and how early would
+       events have to change?
 2. Who knows that Kate is Cathy, and when they learn it, is the spine of the ending. Model it explicitly.
 
 ## Milestone plan
