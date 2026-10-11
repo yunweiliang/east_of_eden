@@ -1,26 +1,17 @@
-"""Deterministic renderers: the same events.json always produces the same timeline files."""
+"""MVP renderers: a linear timeline. The same events.json always produces the same files."""
 
 from __future__ import annotations
 
 import html
-import re
-import textwrap
+from pathlib import Path
 
+from ...core.html import cell, node_id, verified_mark, wrapped
 from .schema import Event
 
 WIDTH_PER_EVENT = 190
 HEIGHT = 330
 AXIS_Y = 165
 MARGIN = 80
-
-
-def node_id(event_id: str) -> str:
-    """Mermaid-safe node id: model ids may contain quotes or dots, or be a keyword like 'end'."""
-    return "n_" + re.sub(r"\W", "_", event_id)
-
-
-def cell(text: str) -> str:
-    return re.sub(r"\s*\n\s*", " ", text).replace("|", "\\|")
 
 
 def to_mermaid(events: list[Event]) -> str:
@@ -39,10 +30,6 @@ def to_mermaid(events: list[Event]) -> str:
 
 def source_note(meta: dict) -> str:
     return "Picked from the model's knowledge of the novel, not the text; each event needs the reader's check"
-
-
-def verified_mark(e: Event) -> str:
-    return {True: "✓ checked", False: "✗ wrong"}.get(e.user_verified, "unchecked")
 
 
 def to_markdown(events: list[Event], meta: dict) -> str:
@@ -64,10 +51,6 @@ def to_markdown(events: list[Event], meta: dict) -> str:
     return "\n".join(out) + "\n"
 
 
-def _wrapped(text: str, width: int) -> list[str]:
-    return textwrap.wrap(text, width) or [""]
-
-
 def to_svg(events: list[Event]) -> str:
     width = MARGIN * 2 + WIDTH_PER_EVENT * (len(events) - 1)
     parts = [
@@ -80,7 +63,7 @@ def to_svg(events: list[Event]) -> str:
         above = i % 2 == 0
         stem_end = AXIS_Y - 40 if above else AXIS_Y + 40
         cls = "node focal" if e.is_focal_event else "node"
-        block = _wrapped(e.title, 24) + [f"Ch. {e.chapter}"]
+        block = wrapped(e.title, 24) + [f"Ch. {e.chapter}"]
         y0 = stem_end - 8 - 18 * (len(block) - 1) if above else stem_end + 22
         parts.append(f"<g><title>{html.escape(e.title)}: {html.escape(e.summary)}</title>")
         parts.append(f'<line x1="{x}" y1="{AXIS_Y}" x2="{x}" y2="{stem_end}" class="stem"/>')
@@ -204,11 +187,9 @@ def to_portfolio_timeline(events: list[Event]) -> str:
     ])
 
 
-TIMELINE_START = "<!-- eden:timeline:start -->"
-TIMELINE_END = "<!-- eden:timeline:end -->"
-
-
-def splice_timeline(page: str, fragment: str) -> str:
-    """Replace only the text between the timeline markers, so hand-written text around it is kept."""
-    start, end = page.index(TIMELINE_START) + len(TIMELINE_START), page.index(TIMELINE_END)
-    return page[:start] + "\n" + fragment + "\n" + page[end:]
+def render(events: list[Event], meta: dict, out_dir: Path) -> list[Path]:
+    """Write every MVP output file and return their paths."""
+    files = {"timeline.md": to_markdown(events, meta), "timeline.html": to_html(events, meta)}
+    for name, text in files.items():
+        (out_dir / name).write_text(text)
+    return [out_dir / name for name in files]

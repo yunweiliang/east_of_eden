@@ -50,6 +50,16 @@ def lock_json(lock_data: dict) -> str:
     return json.dumps(lock_data, indent=2) + "\n"
 
 
+TIMELINE_START = "<!-- eden:timeline:start -->"
+TIMELINE_END = "<!-- eden:timeline:end -->"
+
+
+def splice_timeline(page: str, fragment: str) -> str:
+    """Replace only the text between the timeline markers, so hand-written text around it is kept."""
+    start, end = page.index(TIMELINE_START) + len(TIMELINE_START), page.index(TIMELINE_END)
+    return page[:start] + "\n" + fragment + "\n" + page[end:]
+
+
 def git(site: Path, *args: str) -> None:
     subprocess.run(["git", "-C", str(site), *args], check=True)
 

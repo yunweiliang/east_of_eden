@@ -12,8 +12,8 @@ dependencies = ["anthropic>=1.13", "pydantic>=2", "cryptography>=42"]
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 
-[tool.setuptools]
-packages = ["eden"]
+[tool.setuptools.packages.find]
+include = ["eden*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

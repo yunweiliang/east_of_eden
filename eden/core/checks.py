@@ -1,10 +1,11 @@
-"""Deterministic checks on the model's event picks. Errors trigger a repair turn; warnings are reported."""
+"""Deterministic checks every stage shares. Errors trigger a repair turn; warnings are only reported.
+
+A stage's own validate() calls common_checks() and then adds checks that only make sense for that stage.
+"""
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-
-from .schema import Event
 
 MAX_QUOTE_WORDS = 15
 BOOK_CHAPTERS = 55  # East of Eden has 55 chapters across four parts
@@ -20,7 +21,7 @@ class Report:
         return not self.errors
 
 
-def validate(events: list[Event], expected_count: int) -> Report:
+def common_checks(events: list, expected_count: int) -> Report:
     """Checks that need no book text. Whether each event really happens is checked by the user."""
     r = Report()
     if len(events) != expected_count:
@@ -41,10 +42,4 @@ def validate(events: list[Event], expected_count: int) -> Report:
             r.errors.append(f"[{e.id}] Search phrase is {words} words; keep it under {MAX_QUOTE_WORDS}.")
         if not 1 <= e.chapter <= BOOK_CHAPTERS:
             r.errors.append(f"[{e.id}] Chapter {e.chapter} is outside 1-{BOOK_CHAPTERS}.")
-
-    # Story order can differ from page order (the book interleaves the Trask and Cathy threads),
-    # so going backward in chapter number is worth flagging but is not an error.
-    for prev, cur in zip(events, events[1:]):
-        if cur.chapter < prev.chapter:
-            r.warnings.append(f"[{cur.id}] Chapter {cur.chapter} comes before the previous event's chapter {prev.chapter}.")
     return r

@@ -1,10 +1,11 @@
 import json
 from types import SimpleNamespace
 
-from eden.extract import extract_events, strict_schema
-from eden.render import to_html, to_markdown
-from eden.schema import Event, EventList, M0EventList, M0ModelEvent, ModelEvent
-from eden.validate import validate
+from eden.core.llm import extract_events, strict_schema
+from eden.stages import STAGES, mvp
+from eden.stages.mvp.render import to_html, to_markdown
+from eden.stages.mvp.schema import Event, EventList, ModelEvent
+from eden.stages.mvp.validate import validate
 
 
 def ev(i, chapter, citation, focal=False):
@@ -47,19 +48,6 @@ def test_strict_schema_inlines_defs_and_forbids_extra_keys():
     assert "user_verified" not in item["properties"]
 
 
-def test_m0_schema_requires_causes_and_a_known_thread():
-    item = strict_schema(M0EventList)["properties"]["events"]["items"]
-    assert set(item["required"]) == set(M0ModelEvent.model_fields)
-    assert item["properties"]["causes"]["type"] == "array"
-    assert item["properties"]["thread"]["enum"] == ["Trask", "Cathy/Kate", "Hamilton", "Lee"]
-
-
-def test_mvp_events_still_load_without_m0_fields():
-    old = GOOD[0].model_dump(exclude={"causes", "thread"})
-    event = Event.model_validate(old)
-    assert event.causes == [] and event.thread is None
-
-
 class FakeStream:
     def __init__(self, message):
         self.message = message
@@ -96,7 +84,7 @@ class FakeClient:
 def test_repair_turn_fixes_a_bad_chapter():
     bad = [GOOD[0], ev(2, 99, "another phrase"), GOOD[2]]
     client = FakeClient([bad, GOOD])
-    result = extract_events(3, client=client)
+    result = extract_events(mvp, 3, client=client)
     assert result.report.ok and result.attempts == 2
     assert result.usage["output_tokens"] == 100
     repair_msg = client.calls[1]["messages"][-1]["content"]
@@ -113,7 +101,7 @@ def test_render_is_deterministic():
 
 def test_sends_only_the_task_and_the_memory_prompt():
     client = FakeClient([GOOD])
-    result = extract_events(3, client=client)
+    result = extract_events(mvp, 3, client=client)
     call = client.calls[0]
     assert result.report.ok and result.attempts == 1
     assert isinstance(call["messages"][0]["content"], str)
@@ -144,14 +132,14 @@ def test_mermaid_and_table_survive_awkward_model_output():
 
 def test_force_extract_keeps_previous_picks(tmp_path, monkeypatch):
     import eden.__main__ as cli
-    import eden.extract as extract
+    import eden.core.llm as llm
 
-    monkeypatch.setattr(cli, "OUT", tmp_path / "mvp")
+    monkeypatch.setattr(cli, "OUTPUT", tmp_path)
     monkeypatch.setattr(cli, "RUNTIME_LEDGER", tmp_path / "costs.jsonl")
     picks = [ev(1, 3, "a"), ev(2, 30, "b"), ev(3, 55, "c", focal=True)]
-    monkeypatch.setattr(extract, "extract_events",
-                        lambda count: extract.RunResult(picks, validate(picks, 3), 1,
-                                                              {"output_tokens": 1}, 0.01, "m"))
+    monkeypatch.setattr(llm, "extract_events",
+                        lambda stage, count: llm.RunResult(picks, validate(picks, 3), 1,
+                                                           {"output_tokens": 1}, 0.01, "m"))
     args = ["extract", "--count", "3", "--force"]
     cli.main(args)
     data = json.loads((tmp_path / "mvp" / "events.json").read_text())
@@ -160,3 +148,12 @@ def test_force_extract_keeps_previous_picks(tmp_path, monkeypatch):
     cli.main(args)
     backups = list((tmp_path / "mvp").glob("events.*.json"))
     assert len(backups) == 1 and json.loads(backups[0].read_text())["events"][0]["user_verified"] is True
+
+
+def test_every_stage_provides_the_shared_interface():
+    needed = ["NAME", "DEFAULT_COUNT", "PROMPT_VERSION", "SYSTEM", "TASK",
+              "ModelEvent", "Event", "EventList", "validate", "render"]
+    for name, stage in STAGES.items():
+        missing = [n for n in needed if not hasattr(stage, n)]
+        assert not missing, f"stage {name} is missing {missing}"
+        assert stage.NAME == name
