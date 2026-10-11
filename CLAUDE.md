@@ -87,7 +87,7 @@ Event {
 | **M3** | Counterfactual dependency | For each node: "if this didn't happen, does the ending still occur?" | Nodes colored necessary, contributing or overdetermined | Overdetermined nodes are identified (Cal's anger has many sources) |
 | **M4** | Alternate plot generation | Target: no reveal, Aron survives, Cal free of guilt. Find the smallest set of changes that reaches it | Before and after graphs side by side, differences highlighted | The after-graph satisfies all three goals |
 | **M5** | Consistency critic and plot-hole detector | A second agent checks each changed event against the character's established traits and feelings, with citations. It also flags plot holes (see below) in any plot line, real or alternate | Each change marked consistent or inconsistent, plus a list of plot holes, each pinned to a node on the graph | Every change passes the critic with no plot holes left, or is revised until it does |
-| **M6** | Latest divergence point | Walk backward from the reveal. At each node, search for a character-consistent alternative that reaches the goal while all pinned events still happen. Run Experiments A and B | The latest viable divergence point and the required changes | The answer is cited and the critic accepts it |
+| **M6** | Latest divergence point | Walk backward from the reveal. At each node, search for a character-consistent alternative that reaches the goal while all pinned events still happen. Run Experiment A, then B | The latest viable divergence point, the required changes and the agent's hypothesized alternate ending, drawn through the downstream events | The answer is cited and the critic accepts it |
 | **M7** | Free-will analysis | Classify each viable divergence: a character's choice, chance or outside events, or upbringing and temperament | Report, plus a per-character map of where alternatives remain open | See below |
 
 ### Plot holes the critic must catch
@@ -130,6 +130,16 @@ The user raised this.
   own right. In Steinbeck's structure, Cal's freedom ("thou mayest") might *require* the sin it forgives.
 - **Output for each experiment:** before and after plot graphs, with pinned nodes marked, and events
   forced by a pin highlighted.
+- **Order (decided): A first, then B.**
+  - **A answers the original question.** It also produces what the user most wants to see: the agent's
+    hypothesized open ending. That means the full downstream story, where Aron lives, what Cal becomes,
+    whether Adam still has his stroke, and what happens to Kate's will.
+  - **B is A plus a pin.** It reuses A's search, critic and before/after view, adding one backward
+    constraint. Building A first means B costs little extra.
+  - **A's alternate plots give B a baseline.** Once they exist, B checks whether any of them can still
+    reach Timshel. That makes the A vs. B conflict test concrete instead of abstract.
+  - **A is easier to grade.** "Does Aron survive, and is it in character?" is easier to judge than "is
+    this event truly forced?", so the critic gets calibrated on A before facing B.
 
 ### Why M6/M7 is a free-will experiment
 
