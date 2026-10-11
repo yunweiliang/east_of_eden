@@ -48,6 +48,17 @@ then builds a character-consistent alternate plot, to study a research question 
 - **Branching (user decision):** each milestone gets its own branch and a pull request into `main`, which
   the user reviews and merges. Small housekeeping (changelog and cost rows, doc fixes) may go straight to
   `main`.
+- **Versioning (user decision):** every milestone stays comparable, so the final report can compare all
+  versions of the agent.
+  - **Outputs are archived, never replaced:** each stage writes to its own `output/<stage>/`, and
+    `--force` backs up old picks instead of overwriting them.
+  - **One growing codebase:** no copied `mvp/` or `m0/` code folders. New stages extend the schema, and
+    older pinned files must keep loading.
+  - **Older stages stay runnable:** `python -m eden extract --stage <stage>` reruns any stage's prompt.
+  - **Git tag per milestone:** when a milestone is complete, tag its commit (`mvp`, `m0`, ...).
+    `git checkout <tag>` restores that version exactly.
+  - **Milestones are not training:** the model is the same at every stage. What changes is the prompt,
+    the schema, the checks and the rendering, so cross-stage differences come from the scaffolding.
 
 ## Shared data schema
 
