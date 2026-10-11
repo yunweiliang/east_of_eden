@@ -151,3 +151,53 @@ Prompt {html.escape(meta.get('prompt_hash', '?'))}. Hover a node for its summary
 </body>
 </html>
 """
+
+
+def to_portfolio_timeline(events: list[Event]) -> str:
+    """A vertical timeline fragment for the portfolio site. It uses the site's own CSS variables, so it
+    follows the site's light and dark themes and fits its narrow text column on a phone."""
+    items = []
+    for i, e in enumerate(events, 1):
+        cls = ' class="eoe-focal"' if e.is_focal_event else ""
+        items.append(
+            f"    <li{cls}>\n"
+            f'      <p class="eoe-title"><span class="eoe-num">{i}</span>{html.escape(e.title)}</p>\n'
+            f'      <p class="eoe-meta">Chapter {e.chapter} · {html.escape(", ".join(e.characters))}</p>\n'
+            f'      <p class="eoe-summary">{html.escape(e.summary)}</p>\n'
+            "    </li>"
+        )
+    checked = sum(e.user_verified is True for e in events)
+    return "\n".join([
+        '<figure class="eoe-timeline">',
+        "  <style>",
+        "    .eoe-timeline { margin: 2rem 0; }",
+        "    .eoe-timeline ol { list-style: none; margin: 0; padding: 0 0 0 1.5rem; border-left: 2px solid var(--faint); }",
+        "    .eoe-timeline li { position: relative; margin: 0 0 1.5rem; }",
+        "    .eoe-timeline li::before { content: ''; position: absolute; left: calc(-1.5rem - 6px); top: 0.45rem;",
+        "      width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }",
+        "    .eoe-timeline li.eoe-focal::before { width: 14px; height: 14px; left: calc(-1.5rem - 8px); background: var(--accent); }",
+        "    .eoe-timeline p { margin: 0; }",
+        "    .eoe-title { font-size: 1.1rem; line-height: 1.4; }",
+        "    .eoe-focal .eoe-title { color: var(--accent); }",
+        "    .eoe-num { font-family: var(--sans); font-size: 0.75rem; color: var(--muted); margin-right: 0.5rem; }",
+        "    .eoe-meta { font-family: var(--sans); font-size: 0.8125rem; color: var(--muted); margin-top: 0.15rem; }",
+        "    .eoe-summary { font-size: 0.95rem; line-height: 1.55; margin-top: 0.35rem; }",
+        "    .eoe-timeline figcaption { font-family: var(--sans); font-size: 0.8125rem; color: var(--muted); }",
+        "  </style>",
+        "  <ol>",
+        *items,
+        "  </ol>",
+        f"  <figcaption>{len(events)} events picked by the agent from its knowledge of the novel; "
+        f"{checked} of {len(events)} checked against the book by me.</figcaption>",
+        "</figure>",
+    ])
+
+
+TIMELINE_START = "<!-- eden:timeline:start -->"
+TIMELINE_END = "<!-- eden:timeline:end -->"
+
+
+def splice_timeline(page: str, fragment: str) -> str:
+    """Replace only the text between the timeline markers, so hand-written text around it is kept."""
+    start, end = page.index(TIMELINE_START) + len(TIMELINE_START), page.index(TIMELINE_END)
+    return page[:start] + "\n" + fragment + "\n" + page[end:]
