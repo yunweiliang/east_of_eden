@@ -68,6 +68,16 @@ def cmd_render(args) -> None:
     print(f"Wrote {OUT / 'timeline.md'} and {OUT / 'timeline.html'}")
 
 
+def cmd_portfolio(args) -> None:
+    from .render import splice_timeline, to_portfolio_timeline
+
+    data = json.loads((OUT / "events.json").read_text())
+    events = [Event.model_validate(e) for e in data["events"]]
+    page = ROOT / "portfolio" / "home.html"
+    page.write_text(splice_timeline(page.read_text(), to_portfolio_timeline(events)))
+    print(f"Updated the timeline in {page}; your writing around it is unchanged.")
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(prog="eden")
     sub = parser.add_subparsers(required=True)
@@ -79,6 +89,9 @@ def main(argv: list[str] | None = None) -> None:
 
     p = sub.add_parser("render", help="Redraw the timeline from the pinned events.json (no model call)")
     p.set_defaults(func=cmd_render)
+
+    p = sub.add_parser("portfolio", help="Refresh the timeline inside portfolio/home.html (no model call)")
+    p.set_defaults(func=cmd_portfolio)
 
     args = parser.parse_args(argv)
     args.func(args)
