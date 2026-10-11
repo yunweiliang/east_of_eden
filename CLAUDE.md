@@ -39,7 +39,9 @@ then builds a character-consistent alternate plot, to study a research question 
 - **Grounding.** Every extracted event must cite a chapter and a short quote, so a reader can catch invented
   scenes.
 - **No model identifiers** in commits, code comments or docs.
-- **Branching (user decision):** commit directly to `main`. No pull requests per milestone.
+- **Branching (user decision):** each milestone gets its own branch and a pull request into `main`, which
+  the user reviews and merges. Small housekeeping (changelog and cost rows, doc fixes) may go straight to
+  `main`.
 
 ## Shared data schema
 
@@ -186,6 +188,6 @@ Hypotheses for M6 to test (not conclusions):
 
 - Python plus the Claude API for the agents (the extractor, then the critic).
 - Visualizer: Mermaid for the MVP, then D3 or Cytoscape for swimlanes and side-by-side diffs.
-- Hosting option: a page on yunweiliang.github.io (a Jekyll site with a passcode gate), for example
-  `/east-of-eden/`.
+- Hosting (user decision): everything stays in this GitHub repo for now. The user will add it to the
+  portfolio site (yunweiliang.github.io) themselves later. Don't touch the portfolio repo for this project.
 - Evaluation: a reference event set the user curates by hand before M1.
