@@ -39,6 +39,7 @@ then builds a character-consistent alternate plot, to study a research question 
 - **Grounding.** Every extracted event must cite a chapter and a short quote, so a reader can catch invented
   scenes.
 - **No model identifiers** in commits, code comments or docs.
+- **Branching (user decision):** commit directly to `main`. No pull requests per milestone.
 
 ## Shared data schema
 
