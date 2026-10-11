@@ -78,6 +78,44 @@ def cmd_portfolio(args) -> None:
     print(f"Updated the timeline in {page}; your writing around it is unchanged.")
 
 
+def cmd_publish(args) -> None:
+    import getpass
+    import subprocess
+
+    from .publish import PLACEHOLDER, git, lock, lock_json, normalize, unlock
+
+    site = Path(args.site).expanduser()
+    page = (ROOT / "portfolio" / "home.html").read_text()
+    if not (site / "_data" / "lock.json").exists():
+        raise SystemExit(f"{site} doesn't look like the portfolio repo (no _data/lock.json). Use --site PATH.")
+    if PLACEHOLDER in page:
+        print(f"Note: the page still contains the placeholder {PLACEHOLDER!r}.")
+
+    passcode = getpass.getpass("Passcode: ")
+    if not normalize(passcode):
+        raise SystemExit("No passcode typed; nothing changed.")
+    if normalize(getpass.getpass("Passcode again: ")) != normalize(passcode):
+        raise SystemExit("The two passcodes don't match; nothing changed.")
+
+    data = lock(page, passcode)
+    if unlock(data, passcode) != page:  # never publish a lock that can't be opened
+        raise SystemExit("Round-trip check failed; nothing changed.")
+
+    try:
+        git(site, "pull", "--no-rebase", "--no-edit")
+        (site / "_data" / "lock.json").write_text(lock_json(data))
+        print(f"Locked portfolio/home.html into {site / '_data' / 'lock.json'}")
+        if args.no_push:
+            print("--no-push: not committing. Review with `git diff` in the portfolio folder.")
+            return
+        git(site, "add", "_data/lock.json")
+        git(site, "commit", "-m", args.message)
+        git(site, "push")
+    except subprocess.CalledProcessError as e:
+        raise SystemExit(f"git stopped with an error (see above): {' '.join(e.cmd)}")
+    print("Published. The site updates in a minute or two.")
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(prog="eden")
     sub = parser.add_subparsers(required=True)
@@ -92,6 +130,12 @@ def main(argv: list[str] | None = None) -> None:
 
     p = sub.add_parser("portfolio", help="Refresh the timeline inside portfolio/home.html (no model call)")
     p.set_defaults(func=cmd_portfolio)
+
+    p = sub.add_parser("publish", help="Lock portfolio/home.html with your passcode, then commit and push it")
+    p.add_argument("--site", default="~/yunweiliang.github.io", help="Path to your portfolio repo")
+    p.add_argument("--message", default="Update locked home page", help="Commit message")
+    p.add_argument("--no-push", action="store_true", help="Only write lock.json; don't commit or push")
+    p.set_defaults(func=cmd_publish)
 
     args = parser.parse_args(argv)
     args.func(args)
