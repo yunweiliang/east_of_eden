@@ -66,6 +66,12 @@ def cmd_extract(args) -> None:
         "warnings": result.report.warnings,
     }
     OUT.mkdir(parents=True, exist_ok=True)
+    if events_path.exists():
+        # Keep the previous picks (and any user_verified marks on them) instead of silently overwriting.
+        stamp = json.loads(events_path.read_text())["meta"].get("created", "previous").replace(":", "")
+        backup = events_path.with_name(f"events.{stamp}.json")
+        events_path.rename(backup)
+        print(f"Previous picks kept as {backup.name}")
     events_path.write_text(json.dumps({"meta": meta, "events": [e.model_dump() for e in result.events]}, indent=2) + "\n")
     with RUNTIME_LEDGER.open("a") as f:
         f.write(json.dumps({k: meta[k] for k in ("created", "stage", "served_by", "attempts", "usage", "cost_usd")}) + "\n")

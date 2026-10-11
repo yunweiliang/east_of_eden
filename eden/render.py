@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import html
+import re
 import textwrap
 
 from .schema import Event
@@ -13,16 +14,25 @@ AXIS_Y = 165
 MARGIN = 80
 
 
+def node_id(event_id: str) -> str:
+    """Mermaid-safe node id: model ids may contain quotes or dots, or be a keyword like 'end'."""
+    return "n_" + re.sub(r"\W", "_", event_id)
+
+
+def cell(text: str) -> str:
+    return re.sub(r"\s*\n\s*", " ", text).replace("|", "\\|")
+
+
 def to_mermaid(events: list[Event]) -> str:
     lines = ["```mermaid", "flowchart LR"]
     for e in events:
-        label = f"{e.title}<br/><i>Ch. {e.chapter}</i>".replace('"', "'")
-        lines.append(f'    {e.id.replace("-", "_")}["{label}"]')
+        label = f"{html.escape(e.title, quote=False)}<br/><i>Ch. {e.chapter}</i>".replace('"', "#quot;")
+        lines.append(f'    {node_id(e.id)}["{label}"]')
     for a, b in zip(events, events[1:]):
-        lines.append(f'    {a.id.replace("-", "_")} --> {b.id.replace("-", "_")}')
+        lines.append(f"    {node_id(a.id)} --> {node_id(b.id)}")
     focal = next((e for e in events if e.is_focal_event), None)
     if focal:
-        lines.append(f'    style {focal.id.replace("-", "_")} stroke-width:3px')
+        lines.append(f"    style {node_id(focal.id)} stroke-width:3px")
     lines.append("```")
     return "\n".join(lines)
 
@@ -52,7 +62,7 @@ def to_markdown(events: list[Event], meta: dict) -> str:
     ]
     for i, e in enumerate(events, 1):
         cells = [str(i), f"**{e.title}**", str(e.chapter), ", ".join(e.characters), f"“{e.citation}”", e.rationale, verified_mark(e)]
-        out.append("| " + " | ".join(c.replace("|", "\\|") for c in cells) + " |")
+        out.append("| " + " | ".join(cell(c) for c in cells) + " |")
     return "\n".join(out) + "\n"
 
 
