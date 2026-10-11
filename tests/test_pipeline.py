@@ -1,11 +1,9 @@
 import json
 from types import SimpleNamespace
 
-from conftest import FIXTURES
 from eden.extract import extract_events, strict_schema
 from eden.render import to_html, to_markdown
 from eden.schema import Event, EventList, ModelEvent
-from eden.source import load_book
 from eden.validate import validate
 
 
@@ -15,29 +13,28 @@ def ev(i, chapter, citation, focal=False):
 
 
 GOOD = [
-    ev(1, 1, "Two brothers planted it in a dry spring."),
-    ev(2, 2, "A stranger arrived with a letter."),
-    ev(3, 3, "He told his brother what it said.", focal=True),
+    ev(1, 3, "a short search phrase"),
+    ev(2, 30, "another phrase"),
+    ev(3, 55, "the reveal", focal=True),
 ]
 
 
 def test_valid_list_passes():
-    assert validate(GOOD, load_book(FIXTURES / "mini_book.txt"), 3).ok
+    assert validate(GOOD, 3).ok
 
 
-def test_catches_invented_quote_wrong_count_and_missing_focal():
-    bad = [ev(1, 1, "The brothers argued about the orchard."), ev(2, 9, "Anything.")]
-    report = validate(bad, load_book(FIXTURES / "mini_book.txt"), 3)
-    text = "\n".join(report.errors)
+def test_catches_wrong_count_bad_chapter_long_phrase_and_missing_focal():
+    bad = [ev(1, 1, "word " * 16), ev(2, 56, "Anything.")]
+    text = "\n".join(validate(bad, 3).errors)
     assert "Expected exactly 3" in text
-    assert "not found verbatim" in text
-    assert "Chapter 9 does not exist" in text
+    assert "Chapter 56 is outside 1-55" in text
+    assert "Search phrase is 16 words" in text
     assert "is_focal_event" in text
 
 
 def test_backward_chapter_is_warning_not_error():
     events = [GOOD[1], GOOD[0], GOOD[2]]
-    report = validate(events, load_book(FIXTURES / "mini_book.txt"), 3)
+    report = validate(events, 3)
     assert report.ok and report.warnings
 
 
@@ -83,15 +80,14 @@ class FakeClient:
             stop_reason="end_turn", stop_details=None, model="claude-opus-5-5"))
 
 
-def test_repair_turn_fixes_a_bad_quote():
-    book = load_book(FIXTURES / "mini_book.txt")
-    bad = [GOOD[0], ev(2, 2, "A stranger arrived with a parcel."), GOOD[2]]
+def test_repair_turn_fixes_a_bad_chapter():
+    bad = [GOOD[0], ev(2, 99, "another phrase"), GOOD[2]]
     client = FakeClient([bad, GOOD])
-    result = extract_events(book, 3, client=client)
+    result = extract_events(3, client=client)
     assert result.report.ok and result.attempts == 2
     assert result.usage["output_tokens"] == 100
     repair_msg = client.calls[1]["messages"][-1]["content"]
-    assert "not found verbatim" in repair_msg
+    assert "Chapter 99 is outside" in repair_msg
     assert result.cost_usd == round((200 * 4 + 2000 * 5 + 100 * 20) / 1e6, 4)
 
 
@@ -102,19 +98,12 @@ def test_render_is_deterministic():
     assert "flowchart LR" in md and "n_e2 --> n_e3" in md
 
 
-def test_memory_mode_validates_without_book():
-    events = [ev(1, 3, "any phrase"), ev(2, 30, "another"), ev(3, 55, "last", focal=True)]
-    assert validate(events, None, 3).ok
-    report = validate([ev(1, 3, "x"), ev(2, 56, "y"), ev(3, 0, "z", focal=True)], None, 3)
-    assert sum("outside 1-55" in e for e in report.errors) == 2
-
-
-def test_memory_mode_sends_no_book_and_uses_memory_prompt():
-    client = FakeClient([[ev(1, 3, "a"), ev(2, 30, "b"), ev(3, 55, "c", focal=True)]])
-    result = extract_events(None, 3, client=client)
+def test_sends_only_the_task_and_the_memory_prompt():
+    client = FakeClient([GOOD])
+    result = extract_events(3, client=client)
     call = client.calls[0]
     assert result.report.ok and result.attempts == 1
-    assert len(call["messages"][0]["content"]) == 1
+    assert isinstance(call["messages"][0]["content"], str)
     assert "no text is provided" in call["system"]
     assert all(e.user_verified is None for e in result.events)
 
@@ -148,9 +137,9 @@ def test_force_extract_keeps_previous_picks(tmp_path, monkeypatch):
     monkeypatch.setattr(cli, "RUNTIME_LEDGER", tmp_path / "costs.jsonl")
     picks = [ev(1, 3, "a"), ev(2, 30, "b"), ev(3, 55, "c", focal=True)]
     monkeypatch.setattr(extract, "extract_events",
-                        lambda book, count: extract.RunResult(picks, validate(picks, None, 3), 1,
+                        lambda count: extract.RunResult(picks, validate(picks, 3), 1,
                                                               {"output_tokens": 1}, 0.01, "m"))
-    args = ["extract", "--from-memory", "--count", "3", "--force"]
+    args = ["extract", "--count", "3", "--force"]
     cli.main(args)
     data = json.loads((tmp_path / "mvp" / "events.json").read_text())
     data["events"][0]["user_verified"] = True

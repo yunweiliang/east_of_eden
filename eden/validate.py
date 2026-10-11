@@ -5,9 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .schema import Event
-from .source import Book, normalize_for_match
 
-MAX_QUOTE_WORDS = 40
+MAX_QUOTE_WORDS = 15
 BOOK_CHAPTERS = 55  # East of Eden has 55 chapters across four parts
 
 
@@ -21,8 +20,8 @@ class Report:
         return not self.errors
 
 
-def validate(events: list[Event], book: Book | None, expected_count: int) -> Report:
-    """With book=None (memory mode) citations can't be checked; the user verifies them instead."""
+def validate(events: list[Event], expected_count: int) -> Report:
+    """Checks that need no book text. Whether each event really happens is checked by the user."""
     r = Report()
     if len(events) != expected_count:
         r.errors.append(f"Expected exactly {expected_count} events, got {len(events)}.")
@@ -39,16 +38,9 @@ def validate(events: list[Event], book: Book | None, expected_count: int) -> Rep
     for e in events:
         words = len(e.citation.split())
         if words > MAX_QUOTE_WORDS:
-            r.errors.append(f"[{e.id}] Citation is {words} words; keep it to one sentence, under {MAX_QUOTE_WORDS} words.")
-        if book is None:
-            if not 1 <= e.chapter <= BOOK_CHAPTERS:
-                r.errors.append(f"[{e.id}] Chapter {e.chapter} is outside 1-{BOOK_CHAPTERS}.")
-            continue
-        chapter = book.chapter(e.chapter)
-        if chapter is None:
-            r.errors.append(f"[{e.id}] Chapter {e.chapter} does not exist.")
-        elif normalize_for_match(e.citation) not in normalize_for_match(chapter.text):
-            r.errors.append(f"[{e.id}] Citation not found verbatim in chapter {e.chapter}: {e.citation!r}")
+            r.errors.append(f"[{e.id}] Search phrase is {words} words; keep it under {MAX_QUOTE_WORDS}.")
+        if not 1 <= e.chapter <= BOOK_CHAPTERS:
+            r.errors.append(f"[{e.id}] Chapter {e.chapter} is outside 1-{BOOK_CHAPTERS}.")
 
     # Story order can differ from page order (the book interleaves the Trask and Cathy threads),
     # so going backward in chapter number is worth flagging but is not an error.

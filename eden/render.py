@@ -38,9 +38,7 @@ def to_mermaid(events: list[Event]) -> str:
 
 
 def source_note(meta: dict) -> str:
-    if meta.get("grounding") == "memory":
-        return "Picked from the model's knowledge of the novel, not the text; each event needs the reader's check"
-    return f"Citations checked against the text (source sha256 {meta.get('source_sha256', '?')[:12]})"
+    return "Picked from the model's knowledge of the novel, not the text; each event needs the reader's check"
 
 
 def verified_mark(e: Event) -> str:
