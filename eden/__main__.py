@@ -1,4 +1,4 @@
-"""Command line: python -m eden {extract,render}."""
+"""Command line: python -m eden {extract,render,portfolio,preview,publish}."""
 
 from __future__ import annotations
 
@@ -78,6 +78,21 @@ def cmd_portfolio(args) -> None:
     print(f"Updated the timeline in {page}; your writing around it is unchanged.")
 
 
+def cmd_preview(args) -> None:
+    import webbrowser
+
+    from .publish import preview_page
+
+    css = Path(args.site).expanduser() / "assets" / "css" / "site.css"
+    if not css.exists():
+        raise SystemExit(f"Can't find {css}, the site's stylesheet. Use --site PATH.")
+    out = ROOT / "portfolio" / "preview.html"
+    out.write_text(preview_page((ROOT / "portfolio" / "home.html").read_text(), css.read_text()))
+    print(f"Wrote {out}")
+    if not args.no_open:
+        webbrowser.open(out.as_uri())
+
+
 def cmd_publish(args) -> None:
     import getpass
     import subprocess
@@ -130,6 +145,11 @@ def main(argv: list[str] | None = None) -> None:
 
     p = sub.add_parser("portfolio", help="Refresh the timeline inside portfolio/home.html (no model call)")
     p.set_defaults(func=cmd_portfolio)
+
+    p = sub.add_parser("preview", help="Open portfolio/home.html styled like the site, before locking it")
+    p.add_argument("--site", default="~/yunweiliang.github.io", help="Path to your portfolio repo")
+    p.add_argument("--no-open", action="store_true", help="Only write the file; don't open a browser")
+    p.set_defaults(func=cmd_preview)
 
     p = sub.add_parser("publish", help="Lock portfolio/home.html with your passcode, then commit and push it")
     p.add_argument("--site", default="~/yunweiliang.github.io", help="Path to your portfolio repo")

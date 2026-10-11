@@ -52,3 +52,30 @@ def lock_json(lock_data: dict) -> str:
 
 def git(site: Path, *args: str) -> None:
     subprocess.run(["git", "-C", str(site), *args], check=True)
+
+
+def preview_page(page: str, css: str) -> str:
+    """The page as it looks after unlocking: inside <main class="page">, styled by the site's site.css.
+
+    The CSS is inlined so the preview is one file that opens anywhere. Nothing is encrypted or published.
+    """
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Preview · home page (not published)</title>
+<style>
+{css}
+</style>
+</head>
+<body>
+<p style="margin:0;padding:6px 16px;font:13px var(--sans);color:var(--muted);background:var(--notice-bg)">
+  Preview of portfolio/home.html. Not locked, not published.</p>
+<main id="main" class="page">
+{page}
+</main>
+</body>
+</html>
+"""

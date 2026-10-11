@@ -24,3 +24,11 @@ def test_lock_json_has_the_fields_the_gate_reads():
 def test_each_lock_uses_fresh_salt_and_iv():
     a, b = lock("same", "p"), lock("same", "p")
     assert a["salt"] != b["salt"] and a["iv"] != b["iv"] and a["ct"] != b["ct"]
+
+
+def test_preview_wraps_the_page_like_the_unlocked_site():
+    from eden.publish import preview_page
+
+    html = preview_page("<section class=\"home\"><h1>Yunwei</h1></section>", ":root { --bg: #fff; }")
+    assert ":root { --bg: #fff; }" in html
+    assert '<main id="main" class="page">\n<section class="home"><h1>Yunwei</h1></section>\n</main>' in html

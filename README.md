@@ -66,6 +66,7 @@ your reflections in it. It stays in this private repo, and only an encrypted cop
 
 ```bash
 python -m eden portfolio   # refresh the timeline inside home.html; your writing is untouched
+python -m eden preview     # open home.html styled like the site, to check it before publishing
 python -m eden publish     # asks for your passcode (hidden), locks home.html, commits and pushes it
 ```
 
