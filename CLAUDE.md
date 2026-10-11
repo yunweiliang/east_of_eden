@@ -29,6 +29,9 @@ then builds a character-consistent alternate plot, to study a research question 
   - **User feedback:** the user's corrections and preferences, close to their own words.
   - **Friction:** where Claude got stuck, was blocked, or had to work around a limitation. Say it plainly
     and in the moment, too, not only in the log.
+- **Every conclusion ships with a plot graph.** Any output that makes a claim (a significance pick, a
+  divergence point, a free-will conclusion) must include the plot line or tree that backs it up. The
+  graph is the evidence, and the prose explains it.
 - **Copyright.** *East of Eden* (1952) is still under US copyright. Never commit the book's text, or long
   excerpts from it, to this repo. Source text lives outside git (for example `data/source/`, which is
   gitignored) and comes from the user's own copy. Committed citations are a chapter number plus a short
@@ -55,10 +58,17 @@ Event {
 
 ## Framing notes
 
-1. The book doesn't end on Cal telling Aron about Cathy. After the reveal, Aron enlists and dies in France,
-   Kate commits suicide, Adam has a stroke and blesses Cal with *"Timshel."* Ending the graph at the reveal
-   is fine for MVP–M1. From M2 on, the graph extends through the Timshel ending, because the counterfactual
-   goal (Aron survives and Cal lives without guilt) can only be checked downstream of the reveal.
+1. **The focal event is Cal telling Aron about Cathy.** It is the moment of choice, the Cain moment, where
+   the question "is Cal predestined to 'kill' Aron?" gets decided. Timshel is *not* the target event. From
+   M2 on, the graph extends past the reveal to the **outcome events** (Aron enlists and dies, Kate's
+   suicide and will, Adam's stroke, the Timshel blessing). These are not new targets. They are how the agent
+   checks whether an alternate plot reaches the goal: Aron survives and Cal is free of guilt.
+   - **Example.** Kate's will leaves her fortune to Aron. Remove the reveal and the secret may still come
+     out through the will, so the alternate plot doesn't save Aron after all. Without the outcome events,
+     the agent can't see this.
+   - **Research note.** Timshel ("thou mayest") is said *after* the act. One reading is that the book puts
+     free will in what Cal does after his sin, not in avoiding the sin. M7 should test that reading against
+     "Cal could have chosen not to tell."
 2. Who knows that Kate is Cathy, and when they learn it, is the spine of the ending. Model it explicitly.
 
 ## Milestone plan
@@ -71,9 +81,21 @@ Event {
 | **M2** | Character state model | Per event: each character's knowledge, beliefs, desires and wounds. Typed edges | Graph the user can step through, showing character state at each event | Correctly tracks who knows Kate = Cathy, and when |
 | **M3** | Counterfactual dependency | For each node: "if this didn't happen, does the ending still occur?" | Nodes colored necessary, contributing or overdetermined | Overdetermined nodes are identified (Cal's anger has many sources) |
 | **M4** | Alternate plot generation | Target: no reveal, Aron survives, Cal free of guilt. Find the smallest set of changes that reaches it | Before and after graphs side by side, differences highlighted | The after-graph satisfies all three goals |
-| **M5** | Consistency critic | A second agent checks each changed event against the character's established traits and feelings, with citations | Each change marked consistent or inconsistent, with reasons | Every change passes the critic, or is revised until it does |
+| **M5** | Consistency critic and plot-hole detector | A second agent checks each changed event against the character's established traits and feelings, with citations. It also flags plot holes (see below) in any plot line, real or alternate | Each change marked consistent or inconsistent, plus a list of plot holes, each pinned to a node on the graph | Every change passes the critic with no plot holes left, or is revised until it does |
 | **M6** | Latest divergence point | Walk backward from the reveal. At each node, search for a character-consistent alternative that reaches the goal | The latest viable divergence point and the required changes | The answer is cited and the critic accepts it |
 | **M7** | Free-will analysis | Classify each viable divergence: a character's choice, chance or outside events, or upbringing and temperament | Report, plus a per-character map of where alternatives remain open | See below |
+
+### Plot holes the critic must catch
+
+- **Knowledge violation:** a character acts on something they can't know yet (tracked by M2 knowledge state).
+- **Uncaused event:** a node with no plausible cause in the graph.
+- **Unmotivated choice:** a decision with no setup in the character's established wants and wounds.
+- **Timeline contradiction:** events out of order, or overlapping in impossible ways.
+- **Dangling thread:** a cause that should still fire but is ignored, such as Kate's will naming Aron.
+- **Erased consequence:** a change that removes an event other nodes still depend on.
+
+The real book's graph is a baseline. The critic should find few or no plot holes in it. If it flags many,
+the critic is miscalibrated.
 
 ### Why M6/M7 is a free-will experiment
 

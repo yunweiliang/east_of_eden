@@ -1,0 +1,7 @@
+data/source/
+*.epub
+*.mobi
+*.azw3
+*.pdf
+__pycache__/
+.env
