@@ -3,7 +3,7 @@ from types import SimpleNamespace
 
 from eden.extract import extract_events, strict_schema
 from eden.render import to_html, to_markdown
-from eden.schema import Event, EventList, ModelEvent
+from eden.schema import Event, EventList, M0EventList, M0ModelEvent, ModelEvent
 from eden.validate import validate
 
 
@@ -45,6 +45,19 @@ def test_strict_schema_inlines_defs_and_forbids_extra_keys():
     assert item["additionalProperties"] is False
     assert set(item["required"]) == set(ModelEvent.model_fields)
     assert "user_verified" not in item["properties"]
+
+
+def test_m0_schema_requires_causes_and_a_known_thread():
+    item = strict_schema(M0EventList)["properties"]["events"]["items"]
+    assert set(item["required"]) == set(M0ModelEvent.model_fields)
+    assert item["properties"]["causes"]["type"] == "array"
+    assert item["properties"]["thread"]["enum"] == ["Trask", "Cathy/Kate", "Hamilton", "Lee"]
+
+
+def test_mvp_events_still_load_without_m0_fields():
+    old = GOOD[0].model_dump(exclude={"causes", "thread"})
+    event = Event.model_validate(old)
+    assert event.causes == [] and event.thread is None
 
 
 class FakeStream:
