@@ -1,0 +1,1 @@
+{"created": "2026-10-11T22:26:47+00:00", "stage": "mvp", "served_by": "claude-opus-5-5", "attempts": 1, "usage": {"input_tokens": 1084, "cache_creation_input_tokens": 0, "cache_read_input_tokens": 0, "output_tokens": 10380}, "cost_usd": 0.2119}

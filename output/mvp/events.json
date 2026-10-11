@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "stage": "mvp",
+    "model": "claude-opus-5-5",
+    "served_by": "claude-opus-5-5",
+    "prompt_hash": "8627bdd4c644696f",
+    "grounding": "memory",
+    "attempts": 1,
+    "usage": {
+      "input_tokens": 1084,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 10380
+    },
+    "cost_usd": 0.2119,
+    "created": "2026-10-11T22:26:47+00:00",
+    "errors": [],
+    "warnings": []
+  },
+  "events": [
+    {
+      "id": "cathy-born-monster",
+      "title": "The narrator introduces Cathy Ames as a 'monster' born to human parents",
+      "chapter": 8,
+      "characters": [
+        "Cathy Ames"
+      ],
+      "summary": "The narrator introduces Cathy Ames, a girl who seems to lack ordinary conscience from childhood. She manipulates the people around her and eventually destroys her parents and her home before vanishing.",
+      "citation": "I believe there are monsters born in the world to human parents",
+      "rationale": "Cathy's nature sets up the hidden mother whose identity Cal eventually reveals to Aron; the shock of that revelation depends on her being monstrous.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "cathy-found-by-trasks",
+      "title": "The beaten Cathy crawls to the Trask farm",
+      "chapter": 10,
+      "characters": [
+        "Cathy Ames",
+        "Adam Trask",
+        "Charles Trask"
+      ],
+      "summary": "After she is savagely beaten, Cathy drags herself to the Trask brothers' farmhouse. Adam takes her in and nurses her, while Charles distrusts her from the start.",
+      "citation": "Cathy",
+      "rationale": "This is how Cathy enters Adam's life, which makes her the future mother of the twins.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "adam-marries-cathy",
+      "title": "Adam marries Cathy, who drugs him on their wedding night",
+      "chapter": 11,
+      "characters": [
+        "Adam Trask",
+        "Cathy Ames",
+        "Charles Trask"
+      ],
+      "summary": "Adam marries Cathy and plans to take her to California. On their wedding night she drugs him and goes to Charles's bed instead.",
+      "citation": "wedding night",
+      "rationale": "The marriage brings Cathy west as Adam's wife and leads to the conception of the twins Cal and Aron.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "cathy-poisons-faye",
+      "title": "Cathy, now Kate, poisons Faye and takes over the brothel",
+      "chapter": 21,
+      "characters": [
+        "Kate (Cathy)",
+        "Faye"
+      ],
+      "summary": "Having abandoned Adam and the twins, Cathy works in Faye's Salinas brothel under the name Kate. She gradually poisons Faye and inherits the house, becoming its madam.",
+      "citation": "croton oil",
+      "rationale": "This establishes Kate as the Salinas madam whose house Cal later takes Aron to, making the secret both shameful and close at hand.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "samuel-tells-adam",
+      "title": "Samuel tells Adam that Cathy runs a brothel in Salinas",
+      "chapter": 24,
+      "characters": [
+        "Samuel Hamilton",
+        "Adam Trask"
+      ],
+      "summary": "Before leaving the valley for good, Samuel Hamilton tells Adam that his wife is alive and running a whorehouse in Salinas under the name Kate. He hopes the truth will free Adam from his paralysis.",
+      "citation": "Faye's",
+      "rationale": "Adam learns the truth and begins the long effort to keep it from his sons, the secret that Cal will later expose.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "adam-visits-kate",
+      "title": "Adam confronts Kate at her house and is freed from her",
+      "chapter": 25,
+      "characters": [
+        "Adam Trask",
+        "Kate (Cathy)"
+      ],
+      "summary": "Adam visits Kate's brothel and sees her clearly for the first time. He leaves released from his obsession, but he resolves to keep the boys ignorant of their mother.",
+      "citation": "Kate's house",
+      "rationale": "Adam's decision to shield the twins, and especially Aron, creates the concealed truth that Cal later turns into a weapon.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "abra-tells-aron",
+      "title": "Abra tells Aron his mother isn't dead",
+      "chapter": 27,
+      "characters": [
+        "Abra Bacon",
+        "Aron Trask",
+        "Cal Trask"
+      ],
+      "summary": "Young Abra Bacon visits the Trask ranch and confides to Aron that she has heard their mother is not dead. The rumor plants doubt about the family story the twins were told.",
+      "citation": "Your mother isn't dead",
+      "rationale": "This first crack in the official story begins the twins' awareness that something about their mother is being hidden.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "cal-learns-truth",
+      "title": "Cal learns that his mother is Kate the madam",
+      "chapter": 38,
+      "characters": [
+        "Cal Trask",
+        "Adam Trask",
+        "Rabbit Holman"
+      ],
+      "summary": "During his restless night wanderings, Cal is led to Kate's house, and after trouble with the law he hears the truth from Adam. Cal now carries alone the knowledge of who their mother is.",
+      "citation": "Rabbit Holman",
+      "rationale": "Cal cannot reveal Kate to Aron until he himself knows the secret; this gives him the knowledge he later uses.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "adam-rejects-gift",
+      "title": "Adam rejects Cal's Thanksgiving gift of money",
+      "chapter": 49,
+      "characters": [
+        "Cal Trask",
+        "Adam Trask",
+        "Aron Trask",
+        "Lee"
+      ],
+      "summary": "Cal presents Adam with the money he earned from bean speculation to replace what his father lost on the lettuce venture. Adam refuses it as war profiteering and praises Aron instead, devastating Cal.",
+      "citation": "fifteen thousand dollars",
+      "rationale": "Cal's jealous, wounded rage at this rejection is the immediate trigger for his cruel act toward Aron.",
+      "is_focal_event": false,
+      "user_verified": true
+    },
+    {
+      "id": "cal-reveals-kate",
+      "title": "Cal takes Aron to Kate's house and reveals their mother",
+      "chapter": 49,
+      "characters": [
+        "Cal Trask",
+        "Aron Trask",
+        "Kate (Cathy)"
+      ],
+      "summary": "Consumed by hurt and jealousy, Cal leads Aron at night to Kate's brothel and shows him that the madam is their mother. The revelation shatters the idealistic Aron.",
+      "citation": "Come with me",
+      "rationale": "This is the focal event, the culmination of the long-hidden truth about Cathy and Cal's rivalry with his brother.",
+      "is_focal_event": true,
+      "user_verified": true
+    }
+  ]
+}
