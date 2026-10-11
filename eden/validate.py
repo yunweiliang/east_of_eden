@@ -8,6 +8,7 @@ from .schema import Event
 from .source import Book, normalize_for_match
 
 MAX_QUOTE_WORDS = 40
+BOOK_CHAPTERS = 55  # East of Eden has 55 chapters across four parts
 
 
 @dataclass
@@ -20,7 +21,8 @@ class Report:
         return not self.errors
 
 
-def validate(events: list[Event], book: Book, expected_count: int) -> Report:
+def validate(events: list[Event], book: Book | None, expected_count: int) -> Report:
+    """With book=None (memory mode) citations can't be checked; the user verifies them instead."""
     r = Report()
     if len(events) != expected_count:
         r.errors.append(f"Expected exactly {expected_count} events, got {len(events)}.")
@@ -35,14 +37,17 @@ def validate(events: list[Event], book: Book, expected_count: int) -> Report:
         r.errors.append("Exactly one event, the last one, must have is_focal_event=true (Cal reveals Kate to Aron).")
 
     for e in events:
-        chapter = book.chapter(e.chapter)
-        if chapter is None:
-            r.errors.append(f"[{e.id}] Chapter {e.chapter} does not exist.")
-            continue
         words = len(e.citation.split())
         if words > MAX_QUOTE_WORDS:
             r.errors.append(f"[{e.id}] Citation is {words} words; keep it to one sentence, under {MAX_QUOTE_WORDS} words.")
-        if normalize_for_match(e.citation) not in normalize_for_match(chapter.text):
+        if book is None:
+            if not 1 <= e.chapter <= BOOK_CHAPTERS:
+                r.errors.append(f"[{e.id}] Chapter {e.chapter} is outside 1-{BOOK_CHAPTERS}.")
+            continue
+        chapter = book.chapter(e.chapter)
+        if chapter is None:
+            r.errors.append(f"[{e.id}] Chapter {e.chapter} does not exist.")
+        elif normalize_for_match(e.citation) not in normalize_for_match(chapter.text):
             r.errors.append(f"[{e.id}] Citation not found verbatim in chapter {e.chapter}: {e.citation!r}")
 
     # Story order can differ from page order (the book interleaves the Trask and Cathy threads),

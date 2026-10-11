@@ -4,7 +4,7 @@ from types import SimpleNamespace
 from conftest import FIXTURES
 from eden.extract import extract_events, strict_schema
 from eden.render import to_html, to_markdown
-from eden.schema import Event, EventList
+from eden.schema import Event, EventList, ModelEvent
 from eden.source import load_book
 from eden.validate import validate
 
@@ -46,7 +46,8 @@ def test_strict_schema_inlines_defs_and_forbids_extra_keys():
     assert "$defs" not in json.dumps(schema)
     item = schema["properties"]["events"]["items"]
     assert item["additionalProperties"] is False
-    assert set(item["required"]) == set(Event.model_fields)
+    assert set(item["required"]) == set(ModelEvent.model_fields)
+    assert "user_verified" not in item["properties"]
 
 
 class FakeStream:
@@ -74,7 +75,7 @@ class FakeClient:
     def stream(self, **kwargs):
         self.calls.append(kwargs)
         events = self.answers.pop(0)
-        text = json.dumps({"events": [e.model_dump() for e in events]})
+        text = json.dumps({"events": [e.model_dump(exclude={"user_verified"}) for e in events]})
         usage = SimpleNamespace(input_tokens=100, cache_creation_input_tokens=1000,
                                 cache_read_input_tokens=0, output_tokens=50)
         return FakeStream(SimpleNamespace(
@@ -99,3 +100,29 @@ def test_render_is_deterministic():
     assert to_html(GOOD, meta) == to_html(GOOD, meta)
     md = to_markdown(GOOD, meta)
     assert "flowchart LR" in md and "e2 --> e3" in md
+
+
+def test_memory_mode_validates_without_book():
+    events = [ev(1, 3, "any phrase"), ev(2, 30, "another"), ev(3, 55, "last", focal=True)]
+    assert validate(events, None, 3).ok
+    report = validate([ev(1, 3, "x"), ev(2, 56, "y"), ev(3, 0, "z", focal=True)], None, 3)
+    assert sum("outside 1-55" in e for e in report.errors) == 2
+
+
+def test_memory_mode_sends_no_book_and_uses_memory_prompt():
+    client = FakeClient([[ev(1, 3, "a"), ev(2, 30, "b"), ev(3, 55, "c", focal=True)]])
+    result = extract_events(None, 3, client=client)
+    call = client.calls[0]
+    assert result.report.ok and result.attempts == 1
+    assert len(call["messages"][0]["content"]) == 1
+    assert "no text is provided" in call["system"]
+    assert all(e.user_verified is None for e in result.events)
+
+
+def test_render_shows_reader_checks():
+    events = [ev(1, 1, "a"), ev(2, 2, "b"), ev(3, 3, "c", focal=True)]
+    events[0].user_verified = True
+    events[1].user_verified = False
+    md = to_markdown(events, {"grounding": "memory", "prompt_hash": "p"})
+    assert "1/3 events checked" in md and "✓ checked" in md and "✗ wrong" in md and "unchecked" in md
+    assert "not the text" in md
