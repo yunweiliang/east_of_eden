@@ -38,6 +38,15 @@ then builds a character-consistent alternate plot, to study a research question 
   quote (one sentence or less).
 - **Grounding.** Every extracted event must cite a chapter and a short quote, so a reader can catch invented
   scenes.
+  - **Book mode:** used when a DRM-free text is in `data/source/`. Code checks that each quote appears
+    word for word in the chapter it cites.
+  - **Memory mode (current default, user decision):** `extract --from-memory`. Store-bought copies are
+    DRM-locked, so the model works from its own knowledge of the novel. Each citation is a short search
+    phrase. The user checks every event in their own copy and records the result as `user_verified` in
+    `events.json`. Code still checks the count, the focal event, the chapter range (1–55) and the phrase
+    length.
+  - **Never remove DRM** or suggest doing so.
+  - Revisit sourcing before M5: the critic is better grounded in the real text.
 - **No model identifiers** in commits, code comments or docs.
 - **Branching (user decision):** each milestone gets its own branch and a pull request into `main`, which
   the user reviews and merges. Small housekeeping (changelog and cost rows, doc fixes) may go straight to
@@ -52,6 +61,7 @@ Fields are added as milestones progress.
 Event {
   id, title, chapter, characters[], summary, citation   # MVP
   rationale, is_focal_event                             # MVP: why it's on the path; marks the reveal
+  user_verified: true | false | null                    # MVP: set by the user, never by the model
   causes: [event ids]                                   # M0: directed acyclic graph (DAG)
   thread: "Trask" | "Cathy/Kate" | "Hamilton" | "Lee"   # M0: swimlanes
   edge_types: physical | enabling | motivational | informational   # M2
@@ -174,14 +184,14 @@ Hypotheses for M6 to test (not conclusions):
 
 - `eden/source.py`: loads `data/source/*.epub|.txt` and splits it on "Chapter N" headings. Also holds the
   quote normalizer.
-- `eden/extract.py`: the only model call. It uses structured outputs, a cached book prefix, append-only
-  repair turns and refusal fallbacks.
+- `eden/extract.py`: the only model call. It uses structured outputs, append-only repair turns and refusal
+  fallbacks. In book mode it also caches the book prefix.
 - `eden/validate.py`: deterministic checks. Errors trigger a repair turn. Warnings, such as story order
   differing from page order, are only reported.
 - `eden/render.py`: a pure function from `events.json` to `timeline.md` (Mermaid) and `timeline.html`
   (inline SVG).
 - `python -m eden {chapters,extract,render}`. `extract` skips the model call when the pinned picks match the
-  book hash and the prompt hash.
+  source (the book hash, or "memory") and the prompt hash.
 - Tests use `tests/fixtures/mini_book.txt`, an invented text, so CI never needs the novel.
 
 ## Stack (proposed)

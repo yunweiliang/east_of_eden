@@ -7,29 +7,33 @@ the history, costs and learnings are in `CHANGELOG.md`.
 ## MVP: 10 linear events leading to Cal's reveal
 
 ```
-book (your copy) → split into chapters → model picks 10 events → code checks them → pinned events.json → timeline
-     deterministic        deterministic        the only non-deterministic step       deterministic      deterministic
+model picks 10 events → code checks them → pinned events.json → timeline → you check each event in your copy
+  the only uncertain step     deterministic       deterministic      deterministic
 ```
 
-The model only chooses the events. Code checks every pick:
-- there are exactly 10,
-- the last one is the focal event,
-- every chapter exists,
-- every citation appears word for word in the chapter it cites.
+Store-bought ebooks (Kindle included) are copy-protected, so by default the model works from its own knowledge
+of the novel (`--from-memory`). Each event gives a chapter and a short search phrase. You look it up in your
+copy and record the result in `output/mvp/events.json` by setting `"user_verified": true` or `false`. Then
+re-render to update the "Checked" column. If you ever have a DRM-free text, drop it in `data/source/` and
+run without the flag. Code then checks every quote word for word.
 
-If a check fails, the model gets the errors and corrects its list (up to 2 times). Accepted picks are
-pinned in `output/mvp/events.json`, so re-drawing the timeline never calls the model again.
+Code checks that:
+- there are exactly 10 events,
+- the last one is the focal event,
+- every chapter is in the range 1–55,
+- every phrase is short.
+
+If a check fails, the model gets the errors and corrects its list (up to 2 times).
 
 ### Run it
 
 ```bash
 pip install -e '.[dev]'
-cp /path/to/east-of-eden.epub data/source/   # gitignored: the book never enters git
-python -m eden chapters                       # check the book splits into chapters 1 to 55
-export ANTHROPIC_API_KEY=...                  # or `ant auth login`
-python -m eden extract                        # picks, checks, pins, renders
-python -m eden render                         # redraw from the pinned picks only, with no model call
-pytest                                        # tests use an invented mini-book, not the novel
+export ANTHROPIC_API_KEY=...          # or `ant auth login`
+python -m eden extract --from-memory  # picks, checks, pins, renders
+# check each event in your copy, then set "user_verified" in output/mvp/events.json
+python -m eden render                 # redraw from the pinned picks only, with no model call
+pytest                                # tests use an invented mini-book, not the novel
 ```
 
 Outputs:

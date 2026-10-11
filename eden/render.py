@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import html
+import re
 import textwrap
 
 from .schema import Event
@@ -13,35 +14,55 @@ AXIS_Y = 165
 MARGIN = 80
 
 
+def node_id(event_id: str) -> str:
+    """Mermaid-safe node id: model ids may contain quotes or dots, or be a keyword like 'end'."""
+    return "n_" + re.sub(r"\W", "_", event_id)
+
+
+def cell(text: str) -> str:
+    return re.sub(r"\s*\n\s*", " ", text).replace("|", "\\|")
+
+
 def to_mermaid(events: list[Event]) -> str:
     lines = ["```mermaid", "flowchart LR"]
     for e in events:
-        label = f"{e.title}<br/><i>Ch. {e.chapter}</i>".replace('"', "'")
-        lines.append(f'    {e.id.replace("-", "_")}["{label}"]')
+        label = f"{html.escape(e.title, quote=False)}<br/><i>Ch. {e.chapter}</i>".replace('"', "#quot;")
+        lines.append(f'    {node_id(e.id)}["{label}"]')
     for a, b in zip(events, events[1:]):
-        lines.append(f'    {a.id.replace("-", "_")} --> {b.id.replace("-", "_")}')
+        lines.append(f"    {node_id(a.id)} --> {node_id(b.id)}")
     focal = next((e for e in events if e.is_focal_event), None)
     if focal:
-        lines.append(f'    style {focal.id.replace("-", "_")} stroke-width:3px')
+        lines.append(f"    style {node_id(focal.id)} stroke-width:3px")
     lines.append("```")
     return "\n".join(lines)
 
 
+def source_note(meta: dict) -> str:
+    if meta.get("grounding") == "memory":
+        return "Picked from the model's knowledge of the novel, not the text; each event needs the reader's check"
+    return f"Citations checked against the text (source sha256 {meta.get('source_sha256', '?')[:12]})"
+
+
+def verified_mark(e: Event) -> str:
+    return {True: "✓ checked", False: "✗ wrong"}.get(e.user_verified, "unchecked")
+
+
 def to_markdown(events: list[Event], meta: dict) -> str:
+    done = sum(e.user_verified is True for e in events)
     out = [
         "# MVP: 10 linear events leading to Cal's reveal",
         "",
-        f"Model: picks pinned in `events.json` (source sha256 `{meta.get('source_sha256', '?')[:12]}`, "
-        f"prompt `{meta.get('prompt_hash', '?')}`). Open `timeline.html` for the drawn plot line.",
+        f"{source_note(meta)}. Prompt `{meta.get('prompt_hash', '?')}`. {done}/{len(events)} events checked by the "
+        "reader. Open `timeline.html` for the drawn plot line.",
         "",
         to_mermaid(events),
         "",
-        "| # | Event | Ch. | Characters | Citation | Why it matters |",
-        "|---|---|---|---|---|---|",
+        "| # | Event | Ch. | Characters | Search phrase | Why it matters | Checked |",
+        "|---|---|---|---|---|---|---|",
     ]
     for i, e in enumerate(events, 1):
-        cells = [str(i), f"**{e.title}**", str(e.chapter), ", ".join(e.characters), f"“{e.citation}”", e.rationale]
-        out.append("| " + " | ".join(c.replace("|", "\\|") for c in cells) + " |")
+        cells = [str(i), f"**{e.title}**", str(e.chapter), ", ".join(e.characters), f"“{e.citation}”", e.rationale, verified_mark(e)]
+        out.append("| " + " | ".join(cell(c) for c in cells) + " |")
     return "\n".join(out) + "\n"
 
 
@@ -78,7 +99,8 @@ def to_html(events: list[Event], meta: dict) -> str:
     rows = "\n".join(
         f"<tr><td>{i}</td><td><strong>{html.escape(e.title)}</strong><br>{html.escape(e.summary)}</td>"
         f"<td>{e.chapter}</td><td>{html.escape(', '.join(e.characters))}</td>"
-        f"<td>“{html.escape(e.citation)}”</td><td>{html.escape(e.rationale)}</td></tr>"
+        f"<td>“{html.escape(e.citation)}”</td><td>{html.escape(e.rationale)}</td>"
+        f"<td>{verified_mark(e)}</td></tr>"
         for i, e in enumerate(events, 1)
     )
     return f"""<!doctype html>
@@ -114,14 +136,14 @@ th {{ color:var(--muted); font-weight:normal; }}
 <body>
 <main>
 <h1>East of Eden: the road to Cal's reveal</h1>
-<p class="meta">{len(events)} linear events. Source sha256 {html.escape(meta.get('source_sha256', '?')[:12])},
-prompt {html.escape(meta.get('prompt_hash', '?'))}. Hover a node for its summary.</p>
+<p class="meta">{len(events)} linear events. {html.escape(source_note(meta))}.
+Prompt {html.escape(meta.get('prompt_hash', '?'))}. Hover a node for its summary.</p>
 <div class="scroll">
 {to_svg(events)}
 </div>
 <div class="table-wrap">
 <table>
-<thead><tr><th>#</th><th>Event</th><th>Ch.</th><th>Characters</th><th>Citation</th><th>Why it matters</th></tr></thead>
+<thead><tr><th>#</th><th>Event</th><th>Ch.</th><th>Characters</th><th>Search phrase</th><th>Why it matters</th><th>Checked</th></tr></thead>
 <tbody>
 {rows}
 </tbody>
