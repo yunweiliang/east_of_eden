@@ -48,6 +48,7 @@ Fields are added as milestones progress.
 ```
 Event {
   id, title, chapter, characters[], summary, citation   # MVP
+  rationale, is_focal_event                             # MVP: why it's on the path; marks the reveal
   causes: [event ids]                                   # M0: directed acyclic graph (DAG)
   thread: "Trask" | "Cathy/Kate" | "Hamilton" | "Lee"   # M0: swimlanes
   edge_types: physical | enabling | motivational | informational   # M2
@@ -165,6 +166,20 @@ Hypotheses for M6 to test (not conclusions):
 - Adam at Thanksgiving. Refusing war-profit money fits Adam, but refusing it *gently* might also fit.
 - Aron's fragility. Can Lee or Abra cushion the reveal?
 - Adam's original lie about the twins' mother. Verify in the text who urged him to tell the truth.
+
+## Code layout (MVP)
+
+- `eden/source.py`: loads `data/source/*.epub|.txt` and splits it on "Chapter N" headings. Also holds the
+  quote normalizer.
+- `eden/extract.py`: the only model call. It uses structured outputs, a cached book prefix, append-only
+  repair turns and refusal fallbacks.
+- `eden/validate.py`: deterministic checks. Errors trigger a repair turn. Warnings, such as story order
+  differing from page order, are only reported.
+- `eden/render.py`: a pure function from `events.json` to `timeline.md` (Mermaid) and `timeline.html`
+  (inline SVG).
+- `python -m eden {chapters,extract,render}`. `extract` skips the model call when the pinned picks match the
+  book hash and the prompt hash.
+- Tests use `tests/fixtures/mini_book.txt`, an invented text, so CI never needs the novel.
 
 ## Stack (proposed)
 
