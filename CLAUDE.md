@@ -33,18 +33,15 @@ then builds a character-consistent alternate plot, to study a research question 
   divergence point, a free-will conclusion) must include the plot line or tree that backs it up. The
   graph is the evidence, and the prose explains it.
 - **Copyright.** *East of Eden* (1952) is still under US copyright. Never commit the book's text, or long
-  excerpts from it, to this repo. Source text lives outside git (for example `data/source/`, which is
-  gitignored) and comes from the user's own copy. Committed citations are a chapter number plus a short
-  quote (one sentence or less).
+  excerpts from it, to this repo. Committed citations are a chapter number plus a short search phrase.
 - **Grounding.** Every extracted event must cite a chapter and a short quote, so a reader can catch invented
   scenes.
-  - **Book mode:** used when a DRM-free text is in `data/source/`. Code checks that each quote appears
-    word for word in the chapter it cites.
-  - **Memory mode (current default, user decision):** `extract --from-memory`. Store-bought copies are
-    DRM-locked, so the model works from its own knowledge of the novel. Each citation is a short search
-    phrase. The user checks every event in their own copy and records the result as `user_verified` in
-    `events.json`. Code still checks the count, the focal event, the chapter range (1–55) and the phrase
-    length.
+  - **Memory only (user decision):** the model works from its own knowledge of the novel. Store-bought
+    copies are DRM-locked. Each citation is a short search phrase. The user checks every event in their
+    own copy and records the result as `user_verified` in `events.json`. Code checks the count, the focal
+    event, the chapter range (1–55) and the phrase length (under 15 words).
+  - **Book-text loading was removed** to keep the code simple. It is in git history (commit `71c13bc`,
+    `eden/source.py`) if a DRM-free text ever becomes available.
   - **Never remove DRM** or suggest doing so.
   - Revisit sourcing before M5: the critic is better grounded in the real text.
 - **No model identifiers** in commits, code comments or docs.
@@ -182,17 +179,15 @@ Hypotheses for M6 to test (not conclusions):
 
 ## Code layout (MVP)
 
-- `eden/source.py`: loads `data/source/*.epub|.txt` and splits it on "Chapter N" headings. Also holds the
-  quote normalizer.
 - `eden/extract.py`: the only model call. It uses structured outputs, append-only repair turns and refusal
-  fallbacks. In book mode it also caches the book prefix.
+  fallbacks. No book text is sent.
 - `eden/validate.py`: deterministic checks. Errors trigger a repair turn. Warnings, such as story order
   differing from page order, are only reported.
 - `eden/render.py`: a pure function from `events.json` to `timeline.md` (Mermaid) and `timeline.html`
   (inline SVG).
-- `python -m eden {chapters,extract,render}`. `extract` skips the model call when the pinned picks match the
-  source (the book hash, or "memory") and the prompt hash.
-- Tests use `tests/fixtures/mini_book.txt`, an invented text, so CI never needs the novel.
+- `python -m eden {extract,render}`. `extract` skips the model call when the pinned picks match the prompt
+  hash.
+- Tests use a fake client, so they never call the API.
 
 ## Stack (proposed)
 
