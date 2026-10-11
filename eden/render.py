@@ -93,14 +93,22 @@ def to_svg(events: list[Event]) -> str:
     return "\n".join(parts)
 
 
-def to_html(events: list[Event], meta: dict) -> str:
-    rows = "\n".join(
+TABLE_HEAD = ("<thead><tr><th>#</th><th>Event</th><th>Ch.</th><th>Characters</th><th>Search phrase</th>"
+              "<th>Why it matters</th><th>Checked</th></tr></thead>")
+
+
+def table_rows(events: list[Event]) -> str:
+    return "\n".join(
         f"<tr><td>{i}</td><td><strong>{html.escape(e.title)}</strong><br>{html.escape(e.summary)}</td>"
         f"<td>{e.chapter}</td><td>{html.escape(', '.join(e.characters))}</td>"
         f"<td>“{html.escape(e.citation)}”</td><td>{html.escape(e.rationale)}</td>"
         f"<td>{verified_mark(e)}</td></tr>"
         for i, e in enumerate(events, 1)
     )
+
+
+def to_html(events: list[Event], meta: dict) -> str:
+    rows = table_rows(events)
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -141,7 +149,7 @@ Prompt {html.escape(meta.get('prompt_hash', '?'))}. Hover a node for its summary
 </div>
 <div class="table-wrap">
 <table>
-<thead><tr><th>#</th><th>Event</th><th>Ch.</th><th>Characters</th><th>Search phrase</th><th>Why it matters</th><th>Checked</th></tr></thead>
+{TABLE_HEAD}
 <tbody>
 {rows}
 </tbody>
@@ -151,3 +159,56 @@ Prompt {html.escape(meta.get('prompt_hash', '?'))}. Hover a node for its summary
 </body>
 </html>
 """
+
+
+def to_portfolio_timeline(events: list[Event]) -> str:
+    """The same plot line and table as timeline.html, restyled with the portfolio site's CSS variables so
+    it follows the site's light and dark themes. It breaks out of the narrow text column to the page width,
+    and scrolls sideways on small screens."""
+    checked = sum(e.user_verified is True for e in events)
+    return "\n".join([
+        '<figure class="eoe-timeline">',
+        "  <style>",
+        "    .eoe-timeline { position: relative; left: 50%; transform: translateX(-50%);",
+        "      width: min(72rem, calc(100vw - 2rem)); margin: 2.5rem 0; }",
+        "    .eoe-timeline .eoe-scroll { overflow-x: auto; border-top: 1px solid var(--faint);",
+        "      border-bottom: 1px solid var(--faint); }",
+        "    .eoe-timeline svg { display: block; }",
+        "    .eoe-timeline .axis, .eoe-timeline .stem { stroke: var(--faint); stroke-width: 2; }",
+        "    .eoe-timeline .node { fill: var(--muted); }",
+        "    .eoe-timeline .node.focal { fill: var(--accent); }",
+        "    .eoe-timeline text { fill: var(--text); text-anchor: middle; font-family: var(--serif); font-size: 14px; }",
+        "    .eoe-timeline text.chap { fill: var(--muted); font-family: var(--sans); font-size: 11px; }",
+        "    .eoe-timeline .eoe-table { overflow-x: auto; margin-top: 1.5rem; }",
+        "    .eoe-timeline table { border-collapse: collapse; width: 100%; font-size: 0.9rem; line-height: 1.5; }",
+        "    .eoe-timeline th, .eoe-timeline td { text-align: left; vertical-align: top; padding: 0.6rem 0.5rem;",
+        "      border-bottom: 1px solid var(--faint); }",
+        "    .eoe-timeline th { font-family: var(--sans); font-size: 0.75rem; font-weight: 600;",
+        "      letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }",
+        "    .eoe-timeline td:nth-child(2) { min-width: 16rem; }",
+        "    .eoe-timeline td:nth-child(6) { min-width: 14rem; }",
+        "    .eoe-timeline figcaption { margin-top: 0.75rem; font-family: var(--sans); font-size: 0.8125rem;",
+        "      color: var(--muted); }",
+        "  </style>",
+        '  <div class="eoe-scroll">',
+        to_svg(events),
+        "  </div>",
+        '  <div class="eoe-table">',
+        f"  <table>{TABLE_HEAD}<tbody>",
+        table_rows(events),
+        "  </tbody></table>",
+        "  </div>",
+        f"  <figcaption>{len(events)} events picked by the agent from its knowledge of the novel; "
+        f"{checked} of {len(events)} checked against the book by me. Hover a point for its summary.</figcaption>",
+        "</figure>",
+    ])
+
+
+TIMELINE_START = "<!-- eden:timeline:start -->"
+TIMELINE_END = "<!-- eden:timeline:end -->"
+
+
+def splice_timeline(page: str, fragment: str) -> str:
+    """Replace only the text between the timeline markers, so hand-written text around it is kept."""
+    start, end = page.index(TIMELINE_START) + len(TIMELINE_START), page.index(TIMELINE_END)
+    return page[:start] + "\n" + fragment + "\n" + page[end:]

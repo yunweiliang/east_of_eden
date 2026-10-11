@@ -220,6 +220,13 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
 
 - Python plus the Claude API for the agents (the extractor, then the critic).
 - Visualizer: Mermaid for the MVP, then D3 or Cytoscape for swimlanes and side-by-side diffs.
-- Hosting (user decision): everything stays in this GitHub repo for now. The user will add it to the
-  portfolio site (yunweiliang.github.io) themselves later. Don't touch the portfolio repo for this project.
+- Hosting (user decision, updated 2026-10-11): the user asked for project reflections on their portfolio
+  (yunweiliang.github.io), behind its passcode.
+  - **Plain text stays private:** the readable page, `portfolio/home.html`, lives here in this private
+    repo. The user writes their own prose in it; Claude never writes their reflections for them.
+  - **Timeline refresh:** `python -m eden portfolio` refreshes only the timeline between the
+    `eden:timeline` markers, leaving the user's writing untouched.
+  - **Only ciphertext is public:** the portfolio repo is public and holds just the encrypted
+    `_data/lock.json`, made with its `tools/lock.html`. The user does the encrypting, since only they know
+    the passcode.
 - Evaluation: a reference event set the user curates by hand before M1.
