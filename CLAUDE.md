@@ -177,6 +177,22 @@ Hypotheses for M6 to test (not conclusions):
 - Aron's fragility. Can Lee or Abra cushion the reveal?
 - Adam's original lie about the twins' mother. Verify in the text who urged him to tell the truth.
 
+## Backlog
+
+Ideas to explore later. They are not scheduled into a milestone yet. Each item notes who raised it.
+
+- **Compare models on this problem** (user, 2026-10-11).
+  - **Setup:** run the same extraction prompt on several models: the default Opus, plus Sonnet, Haiku and
+    the most capable tier. Make the model a CLI flag instead of the `MODEL` constant.
+  - **Measure per model:**
+    - **Quality:** the share of events the user marks `user_verified: true`, and agreement with the
+      user's own reference picks.
+    - **Stability:** overlap of the event sets across repeated `--force` runs.
+    - **Cost:** the agent runtime from `agent_runtime_costs.jsonl`.
+    - **Speed and repairs:** latency and the number of repair attempts.
+  - **Output:** a small comparison table plus each model's timeline, side by side.
+  - **When:** fits naturally alongside M1, which already measures stability across runs.
+
 ## Code layout (MVP)
 
 - `eden/extract.py`: the only model call. It uses structured outputs, append-only repair turns and refusal
