@@ -216,6 +216,7 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
   - **Timeline refresh:** `python -m eden portfolio` refreshes only the timeline between the
     `eden:timeline` markers, leaving the user's writing untouched.
   - **Only ciphertext is public:** the portfolio repo is public and holds just the encrypted
-    `_data/lock.json`, made with its `tools/lock.html`. The user does the encrypting, since only they know
-    the passcode.
+    `_data/lock.json`. The user does the encrypting, since only they know the passcode. They run
+    `python -m eden publish` on their laptop; the browser tool `tools/lock.html` does the same job.
+    Claude never asks for the passcode or stores it.
 - Evaluation: a reference event set the user curates by hand before M1.
