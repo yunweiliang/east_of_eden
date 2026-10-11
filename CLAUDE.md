@@ -66,14 +66,14 @@ Event {
    - **Example.** Kate's will leaves her fortune to Aron. Remove the reveal and the secret may still come
      out through the will, so the alternate plot doesn't save Aron after all. Without the outcome events,
      the agent can't see this.
-   - **Timshel's role (decided).** Timshel is neither the end event nor something the agent changes. It is
-     the last node of the *real* book's graph, so that picture is complete. Alternate plots may not contain
-     it at all: if Aron lives, there is no deathbed blessing. In M7, Timshel is Steinbeck's own answer to
-     the research question, and the agent compares its findings against it.
-     - Steinbeck's answer is a claim about the *future*. Adam says "thou mayest" after the harm is done:
-       Cal can still choose who he becomes.
-     - The research question is about the *past*: could Cal have avoided the harm, and how early would
-       events have to change?
+   - **Timshel's role.** It is the last node of the real book's graph. Whether alternate plots must keep
+     it depends on the experiment (see "Two experiments: pinned endings" below):
+     - In Experiment A it is free to disappear.
+     - In Experiment B it is pinned, and it constrains everything before it.
+
+     Either way, M7 compares the agent's findings with Steinbeck's answer. "Thou mayest" is said *after*
+     the harm, so it is a claim about Cal's future. The research question is about the past: could Cal
+     have avoided the harm?
 2. Who knows that Kate is Cathy, and when they learn it, is the spine of the ending. Model it explicitly.
 
 ## Milestone plan
@@ -87,7 +87,7 @@ Event {
 | **M3** | Counterfactual dependency | For each node: "if this didn't happen, does the ending still occur?" | Nodes colored necessary, contributing or overdetermined | Overdetermined nodes are identified (Cal's anger has many sources) |
 | **M4** | Alternate plot generation | Target: no reveal, Aron survives, Cal free of guilt. Find the smallest set of changes that reaches it | Before and after graphs side by side, differences highlighted | The after-graph satisfies all three goals |
 | **M5** | Consistency critic and plot-hole detector | A second agent checks each changed event against the character's established traits and feelings, with citations. It also flags plot holes (see below) in any plot line, real or alternate | Each change marked consistent or inconsistent, plus a list of plot holes, each pinned to a node on the graph | Every change passes the critic with no plot holes left, or is revised until it does |
-| **M6** | Latest divergence point | Walk backward from the reveal. At each node, search for a character-consistent alternative that reaches the goal | The latest viable divergence point and the required changes | The answer is cited and the critic accepts it |
+| **M6** | Latest divergence point | Walk backward from the reveal. At each node, search for a character-consistent alternative that reaches the goal while all pinned events still happen. Run Experiments A and B | The latest viable divergence point and the required changes | The answer is cited and the critic accepts it |
 | **M7** | Free-will analysis | Classify each viable divergence: a character's choice, chance or outside events, or upbringing and temperament | Report, plus a per-character map of where alternatives remain open | See below |
 
 ### Plot holes the critic must catch
@@ -101,6 +101,35 @@ Event {
 
 The real book's graph is a baseline. The critic should find few or no plot holes in it. If it flags many,
 the critic is miscalibrated.
+
+### Two experiments: pinned endings
+
+The agent runs alternate plots under a **pinned-events** setting: a list of events that must still
+happen. Everything not pinned can change. Pinning an outcome works backward: whatever the agent changes
+upstream must still produce the pinned events, so the pin narrows which earlier histories are possible.
+The user raised this.
+
+- **Experiment A: open ending (the original question).**
+  - **Pinned:** nothing after the reveal.
+  - **Goal:** Aron survives and Cal is free of guilt.
+  - **Asks:** what is the latest point where the story can change, and still be true to the characters,
+    so that Cal doesn't "kill" Aron?
+  - **Tests:** free will to *avoid* the harm.
+- **Experiment B: fixed ending (fatalism test).**
+  - **Pinned:** Adam dies and blesses Cal with "Timshel."
+  - **Asks:** which earlier events are *forced* by that ending, and which can vary?
+  - **If every surviving history still needs Cal's reveal and Aron's death:** the ending is fated, the way
+    Oedipus's is. However the path wiggles, it arrives at the same place.
+  - **If substitutes work** (Adam dies of something else, and Cal is forgiven for a different wrong): only
+    the *shape* of the ending is fixed, not the route to it.
+  - Watch for chains that pinning breaks:
+    - Adam's stroke is caused by Aron's death.
+    - Timshel only means something if Cal has something to be forgiven for.
+- **A vs. B conflict, to test.** Pinning Timshel probably conflicts with A's goal that Cal has no guilt,
+  because the blessing answers guilt. If the agent finds the two can't both hold, that is a result in its
+  own right. In Steinbeck's structure, Cal's freedom ("thou mayest") might *require* the sin it forgives.
+- **Output for each experiment:** before and after plot graphs, with pinned nodes marked, and events
+  forced by a pin highlighted.
 
 ### Why M6/M7 is a free-will experiment
 
