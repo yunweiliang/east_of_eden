@@ -1,10 +1,14 @@
 # M1: the events the ending really depends on
 
-Pool picked from the model's knowledge of the novel, not the text; 0/35 checked by the reader. Pool prompt `098852498603b60d`, judge input `457e0bc28a0c6ac0`.
+Pool picked from the model's knowledge of the novel, not the text; 35/35 checked by the reader, 35 true. Pool prompt `098852498603b60d`, judge input `457e0bc28a0c6ac0`.
 
 Not judged yet: 35 candidates, all shown. Run `python -m eden judge` to apply the significance test.
 
-The reference set is empty: add your own picks to `output/m1/reference.json`.
+Your reference set has 4 events. The pool contains 0 of them (recall 0%), and the judge keeps 0.
+
+Not in the pool: adam rejects cals money (ch. ?); cal finds out about cathy (ch. ?); cathy marrying adam (ch. ?); adam's business failure (ch. ?).
+
+Kept by the judge but not on your list: Samuel Hamilton settles in the Salinas Valley; Cyrus Trask dies leaving a large fortune; Cathy burns her parents' house and fakes her death; Mr. Edwards beats Cathy nearly to death; Injured Cathy turns up at the Trask farmhouse; Adam marries Cathy; Cathy drugs Adam and goes to Charles on the wedding night; Adam buys the Bordoni ranch; Samuel comes to plan Adam's wells; Lee drops his pidgin with Samuel; Samuel delivers the twins and Cathy bites him; Cathy shoots Adam and abandons the family; Horace Quinn investigates the shooting; Cathy goes to work at Faye's brothel as Kate; Kate poisons Faye and takes over the brothel; Samuel strikes Adam out of his stupor; The twins are named Caleb and Aron; Samuel, aging after Una's death, agrees to leave his ranch; Samuel tells Adam that Cathy runs a Salinas brothel; Adam confronts Kate and is freed of her; Aron gives Abra a rabbit; Abra tells Aron his mother may be alive; Adam moves the family to Salinas; Adam's iced-lettuce venture fails; Aron turns to the church; Cal is picked up in a Chinatown raid; Adam tells Cal the truth about his mother; Cal shadows Kate around Salinas; Cal confronts Kate in her room; America enters the war; Adam joins the draft board; Lee lends Cal five thousand dollars; Cal and Will Hamilton profit from beans; Aron leaves for Stanford; Adam rejects Cal's Thanksgiving gift.
 
 The full pool; faded, dashed boxes are the events most runs cut. Open `graph.html` for the swimlanes of the kept events only.
 
@@ -101,38 +105,38 @@ flowchart LR
 
 | # | Event | Thread | Ch. | Kept | Effect if removed | Affects | Judge's reason | Checked |
 |---|---|---|---|---|---|---|---|---|
-| 1 | **Samuel Hamilton settles in the Salinas Valley** | Hamilton | 2 | not judged yet |  |  |  | unchecked |
-| 2 | **Cyrus Trask dies leaving a large fortune** | Trask | 7 | not judged yet |  |  |  | unchecked |
-| 3 | **Cathy burns her parents' house and fakes her death** | Cathy/Kate | 8 | not judged yet |  |  |  | unchecked |
-| 4 | **Mr. Edwards beats Cathy nearly to death** | Cathy/Kate | 9 | not judged yet |  |  |  | unchecked |
-| 5 | **Injured Cathy turns up at the Trask farmhouse** | Cathy/Kate | 10 | not judged yet |  |  |  | unchecked |
-| 6 | **Adam marries Cathy** | Trask | 11 | not judged yet |  |  |  | unchecked |
-| 7 | **Cathy drugs Adam and goes to Charles on the wedding night** | Cathy/Kate | 11 | not judged yet |  |  |  | unchecked |
-| 8 | **Adam buys the Bordoni ranch** | Trask | 13 | not judged yet |  |  |  | unchecked |
-| 9 | **Samuel comes to plan Adam's wells** | Hamilton | 15 | not judged yet |  |  |  | unchecked |
-| 10 | **Lee drops his pidgin with Samuel** | Lee | 15 | not judged yet |  |  |  | unchecked |
-| 11 | **Samuel delivers the twins and Cathy bites him** | Hamilton | 17 | not judged yet |  |  |  | unchecked |
-| 12 | **Cathy shoots Adam and abandons the family** | Cathy/Kate | 17 | not judged yet |  |  |  | unchecked |
-| 13 | **Horace Quinn investigates the shooting** | Trask | 18 | not judged yet |  |  |  | unchecked |
-| 14 | **Cathy goes to work at Faye's brothel as Kate** | Cathy/Kate | 19 | not judged yet |  |  |  | unchecked |
-| 15 | **Kate poisons Faye and takes over the brothel** | Cathy/Kate | 21 | not judged yet |  |  |  | unchecked |
-| 16 | **Samuel strikes Adam out of his stupor** | Hamilton | 22 | not judged yet |  |  |  | unchecked |
-| 17 | **The twins are named Caleb and Aron** | Lee | 22 | not judged yet |  |  |  | unchecked |
-| 18 | **Samuel, aging after Una's death, agrees to leave his ranch** | Hamilton | 23 | not judged yet |  |  |  | unchecked |
-| 19 | **Samuel tells Adam that Cathy runs a Salinas brothel** | Hamilton | 24 | not judged yet |  |  |  | unchecked |
-| 20 | **Adam confronts Kate and is freed of her** | Trask | 25 | not judged yet |  |  |  | unchecked |
-| 21 | **Aron gives Abra a rabbit** | Trask | 27 | not judged yet |  |  |  | unchecked |
-| 22 | **Abra tells Aron his mother may be alive** | Trask | 27 | not judged yet |  |  |  | unchecked |
-| 23 | **Adam moves the family to Salinas** | Trask | 35 | not judged yet |  |  |  | unchecked |
-| 24 | **Adam's iced-lettuce venture fails** | Trask | 36 | not judged yet |  |  |  | unchecked |
-| 25 | **Aron turns to the church** | Trask | 37 | not judged yet |  |  |  | unchecked |
-| 26 | **Cal is picked up in a Chinatown raid** | Trask | 38 | not judged yet |  |  |  | unchecked |
-| 27 | **Adam tells Cal the truth about his mother** | Trask | 38 | not judged yet |  |  |  | unchecked |
-| 28 | **Cal shadows Kate around Salinas** | Trask | 39 | not judged yet |  |  |  | unchecked |
-| 29 | **Cal confronts Kate in her room** | Trask | 39 | not judged yet |  |  |  | unchecked |
-| 30 | **America enters the war; Adam joins the draft board** | Trask | 42 | not judged yet |  |  |  | unchecked |
-| 31 | **Lee lends Cal five thousand dollars** | Lee | 43 | not judged yet |  |  |  | unchecked |
-| 32 | **Cal and Will Hamilton profit from beans** | Trask | 43 | not judged yet |  |  |  | unchecked |
-| 33 | **Aron leaves for Stanford** | Trask | 45 | not judged yet |  |  |  | unchecked |
-| 34 | **Adam rejects Cal's Thanksgiving gift** | Trask | 49 | not judged yet |  |  |  | unchecked |
-| 35 | **Cal takes Aron to Kate's house** | Trask | 49 | not judged yet |  |  |  | unchecked |
+| 1 | **Samuel Hamilton settles in the Salinas Valley** | Hamilton | 2 | not judged yet |  |  |  | ✓ checked |
+| 2 | **Cyrus Trask dies leaving a large fortune** | Trask | 7 | not judged yet |  |  |  | ✓ checked |
+| 3 | **Cathy burns her parents' house and fakes her death** | Cathy/Kate | 8 | not judged yet |  |  |  | ✓ checked |
+| 4 | **Mr. Edwards beats Cathy nearly to death** | Cathy/Kate | 9 | not judged yet |  |  |  | ✓ checked |
+| 5 | **Injured Cathy turns up at the Trask farmhouse** | Cathy/Kate | 10 | not judged yet |  |  |  | ✓ checked |
+| 6 | **Adam marries Cathy** | Trask | 11 | not judged yet |  |  |  | ✓ checked |
+| 7 | **Cathy drugs Adam and goes to Charles on the wedding night** | Cathy/Kate | 11 | not judged yet |  |  |  | ✓ checked |
+| 8 | **Adam buys the Bordoni ranch** | Trask | 13 | not judged yet |  |  |  | ✓ checked |
+| 9 | **Samuel comes to plan Adam's wells** | Hamilton | 15 | not judged yet |  |  |  | ✓ checked |
+| 10 | **Lee drops his pidgin with Samuel** | Lee | 15 | not judged yet |  |  |  | ✓ checked |
+| 11 | **Samuel delivers the twins and Cathy bites him** | Hamilton | 17 | not judged yet |  |  |  | ✓ checked |
+| 12 | **Cathy shoots Adam and abandons the family** | Cathy/Kate | 17 | not judged yet |  |  |  | ✓ checked |
+| 13 | **Horace Quinn investigates the shooting** | Trask | 18 | not judged yet |  |  |  | ✓ checked |
+| 14 | **Cathy goes to work at Faye's brothel as Kate** | Cathy/Kate | 19 | not judged yet |  |  |  | ✓ checked |
+| 15 | **Kate poisons Faye and takes over the brothel** | Cathy/Kate | 21 | not judged yet |  |  |  | ✓ checked |
+| 16 | **Samuel strikes Adam out of his stupor** | Hamilton | 22 | not judged yet |  |  |  | ✓ checked |
+| 17 | **The twins are named Caleb and Aron** | Lee | 22 | not judged yet |  |  |  | ✓ checked |
+| 18 | **Samuel, aging after Una's death, agrees to leave his ranch** | Hamilton | 23 | not judged yet |  |  |  | ✓ checked |
+| 19 | **Samuel tells Adam that Cathy runs a Salinas brothel** | Hamilton | 24 | not judged yet |  |  |  | ✓ checked |
+| 20 | **Adam confronts Kate and is freed of her** | Trask | 25 | not judged yet |  |  |  | ✓ checked |
+| 21 | **Aron gives Abra a rabbit** | Trask | 27 | not judged yet |  |  |  | ✓ checked |
+| 22 | **Abra tells Aron his mother may be alive** | Trask | 27 | not judged yet |  |  |  | ✓ checked |
+| 23 | **Adam moves the family to Salinas** | Trask | 35 | not judged yet |  |  |  | ✓ checked |
+| 24 | **Adam's iced-lettuce venture fails** | Trask | 36 | not judged yet |  |  |  | ✓ checked |
+| 25 | **Aron turns to the church** | Trask | 37 | not judged yet |  |  |  | ✓ checked |
+| 26 | **Cal is picked up in a Chinatown raid** | Trask | 38 | not judged yet |  |  |  | ✓ checked |
+| 27 | **Adam tells Cal the truth about his mother** | Trask | 38 | not judged yet |  |  |  | ✓ checked |
+| 28 | **Cal shadows Kate around Salinas** | Trask | 39 | not judged yet |  |  |  | ✓ checked |
+| 29 | **Cal confronts Kate in her room** | Trask | 39 | not judged yet |  |  |  | ✓ checked |
+| 30 | **America enters the war; Adam joins the draft board** | Trask | 42 | not judged yet |  |  |  | ✓ checked |
+| 31 | **Lee lends Cal five thousand dollars** | Lee | 43 | not judged yet |  |  |  | ✓ checked |
+| 32 | **Cal and Will Hamilton profit from beans** | Trask | 43 | not judged yet |  |  |  | ✓ checked |
+| 33 | **Aron leaves for Stanford** | Trask | 45 | not judged yet |  |  |  | ✓ checked |
+| 34 | **Adam rejects Cal's Thanksgiving gift** | Trask | 49 | not judged yet |  |  |  | ✓ checked |
+| 35 | **Cal takes Aron to Kate's house** | Trask | 49 | not judged yet |  |  |  | ✓ checked |

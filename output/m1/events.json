@@ -32,7 +32,7 @@
       "is_focal_event": false,
       "causes": [],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cyrus-dies-fortune",
@@ -49,7 +49,7 @@
       "is_focal_event": false,
       "causes": [],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-burns-home",
@@ -64,7 +64,7 @@
       "is_focal_event": false,
       "causes": [],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "edwards-beats-cathy",
@@ -82,7 +82,7 @@
         "cathy-burns-home"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-on-porch",
@@ -102,7 +102,7 @@
         "cyrus-dies-fortune"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "adam-marries-cathy",
@@ -121,7 +121,7 @@
         "cathy-on-porch"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-sleeps-charles",
@@ -140,7 +140,7 @@
         "adam-marries-cathy"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "adam-buys-ranch",
@@ -159,7 +159,7 @@
         "cyrus-dies-fortune"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "samuel-visits-ranch",
@@ -179,7 +179,7 @@
         "adam-buys-ranch"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "lee-drops-pidgin",
@@ -197,7 +197,7 @@
         "samuel-visits-ranch"
       ],
       "thread": "Lee",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "twins-born",
@@ -219,7 +219,7 @@
         "samuel-visits-ranch"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-shoots-adam",
@@ -237,7 +237,7 @@
         "twins-born"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "quinn-investigates",
@@ -255,7 +255,7 @@
         "cathy-shoots-adam"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-joins-faye",
@@ -273,7 +273,7 @@
         "cathy-shoots-adam"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "kate-poisons-faye",
@@ -291,7 +291,7 @@
         "cathy-joins-faye"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "samuel-strikes-adam",
@@ -311,7 +311,7 @@
         "samuel-visits-ranch"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "twins-named",
@@ -333,7 +333,7 @@
         "lee-drops-pidgin"
       ],
       "thread": "Lee",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "samuel-farewell",
@@ -352,7 +352,7 @@
         "samuel-arrives"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "samuel-tells-kate",
@@ -373,7 +373,7 @@
         "twins-named"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "adam-visits-kate",
@@ -391,7 +391,7 @@
         "samuel-tells-kate"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "aron-rabbit-abra",
@@ -410,7 +410,7 @@
         "twins-named"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "abra-mother-alive",
@@ -429,7 +429,7 @@
         "quinn-investigates"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "move-salinas",
@@ -449,7 +449,7 @@
         "adam-visits-kate"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "lettuce-fails",
@@ -468,7 +468,7 @@
         "move-salinas"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "aron-religious",
@@ -487,7 +487,7 @@
         "move-salinas"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cal-arrested",
@@ -505,7 +505,7 @@
         "move-salinas"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "adam-tells-cal",
@@ -524,7 +524,7 @@
         "adam-visits-kate"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cal-follows-kate",
@@ -542,7 +542,7 @@
         "adam-tells-cal"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cal-confronts-kate",
@@ -562,7 +562,7 @@
         "kate-poisons-faye"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "war-draft-board",
@@ -577,7 +577,7 @@
       "is_focal_event": false,
       "causes": [],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "lee-lends",
@@ -595,7 +595,7 @@
         "lettuce-fails"
       ],
       "thread": "Lee",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "bean-deal",
@@ -615,7 +615,7 @@
         "war-draft-board"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "aron-stanford",
@@ -634,7 +634,7 @@
         "aron-religious"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "thanksgiving-rejection",
@@ -656,7 +656,7 @@
         "aron-stanford"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cal-reveals-kate",
@@ -678,7 +678,7 @@
         "abra-mother-alive"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     }
   ]
 }
