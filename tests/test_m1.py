@@ -130,3 +130,62 @@ def test_judge_repairs_a_missing_verdict():
     assert result.attempts == 2 and result.report.ok and [v.event_id for v in result.items] == ["a", "b", "reveal"]
     repair = client.calls[1]["messages"][-1]["content"]
     assert "[a] has no verdict" in repair and "one verdict for each of the 3 events" in repair
+
+
+from eden.core.checks import Report
+from eden.core.llm import RunResult
+from eden.stages import STAGES
+from eden.stages.m1.runs import JudgeRun
+from eden.stages.m1.stability import agreement, consensus, tally
+
+
+def run_of(*verdicts):
+    return JudgeRun(meta={"judge_hash": "h"}, verdicts=list(verdicts))
+
+
+def test_consensus_and_agreement():
+    runs = [run_of(says("a"), says("b", "no real change")),
+            run_of(says("a"), says("b")),
+            run_of(says("a"), says("b", "no real change"))]
+    t = tally(["a", "b"], runs)
+    assert (t["a"].kept, t["b"].kept, t["b"].runs) == (3, 1, 3)
+    assert consensus(t) == {"a"}  # b is kept by only 1 of 3
+    assert t["b"].effect == "no real change"
+    assert agreement(runs) == round((1 + 0.5 + 0.5) / 3, 3)  # pairs: {a}&{a}=1, {a}&{a,b}=1/2 twice
+
+
+def test_m1_is_a_registered_stage():
+    assert STAGES["m1"].DEFAULT_COUNT == 35 and "1955 film" in STAGES["m1"].SYSTEM
+
+
+def test_judge_command_saves_runs_and_draws_the_kept_graph(tmp_path, monkeypatch):
+    import eden.__main__ as cli
+    import eden.stages.m1.judge as judge_mod
+
+    monkeypatch.setattr(cli, "OUTPUT", tmp_path)
+    monkeypatch.setattr(cli, "RUNTIME_LEDGER", tmp_path / "costs.jsonl")
+    out = tmp_path / "m1"
+    out.mkdir()
+    pool = [cand("a"), cand("b", ["a"]), cand("reveal", ["b"], focal=True)]
+    (out / "events.json").write_text(json.dumps({"meta": {"prompt_hash": "pool"},
+                                                 "events": [e.model_dump() for e in pool]}))
+    (out / "reference.json").write_text(json.dumps({"events": [
+        {"title": "A happens", "chapter": 1, "pool_id": "a"},
+        {"title": "Something the pool missed", "chapter": 9, "pool_id": None}]}))
+    answers = iter([
+        [says("a", affects=["b", "reveal"]), says("b", "no real change"), says("reveal")],
+        [says("a", affects=["b"]), says("b", "no real change"), says("reveal")],
+    ])
+    monkeypatch.setattr(judge_mod, "judge", lambda events: RunResult(next(answers), Report(), 1, {}, 0.02, "m"))
+
+    cli.main(["judge", "--runs", "2"])
+
+    assert len(list((out / "judge").glob("run.*.json"))) == 2
+    assert len((tmp_path / "costs.jsonl").read_text().splitlines()) == 2
+    md = (out / "graph.md").read_text()
+    assert "Kept by most runs: **2 of 3**" in md and "runs agree 100%" in md
+    assert "class n_b cut" in md
+    assert "recall 50%" in md and "Not in the pool: Something the pool missed (ch. 9)" in md
+    page = (out / "graph.html").read_text()
+    assert page.count('class="edge') == 1  # a -> reveal, bridged across the cut b
+    assert '<tr class="cut">' in page and "<strong>2 of 3</strong>" in page

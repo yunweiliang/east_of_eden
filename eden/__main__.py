@@ -1,4 +1,4 @@
-"""Command line: python -m eden {extract,render,portfolio,preview,publish}."""
+"""Command line: python -m eden {extract,render,judge,portfolio,preview,publish}."""
 
 from __future__ import annotations
 
@@ -61,6 +61,49 @@ def cmd_render(args) -> None:
     events, meta = load_run(out_dir, stage.Event)
     written = stage.render(events, meta, out_dir)
     print("Wrote " + " and ".join(str(p) for p in written))
+
+
+def cmd_judge(args) -> None:
+    from .core.llm import MODEL
+    from .core.pins import load_run, log_runtime_cost
+    from .stages import m1
+    from .stages.m1.judge import judge, judge_hash, judged_pool
+    from .stages.m1.runs import save_judge_run
+
+    out_dir = OUTPUT / m1.NAME
+    if not (out_dir / "events.json").exists():
+        raise SystemExit("No pool yet. Run `python -m eden extract --stage m1` first.")
+    pool, pool_meta = load_run(out_dir, m1.Event)
+    unchecked = sum(e.user_verified is None for e in pool)
+    if unchecked:
+        print(f"Note: {unchecked} pool event(s) are unchecked. Events you mark false later are dropped, "
+              "which changes the judge's input, so runs made before that won't be compared with later ones.")
+    events = judged_pool(pool)
+    jhash = judge_hash(events)
+
+    for n in range(1, args.runs + 1):
+        result = judge(events)
+        meta = {
+            "stage": "m1-judge",
+            "model": MODEL,
+            "served_by": result.served_by,
+            "judge_hash": jhash,
+            "pool_prompt_hash": pool_meta.get("prompt_hash"),
+            "attempts": result.attempts,
+            "usage": result.usage,
+            "cost_usd": result.cost_usd,
+            "created": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+            "errors": result.report.errors,
+        }
+        path = save_judge_run(out_dir, meta, result.items)
+        log_runtime_cost(RUNTIME_LEDGER, meta)
+        kept = sum(v.keep for v in result.items)
+        print(f"Run {n}/{args.runs}: kept {kept} of {len(events)} after {result.attempts} attempt(s); "
+              f"agent runtime cost ${result.cost_usd}; saved {path.name}")
+        for line in result.report.errors:
+            print(f"ERROR   {line}")
+    args.stage = m1.NAME
+    cmd_render(args)
 
 
 def cmd_portfolio(args) -> None:
@@ -142,6 +185,10 @@ def main(argv: list[str] | None = None) -> None:
     p = sub.add_parser("render", help="Redraw from the pinned events.json (no model call)")
     p.add_argument("--stage", choices=STAGES, default="mvp", help=stage_help)
     p.set_defaults(func=cmd_render)
+
+    p = sub.add_parser("judge", help="M1: run the significance test over the pinned pool, several times")
+    p.add_argument("--runs", type=int, default=5, help="How many independent judge runs (default: 5)")
+    p.set_defaults(func=cmd_judge)
 
     p = sub.add_parser("portfolio", help="Refresh the timeline inside portfolio/home.html (no model call)")
     p.set_defaults(func=cmd_portfolio)
