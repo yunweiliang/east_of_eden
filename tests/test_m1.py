@@ -197,3 +197,11 @@ from eden.stages.m1.runs import load_reference
 def test_reference_events_may_leave_the_chapter_blank(tmp_path):
     (tmp_path / "reference.json").write_text('{"events": [{"title": "x", "chapter": null, "pool_id": null}]}')
     assert load_reference(tmp_path)[0].chapter is None
+
+
+def test_before_any_judge_run_the_page_claims_no_keeps_or_cuts(tmp_path):
+    from eden.stages.m1.render import Summary
+    (tmp_path / "reference.json").write_text(json.dumps({"events": [{"title": "A", "chapter": 1, "pool_id": "a"}]}))
+    lines = Summary(POOL, tmp_path).recall_lines()
+    assert lines == ["Your reference set has 1 events. The pool contains 1 of them (recall 100%), "
+                     "and the judge hasn't ruled yet."]
