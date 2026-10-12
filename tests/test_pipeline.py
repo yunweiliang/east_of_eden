@@ -114,7 +114,7 @@ def test_render_shows_reader_checks():
     events[0].user_verified = True
     events[1].user_verified = False
     md = to_markdown(events, {"grounding": "memory", "prompt_hash": "p"})
-    assert "1/3 events checked" in md and "✓ checked" in md and "✗ wrong" in md and "unchecked" in md
+    assert "2/3 checked by the reader, 1 true" in md and "✓ checked" in md and "✗ wrong" in md and "unchecked" in md
     assert "not the text" in md
 
 

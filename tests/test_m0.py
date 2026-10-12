@@ -138,3 +138,13 @@ def test_model_text_is_escaped_in_the_drawing(tmp_path):
     paths = render([evil, lane("reveal", ["a"], "Trask", 49, focal=True)], {"prompt_hash": "p"}, tmp_path)
     assert [p.name for p in paths] == ["graph.md", "graph.html"]
     assert "<script>" not in (tmp_path / "graph.html").read_text()
+
+
+from eden.core.html import check_summary
+
+
+def test_check_summary_counts_checked_and_true_separately():
+    a, b, c = lane("a", [], "Trask"), lane("b", [], "Trask"), lane("c", [], "Trask")
+    assert check_summary([a, b, c]) == "0/3 checked by the reader"
+    a.user_verified, b.user_verified = True, False
+    assert check_summary([a, b, c]) == "2/3 checked by the reader, 1 true"

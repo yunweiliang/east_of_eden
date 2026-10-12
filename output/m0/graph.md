@@ -1,6 +1,6 @@
 # M0: 20 events across the story's threads, converging on Cal's reveal
 
-Picked from the model's knowledge of the novel, not the text; each event needs the reader's check. Prompt `c62d16555d5ea0af`. 19/20 events checked by the reader. Open `graph.html` for the swimlanes.
+Picked from the model's knowledge of the novel, not the text; each event needs the reader's check. Prompt `c62d16555d5ea0af`. 20/20 checked by the reader, 19 true. Open `graph.html` for the swimlanes.
 
 ```mermaid
 flowchart LR

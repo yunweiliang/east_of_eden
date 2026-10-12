@@ -5,7 +5,7 @@ from __future__ import annotations
 import html
 from pathlib import Path
 
-from ...core.html import cell, mermaid_label, node_id, verified_mark, wrapped
+from ...core.html import cell, check_summary, mermaid_label, node_id, verified_mark, wrapped
 from .schema import Event
 
 WIDTH_PER_EVENT = 190
@@ -32,12 +32,11 @@ def source_note(meta: dict) -> str:
 
 
 def to_markdown(events: list[Event], meta: dict) -> str:
-    done = sum(e.user_verified is True for e in events)
     out = [
         "# MVP: 10 linear events leading to Cal's reveal",
         "",
-        f"{source_note(meta)}. Prompt `{meta.get('prompt_hash', '?')}`. {done}/{len(events)} events checked by the "
-        "reader. Open `timeline.html` for the drawn plot line.",
+        f"{source_note(meta)}. Prompt `{meta.get('prompt_hash', '?')}`. {check_summary(events)}. "
+        "Open `timeline.html` for the drawn plot line.",
         "",
         to_mermaid(events),
         "",

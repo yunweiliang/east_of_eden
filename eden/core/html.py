@@ -22,6 +22,13 @@ def cell(text: str) -> str:
     return re.sub(r"\s*\n\s*", " ", text).replace("|", "\\|")
 
 
+def check_summary(events) -> str:
+    """How many events the reader has checked, and how many of those were true: "20/20 checked, 19 true"."""
+    checked = sum(e.user_verified is not None for e in events)
+    true = sum(e.user_verified is True for e in events)
+    return f"{checked}/{len(events)} checked by the reader" + (f", {true} true" if checked else "")
+
+
 def verified_mark(e) -> str:
     return {True: "✓ checked", False: "✗ wrong"}.get(e.user_verified, "unchecked")
 

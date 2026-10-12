@@ -9,7 +9,7 @@ import html
 from pathlib import Path
 from typing import get_args
 
-from ...core.html import cell, mermaid_label, node_id, verified_mark, wrapped
+from ...core.html import cell, check_summary, mermaid_label, node_id, verified_mark, wrapped
 from .schema import Event, Thread
 
 # Swimlane layout, in SVG pixels. Time runs left to right: one column per event, in story order.
@@ -48,13 +48,12 @@ def caused_by(e: Event, by_id: dict[str, Event]) -> str:
 
 
 def to_markdown(events: list[Event], meta: dict) -> str:
-    done = sum(e.user_verified is True for e in events)
     by_id = {e.id: e for e in events}
     out = [
         f"# M0: {len(events)} events across the story's threads, converging on Cal's reveal",
         "",
         "Picked from the model's knowledge of the novel, not the text; each event needs the reader's check. "
-        f"Prompt `{meta.get('prompt_hash', '?')}`. {done}/{len(events)} events checked by the reader. "
+        f"Prompt `{meta.get('prompt_hash', '?')}`. {check_summary(events)}. "
         "Open `graph.html` for the swimlanes.",
         "",
         to_mermaid(events),
@@ -161,7 +160,6 @@ def table_rows(events: list[Event]) -> str:
 
 
 def to_html(events: list[Event], meta: dict) -> str:
-    done = sum(e.user_verified is True for e in events)
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -210,7 +208,7 @@ th {{ color:var(--muted); font-weight:normal; }}
 <h1>East of Eden: the threads that converge on Cal's reveal</h1>
 <p class="meta">{len(events)} events in story order, left to right, one lane per thread. Arrows run from cause to
 effect: dashed arrows cross between threads, and red arrows feed the reveal. Picked from the model's knowledge of
-the novel, not the text; {done}/{len(events)} checked by the reader. Prompt
+the novel, not the text; {check_summary(events)}. Prompt
 {html.escape(meta.get('prompt_hash', '?'))}. Hover a node or an arrow for details.</p>
 <div class="scroll">
 {to_svg(events)}
