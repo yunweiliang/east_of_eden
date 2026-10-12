@@ -233,6 +233,29 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
   "character-consistent" a fair test, is the reveal the right moment, and what prior work exists. Best
   before M2, while reframing is still cheap.
 
+- **Test set: a held-out novel** (user, 2026-10-12). Everything so far is tuned and judged on one book,
+  one pool and one reader, so M1's agreement numbers are dev-set numbers. A second novel checks whether
+  the method works on a book it wasn't tuned on.
+  - **Rule for both options:** freeze the prompts first, write the reader's own picks for the new book
+    before running, then run once. Tuning on the test book turns it into a second dev set.
+  - **Option 1, a famous novel the model knows (do first, after M2 or M3).** Same memory-only pipeline,
+    prompts unchanged, on another well-known novel with a clear moment of choice.
+    - *Tests:* whether the prompts quietly overfit to *East of Eden*.
+    - *Weakness:* the model may remember what critics say matters, so some judgments may be recalled
+      rather than reasoned.
+    - *Cost:* low, about the same agent runtime as M1, plus the reader's checking time.
+  - **Option 2, a novel the model has never seen (with the sourcing review before M5).**
+    - *Tests:* reading and reasoning with no memory to lean on.
+    - *Needs:* text loading, removed earlier and kept in git history (commit `71c13bc`,
+      `eden/source.py`). The model can't list events from a book it doesn't know.
+    - *Sources:* a novel published after the model's training cutoff (legal, DRM-free copy only), a
+      self-published or Creative Commons novel, an unpublished manuscript shared with permission, or a
+      story the user writes. Not an older public-domain classic: those are almost certainly in the
+      training data. Never remove DRM.
+    - *Cost:* a whole novel is roughly 150,000–250,000 tokens per call; caching the book text between
+      calls cuts it sharply, but expect a few dollars per run instead of cents.
+    - *Bonus:* citations become real quotes that code can check against the text.
+
 ## Code layout
 
 - `eden/core/`: shared by every stage.
