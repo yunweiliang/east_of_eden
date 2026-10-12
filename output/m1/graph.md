@@ -1,14 +1,14 @@
 # M1: the events the ending really depends on
 
-Pool picked from the model's knowledge of the novel, not the text; 35/35 checked by the reader, 35 true. Pool prompt `098852498603b60d`, judge input `457e0bc28a0c6ac0`.
+Pool picked from the model's knowledge of the novel, not the text; 35/35 checked by the reader, 34 true. Pool prompt `098852498603b60d`, judge input `cc07a831ba19de0b`.
 
-Not judged yet: 35 candidates, all shown. Run `python -m eden judge` to apply the significance test.
+Not judged yet: 34 candidates, all shown. Run `python -m eden judge` to apply the significance test.
 
 Your reference set has 4 events. The pool contains 0 of them (recall 0%), and the judge keeps 0.
 
 Not in the pool: adam rejects cals money (ch. ?); cal finds out about cathy (ch. ?); cathy marrying adam (ch. ?); adam's business failure (ch. ?).
 
-Kept by the judge but not on your list: Samuel Hamilton settles in the Salinas Valley; Cyrus Trask dies leaving a large fortune; Cathy burns her parents' house and fakes her death; Mr. Edwards beats Cathy nearly to death; Injured Cathy turns up at the Trask farmhouse; Adam marries Cathy; Cathy drugs Adam and goes to Charles on the wedding night; Adam buys the Bordoni ranch; Samuel comes to plan Adam's wells; Lee drops his pidgin with Samuel; Samuel delivers the twins and Cathy bites him; Cathy shoots Adam and abandons the family; Horace Quinn investigates the shooting; Cathy goes to work at Faye's brothel as Kate; Kate poisons Faye and takes over the brothel; Samuel strikes Adam out of his stupor; The twins are named Caleb and Aron; Samuel, aging after Una's death, agrees to leave his ranch; Samuel tells Adam that Cathy runs a Salinas brothel; Adam confronts Kate and is freed of her; Aron gives Abra a rabbit; Abra tells Aron his mother may be alive; Adam moves the family to Salinas; Adam's iced-lettuce venture fails; Aron turns to the church; Cal is picked up in a Chinatown raid; Adam tells Cal the truth about his mother; Cal shadows Kate around Salinas; Cal confronts Kate in her room; America enters the war; Adam joins the draft board; Lee lends Cal five thousand dollars; Cal and Will Hamilton profit from beans; Aron leaves for Stanford; Adam rejects Cal's Thanksgiving gift.
+Kept by the judge but not on your list: Samuel Hamilton settles in the Salinas Valley; Cyrus Trask dies leaving a large fortune; Cathy burns her parents' house and fakes her death; Mr. Edwards beats Cathy nearly to death; Injured Cathy turns up at the Trask farmhouse; Adam marries Cathy; Cathy drugs Adam and goes to Charles on the wedding night; Adam buys the Bordoni ranch; Samuel comes to plan Adam's wells; Lee drops his pidgin with Samuel; Samuel delivers the twins and Cathy bites him; Cathy shoots Adam and abandons the family; Horace Quinn investigates the shooting; Cathy goes to work at Faye's brothel as Kate; Kate poisons Faye and takes over the brothel; Samuel strikes Adam out of his stupor; The twins are named Caleb and Aron; Samuel, aging after Una's death, agrees to leave his ranch; Samuel tells Adam that Cathy runs a Salinas brothel; Adam confronts Kate and is freed of her; Aron gives Abra a rabbit; Abra tells Aron his mother may be alive; Adam moves the family to Salinas; Adam's iced-lettuce venture fails; Aron turns to the church; Cal is picked up in a Chinatown raid; Cal shadows Kate around Salinas; Cal confronts Kate in her room; America enters the war; Adam joins the draft board; Lee lends Cal five thousand dollars; Cal and Will Hamilton profit from beans; Aron leaves for Stanford; Adam rejects Cal's Thanksgiving gift.
 
 The full pool; faded, dashed boxes are the events most runs cut. Open `graph.html` for the swimlanes of the kept events only.
 
@@ -40,7 +40,6 @@ flowchart LR
     n_lettuce_fails["Adam's iced-lettuce venture fails<br/><i>Ch. 36</i>"]
     n_aron_religious["Aron turns to the church<br/><i>Ch. 37</i>"]
     n_cal_arrested["Cal is picked up in a Chinatown raid<br/><i>Ch. 38</i>"]
-    n_adam_tells_cal["Adam tells Cal the truth about his mother<br/><i>Ch. 38</i>"]
     n_cal_follows_kate["Cal shadows Kate around Salinas<br/><i>Ch. 39</i>"]
     n_cal_confronts_kate["Cal confronts Kate in her room<br/><i>Ch. 39</i>"]
     n_war_draft_board["America enters the war; Adam joins the draft board<br/><i>Ch. 42</i>"]
@@ -83,9 +82,8 @@ flowchart LR
     n_move_salinas --> n_lettuce_fails
     n_move_salinas --> n_aron_religious
     n_move_salinas --> n_cal_arrested
-    n_cal_arrested --> n_adam_tells_cal
-    n_adam_visits_kate --> n_adam_tells_cal
-    n_adam_tells_cal --> n_cal_follows_kate
+    n_cal_arrested --> n_cal_follows_kate
+    n_adam_visits_kate --> n_cal_follows_kate
     n_cal_follows_kate --> n_cal_confronts_kate
     n_kate_poisons_faye --> n_cal_confronts_kate
     n_lettuce_fails --> n_lee_lends
@@ -131,7 +129,7 @@ flowchart LR
 | 24 | **Adam's iced-lettuce venture fails** | Trask | 36 | not judged yet |  |  |  | ✓ checked |
 | 25 | **Aron turns to the church** | Trask | 37 | not judged yet |  |  |  | ✓ checked |
 | 26 | **Cal is picked up in a Chinatown raid** | Trask | 38 | not judged yet |  |  |  | ✓ checked |
-| 27 | **Adam tells Cal the truth about his mother** | Trask | 38 | not judged yet |  |  |  | ✓ checked |
+| 27 | **Adam tells Cal the truth about his mother** | Trask | 38 | not judged (marked false) |  |  |  | ✗ wrong |
 | 28 | **Cal shadows Kate around Salinas** | Trask | 39 | not judged yet |  |  |  | ✓ checked |
 | 29 | **Cal confronts Kate in her room** | Trask | 39 | not judged yet |  |  |  | ✓ checked |
 | 30 | **America enters the war; Adam joins the draft board** | Trask | 42 | not judged yet |  |  |  | ✓ checked |
