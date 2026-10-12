@@ -21,7 +21,7 @@ class JudgeRun(BaseModel):
 
 class ReferenceEvent(BaseModel):
     title: str
-    chapter: int
+    chapter: int | None = None  # the reader may add it later, after checking their copy
     pool_id: str | None = None  # filled in by the reader once the pool exists; null if the pool lacks it
 
 

@@ -59,7 +59,7 @@ class Summary:
         ]
         missing = [r for r in ref if r.pool_id not in self.by_id]
         if missing:
-            lines.append("Not in the pool: " + "; ".join(f"{r.title} (ch. {r.chapter})" for r in missing) + ".")
+            lines.append("Not in the pool: " + "; ".join(f"{r.title} (ch. {r.chapter or '?'})" for r in missing) + ".")
         cut = [r for r in matched if r.pool_id not in self.kept]
         if cut:
             lines.append("In the pool but cut by the judge: " + "; ".join(self.by_id[r.pool_id].title for r in cut) + ".")

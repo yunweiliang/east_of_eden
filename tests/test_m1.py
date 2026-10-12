@@ -189,3 +189,11 @@ def test_judge_command_saves_runs_and_draws_the_kept_graph(tmp_path, monkeypatch
     page = (out / "graph.html").read_text()
     assert page.count('class="edge') == 1  # a -> reveal, bridged across the cut b
     assert '<tr class="cut">' in page and "<strong>2 of 3</strong>" in page
+
+
+from eden.stages.m1.runs import load_reference
+
+
+def test_reference_events_may_leave_the_chapter_blank(tmp_path):
+    (tmp_path / "reference.json").write_text('{"events": [{"title": "x", "chapter": null, "pool_id": null}]}')
+    assert load_reference(tmp_path)[0].chapter is None
