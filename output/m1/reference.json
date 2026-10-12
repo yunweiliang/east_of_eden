@@ -5,22 +5,22 @@
     {
       "title": "adam rejects cals money",
       "chapter": null,
-      "pool_id": "thanksgiving-rejection"
+      "pool_id": "adam-rejects-gift"
     },
     {
       "title": "cal finds out about cathy",
       "chapter": null,
-      "pool_id": null
+      "pool_id": "cal-learns-of-kate"
     },
     {
       "title": "cathy marrying adam",
       "chapter": null,
-      "pool_id": "adam-marries-cathy"
+      "pool_id": "cathy-wedding-night"
     },
     {
       "title": "adam's business failure",
       "chapter": null,
-      "pool_id": "lettuce-fails"
+      "pool_id": "lettuce-failure"
     }
   ],
   "reader_cuts": [
@@ -31,5 +31,21 @@
     "lee-lends",
     "aron-stanford"
   ],
-  "reader_cuts_note": "Events the judge kept that the reader would cut (2026-10-12, after the first 5 judge runs). The reader agreed with the judge's 8 cuts. Reader: 'all these events are factually significant to plot point, but they don't explain why Caleb is the way he is.'"
+  "reader_cuts_note": "Events the judge kept that the reader would cut (2026-10-12, after the first 5 judge runs). The reader agreed with the judge's 8 cuts. Reader: 'all these events are factually significant to plot point, but they don't explain why Caleb is the way he is.'",
+  "reader_cuts_pool": "m1-pool-1 (the archived plot pool); these ids are not in the current pool",
+  "reader_keeps": [
+    "cathy-born-monster",
+    "twins-born",
+    "cathy-shoots-adam",
+    "cathy-becomes-kate",
+    "lettuce-failure",
+    "cal-learns-of-kate",
+    "adam-draft-board",
+    "cal-will-beans",
+    "adam-pride-aron",
+    "cal-readies-gift",
+    "adam-rejects-gift",
+    "cal-reveals-kate-to-aron"
+  ],
+  "reader_keeps_note": "The reader's own picks from the m1-pool-2 pool (30 Cal-centered events), chosen after reading it and before any judge run on it (2026-10-12). Compare with the judge's consensus."
 }

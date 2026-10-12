@@ -1,12 +1,10 @@
 # M1: the events that made Cal who he is
 
-Pool picked from the model's knowledge of the novel, not the text; 0/30 checked by the reader. Pool prompt `428c3e46ef1d4fc7`, judge input `880fa683ce19a9e1`.
+Pool picked from the model's knowledge of the novel, not the text; 30/30 checked by the reader, 30 true. Pool prompt `428c3e46ef1d4fc7`, judge input `880fa683ce19a9e1`.
 
 Not judged yet: 30 candidates, all shown. Run `python -m eden judge` to apply the significance test.
 
-Your reference set has 4 events. The pool contains 0 of them (recall 0%), and the judge hasn't ruled yet.
-
-Not in the pool: adam rejects cals money (ch. ?); cal finds out about cathy (ch. ?); cathy marrying adam (ch. ?); adam's business failure (ch. ?).
+Your reference set has 4 events. The pool contains 4 of them (recall 100%), and the judge hasn't ruled yet.
 
 The full pool; faded, dashed boxes are the events most runs cut. Open `graph.html` for the swimlanes of the kept events only.
 
@@ -94,33 +92,33 @@ flowchart LR
 
 | # | Event | What it does to Cal | Ch. | Kept | Without it, Cal… | Affects | Judge's reason | Checked |
 |---|---|---|---|---|---|---|---|---|
-| 1 | **Cathy Ames is introduced as a born monster** | Cal will one day learn that his mother is this woman, and fear that her coldness lives in him. | 8 | not judged yet |  |  |  | unchecked |
-| 2 | **Cathy marries Adam and goes to Charles on the wedding night** | Cal is born from a marriage built on his mother's deceit, a secret kept from him. | 11 | not judged yet |  |  |  | unchecked |
-| 3 | **The twins are born and Cathy rejects them** | From birth Cal is unwanted by his mother, though he will not know it for years. | 17 | not judged yet |  |  |  | unchecked |
-| 4 | **Cathy shoots Adam and abandons the twins** | Cal loses his mother as a baby and grows up without knowing why. | 17 | not judged yet |  |  |  | unchecked |
-| 5 | **Adam hides the truth about the shooting** | The silence that will surround Cal's mother throughout his childhood begins here. | 18 | not judged yet |  |  |  | unchecked |
-| 6 | **Cathy becomes 'Kate' at Faye's brothel in Salinas** | Cal's mother is living a few miles away under a new name, a secret waiting for him. | 19 | not judged yet |  |  |  | unchecked |
-| 7 | **Adam sinks into apathy while Lee raises the twins** | Cal's first years are spent with an absent-minded father and a loving servant, Lee, in his place. | 22 | not judged yet |  |  |  | unchecked |
-| 8 | **Samuel strikes Adam to wake him** | Cal's father is forced to start paying attention to him, but only partly. | 22 | not judged yet |  |  |  | unchecked |
-| 9 | **The twins are named after a talk about Cain and Abel** | Cal is given a name tied to the Cain-and-Abel story he will half-live out with Aron. | 22 | not judged yet |  |  |  | unchecked |
-| 10 | **Lee explains that rejection breeds rage and guilt** | Lee forms an idea of the rejected son that will guide how he raises and counsels Cal. | 24 | not judged yet |  |  |  | unchecked |
-| 11 | **Lee's elders arrive at 'timshel', thou mayest** | Lee forms the belief in personal choice that he will later pass on to Cal. | 24 | not judged yet |  |  |  | unchecked |
-| 12 | **Samuel tells Adam that Cathy runs a Salinas brothel** | The adults around Cal now know his mother's whereabouts and will keep it from him. | 24 | not judged yet |  |  |  | unchecked |
-| 13 | **Adam confronts Kate and is freed from her** | Cal's father comes back to life but keeps the truth about Cal's mother locked away. | 25 | not judged yet |  |  |  | unchecked |
-| 14 | **Abra visits and warms to Aron's gift** | Cal feels that people naturally love Aron more than him, and resents it. | 27 | not judged yet |  |  |  | unchecked |
-| 15 | **Abra tells Aron his mother is not dead** | Cal begins to sense that the story of his dead mother may be a lie. | 27 | not judged yet |  |  |  | unchecked |
-| 16 | **Cal prays not to be mean** | Cal fears he is mean by nature and desperately wants to be loved like Aron. | 27 | not judged yet |  |  |  | unchecked |
-| 17 | **Adam's iced-lettuce venture fails** | Cal sees his father humiliated and poorer, and later wants to make it up to him. | 36 | not judged yet |  |  |  | unchecked |
-| 18 | **Aron turns devout and plans the ministry** | Cal watches his brother build a pure, protected world that the truth about their mother could shatter. | 37 | not judged yet |  |  |  | unchecked |
-| 19 | **Cal discovers that the madam Kate is his mother** | Cal learns his mother is a brothel keeper and fears her evil is in him. | 38 | not judged yet |  |  |  | unchecked |
-| 20 | **Lee tells Cal the truth and that his choices are his own** | Cal learns he cannot blame his mother's blood for what he does; he is free and responsible. | 39 | not judged yet |  |  |  | unchecked |
-| 21 | **Cal follows Kate and confronts her** | Cal meets his mother, refuses to be like her, and keeps the secret from Aron. | 40 | not judged yet |  |  |  | unchecked |
-| 22 | **Adam serves on the wartime draft board** | Cal's father grows morally burdened by the war in a way that will turn against Cal's gift. | 42 | not judged yet |  |  |  | unchecked |
-| 23 | **Cal partners with Will Hamilton to grow beans** | Cal hopes to win his father's love by earning back what he lost. | 43 | not judged yet |  |  |  | unchecked |
-| 24 | **Lee lends Cal the money to start** | Cal is trusted with Lee's savings and feels his plan to please his father can work. | 43 | not judged yet |  |  |  | unchecked |
-| 25 | **Adam glows with pride over Aron's college plans** | Cal sees his father lavish pride on Aron and feels himself overlooked. | 44 | not judged yet |  |  |  | unchecked |
-| 26 | **Aron goes away to Stanford** | With Aron gone and praised from afar, Cal plans a gift to win a share of his father's pride. | 46 | not judged yet |  |  |  | unchecked |
-| 27 | **Cal makes a fortune and plans a Thanksgiving gift** | Cal believes this gift will finally make his father love him. | 48 | not judged yet |  |  |  | unchecked |
-| 28 | **Adam rejects Cal's money and praises Aron instead** | Cal feels utterly rejected by his father and blinded by jealousy of Aron. | 49 | not judged yet |  |  |  | unchecked |
-| 29 | **Lee tries to steady Cal after the rejection** | Cal is reminded he can master his rage, but his pain is stronger than the warning. | 49 | not judged yet |  |  |  | unchecked |
-| 30 | **Cal takes Aron to Kate's house and shows him their mother** | Cal strikes out at the favored brother by destroying Aron's innocence, and soon will be crushed by guilt. | 49 | not judged yet |  |  |  | unchecked |
+| 1 | **Cathy Ames is introduced as a born monster** | Cal will one day learn that his mother is this woman, and fear that her coldness lives in him. | 8 | not judged yet |  |  |  | ✓ checked |
+| 2 | **Cathy marries Adam and goes to Charles on the wedding night** | Cal is born from a marriage built on his mother's deceit, a secret kept from him. | 11 | not judged yet |  |  |  | ✓ checked |
+| 3 | **The twins are born and Cathy rejects them** | From birth Cal is unwanted by his mother, though he will not know it for years. | 17 | not judged yet |  |  |  | ✓ checked |
+| 4 | **Cathy shoots Adam and abandons the twins** | Cal loses his mother as a baby and grows up without knowing why. | 17 | not judged yet |  |  |  | ✓ checked |
+| 5 | **Adam hides the truth about the shooting** | The silence that will surround Cal's mother throughout his childhood begins here. | 18 | not judged yet |  |  |  | ✓ checked |
+| 6 | **Cathy becomes 'Kate' at Faye's brothel in Salinas** | Cal's mother is living a few miles away under a new name, a secret waiting for him. | 19 | not judged yet |  |  |  | ✓ checked |
+| 7 | **Adam sinks into apathy while Lee raises the twins** | Cal's first years are spent with an absent-minded father and a loving servant, Lee, in his place. | 22 | not judged yet |  |  |  | ✓ checked |
+| 8 | **Samuel strikes Adam to wake him** | Cal's father is forced to start paying attention to him, but only partly. | 22 | not judged yet |  |  |  | ✓ checked |
+| 9 | **The twins are named after a talk about Cain and Abel** | Cal is given a name tied to the Cain-and-Abel story he will half-live out with Aron. | 22 | not judged yet |  |  |  | ✓ checked |
+| 10 | **Lee explains that rejection breeds rage and guilt** | Lee forms an idea of the rejected son that will guide how he raises and counsels Cal. | 24 | not judged yet |  |  |  | ✓ checked |
+| 11 | **Lee's elders arrive at 'timshel', thou mayest** | Lee forms the belief in personal choice that he will later pass on to Cal. | 24 | not judged yet |  |  |  | ✓ checked |
+| 12 | **Samuel tells Adam that Cathy runs a Salinas brothel** | The adults around Cal now know his mother's whereabouts and will keep it from him. | 24 | not judged yet |  |  |  | ✓ checked |
+| 13 | **Adam confronts Kate and is freed from her** | Cal's father comes back to life but keeps the truth about Cal's mother locked away. | 25 | not judged yet |  |  |  | ✓ checked |
+| 14 | **Abra visits and warms to Aron's gift** | Cal feels that people naturally love Aron more than him, and resents it. | 27 | not judged yet |  |  |  | ✓ checked |
+| 15 | **Abra tells Aron his mother is not dead** | Cal begins to sense that the story of his dead mother may be a lie. | 27 | not judged yet |  |  |  | ✓ checked |
+| 16 | **Cal prays not to be mean** | Cal fears he is mean by nature and desperately wants to be loved like Aron. | 27 | not judged yet |  |  |  | ✓ checked |
+| 17 | **Adam's iced-lettuce venture fails** | Cal sees his father humiliated and poorer, and later wants to make it up to him. | 36 | not judged yet |  |  |  | ✓ checked |
+| 18 | **Aron turns devout and plans the ministry** | Cal watches his brother build a pure, protected world that the truth about their mother could shatter. | 37 | not judged yet |  |  |  | ✓ checked |
+| 19 | **Cal discovers that the madam Kate is his mother** | Cal learns his mother is a brothel keeper and fears her evil is in him. | 38 | not judged yet |  |  |  | ✓ checked |
+| 20 | **Lee tells Cal the truth and that his choices are his own** | Cal learns he cannot blame his mother's blood for what he does; he is free and responsible. | 39 | not judged yet |  |  |  | ✓ checked |
+| 21 | **Cal follows Kate and confronts her** | Cal meets his mother, refuses to be like her, and keeps the secret from Aron. | 40 | not judged yet |  |  |  | ✓ checked |
+| 22 | **Adam serves on the wartime draft board** | Cal's father grows morally burdened by the war in a way that will turn against Cal's gift. | 42 | not judged yet |  |  |  | ✓ checked |
+| 23 | **Cal partners with Will Hamilton to grow beans** | Cal hopes to win his father's love by earning back what he lost. | 43 | not judged yet |  |  |  | ✓ checked |
+| 24 | **Lee lends Cal the money to start** | Cal is trusted with Lee's savings and feels his plan to please his father can work. | 43 | not judged yet |  |  |  | ✓ checked |
+| 25 | **Adam glows with pride over Aron's college plans** | Cal sees his father lavish pride on Aron and feels himself overlooked. | 44 | not judged yet |  |  |  | ✓ checked |
+| 26 | **Aron goes away to Stanford** | With Aron gone and praised from afar, Cal plans a gift to win a share of his father's pride. | 46 | not judged yet |  |  |  | ✓ checked |
+| 27 | **Cal makes a fortune and plans a Thanksgiving gift** | Cal believes this gift will finally make his father love him. | 48 | not judged yet |  |  |  | ✓ checked |
+| 28 | **Adam rejects Cal's money and praises Aron instead** | Cal feels utterly rejected by his father and blinded by jealousy of Aron. | 49 | not judged yet |  |  |  | ✓ checked |
+| 29 | **Lee tries to steady Cal after the rejection** | Cal is reminded he can master his rage, but his pain is stronger than the warning. | 49 | not judged yet |  |  |  | ✓ checked |
+| 30 | **Cal takes Aron to Kate's house and shows him their mother** | Cal strikes out at the favored brother by destroying Aron's innocence, and soon will be crushed by guilt. | 49 | not judged yet |  |  |  | ✓ checked |
