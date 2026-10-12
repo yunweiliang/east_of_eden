@@ -13,7 +13,7 @@ from .validate import validate_verdicts
 
 # What the judge sees of each event. The rationale is left out on purpose: it is the proposer's own
 # argument for keeping the event, and showing it would nudge the judge to agree.
-SHOWN = ["id", "title", "chapter", "characters", "summary", "causes", "thread", "is_focal_event"]
+SHOWN = ["id", "title", "chapter", "characters", "summary", "for_cal", "causes", "thread", "is_focal_event"]
 
 
 def judged_pool(pool: list[Event]) -> list[Event]:

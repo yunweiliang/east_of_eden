@@ -7,14 +7,17 @@ from eden.stages.m0 import schema as m0_schema
 from eden.stages.m1.schema import EventList, Verdict, VerdictList
 
 
-def test_pool_events_are_m0_events():
-    assert EventList is m0_schema.EventList
+def test_pool_events_are_m0_events_plus_what_they_do_to_cal():
+    from eden.stages.m1.schema import ModelEvent
+    assert set(ModelEvent.model_fields) == set(m0_schema.ModelEvent.model_fields) | {"for_cal"}
+    item = strict_schema(EventList)["properties"]["events"]["items"]
+    assert "for_cal" in item["required"] and "user_verified" not in item["properties"]
 
 
 def test_judge_must_fill_every_field_and_a_known_effect():
     item = strict_schema(VerdictList)["properties"]["verdicts"]["items"]
     assert set(item["required"]) == {"event_id", "effect", "affects", "reason"}
-    assert item["properties"]["effect"]["enum"] == ["path breaks", "key motive changes", "no real change"]
+    assert item["properties"]["effect"]["enum"] == ["changes his choice", "changes who he is", "no real change"]
     assert "keep" not in item["properties"]  # derived by the rule, never chosen by the model
 
 
@@ -22,8 +25,8 @@ def test_keep_follows_the_significance_rule():
     def verdict(effect):
         return Verdict(event_id="x", effect=effect, affects=[], reason="r")
 
-    assert verdict("path breaks").keep
-    assert verdict("key motive changes").keep
+    assert verdict("changes his choice").keep
+    assert verdict("changes who he is").keep
     assert not verdict("no real change").keep
 
 
@@ -33,10 +36,10 @@ from eden.stages.m1.validate import validate_verdicts
 
 def cand(id, causes=(), focal=False):
     return Event(id=id, title="t", chapter=1, characters=[], summary="s", citation="c", rationale="r",
-                 is_focal_event=focal, causes=list(causes), thread="Trask")
+                 is_focal_event=focal, causes=list(causes), thread="Trask", for_cal="f")
 
 
-def says(id, effect="path breaks", affects=None):
+def says(id, effect="changes his choice", affects=None):
     if affects is None:
         affects = [] if effect == "no real change" or id == "reveal" else ["reveal"]
     return Verdict(event_id=id, effect=effect, affects=affects, reason="r")
@@ -68,7 +71,7 @@ def test_claims_must_follow_the_arrows():
     assert validate_verdicts(pool, ok).ok
     bad = [says("a", affects=[]), says("x", affects=["b"]), says("b", "no real change", ["reveal"]), says("reveal")]
     errors = "\n".join(validate_verdicts(pool, bad).errors)
-    assert "[a] says \"path breaks\" but names no affected event" in errors
+    assert "[a] says \"changes his choice\" but names no affected event" in errors
     assert "[x] names 'b' as affected, but no chain of causes leads from x to it" in errors
     assert "[b] says \"no real change\" but names affected events" in errors
 
@@ -155,7 +158,8 @@ def test_consensus_and_agreement():
 
 
 def test_m1_is_a_registered_stage():
-    assert STAGES["m1"].DEFAULT_COUNT == 35 and "1955 film" in STAGES["m1"].SYSTEM
+    assert STAGES["m1"].DEFAULT_COUNT == 30 and "1955 film" in STAGES["m1"].SYSTEM
+    assert "what explains why Cal is the way he is" in STAGES["m1"].TASK
 
 
 def test_judge_command_saves_runs_and_draws_the_kept_graph(tmp_path, monkeypatch):
@@ -205,3 +209,17 @@ def test_before_any_judge_run_the_page_claims_no_keeps_or_cuts(tmp_path):
     lines = Summary(POOL, tmp_path).recall_lines()
     assert lines == ["Your reference set has 1 events. The pool contains 1 of them (recall 100%), "
                      "and the judge hasn't ruled yet."]
+
+
+def test_archived_runs_from_the_plot_judge_are_skipped_not_fatal(tmp_path):
+    from eden.stages.m1.runs import load_judge_runs
+    (tmp_path / "judge").mkdir()
+    old = {"meta": {"judge_hash": "old"}, "verdicts": [{"event_id": "a", "effect": "path breaks", "affects": [], "reason": "r"}]}
+    new = {"meta": {"judge_hash": "new"}, "verdicts": [{"event_id": "a", "effect": "no real change", "affects": [], "reason": "r"}]}
+    (tmp_path / "judge" / "run.1.json").write_text(json.dumps(old))
+    (tmp_path / "judge" / "run.2.json").write_text(json.dumps(new))
+    assert [r.meta["judge_hash"] for r in load_judge_runs(tmp_path, "new")] == ["new"]
+
+
+def test_judge_sees_what_each_event_does_to_cal():
+    assert '"for_cal": "f"' in judge_task([cand("a"), cand("reveal", ["a"], focal=True)])

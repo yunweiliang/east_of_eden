@@ -39,8 +39,9 @@ def save_judge_run(out_dir: Path, meta: dict, verdicts: list[Verdict]) -> Path:
 
 def load_judge_runs(out_dir: Path, judge_hash: str) -> list[JudgeRun]:
     """The runs that judged exactly this input, oldest first. Runs on an older pool or prompt are skipped."""
-    runs = [JudgeRun.model_validate_json(p.read_text()) for p in sorted((out_dir / "judge").glob("run.*.json"))]
-    return [r for r in runs if r.meta.get("judge_hash") == judge_hash]
+    raw = [json.loads(p.read_text()) for p in sorted((out_dir / "judge").glob("run.*.json"))]
+    # Filter before validating: archived runs from an older judge may use labels this version doesn't know.
+    return [JudgeRun.model_validate(r) for r in raw if r["meta"].get("judge_hash") == judge_hash]
 
 
 def load_reference(out_dir: Path) -> list[ReferenceEvent] | None:

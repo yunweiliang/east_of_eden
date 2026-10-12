@@ -105,7 +105,7 @@ def to_mermaid(s: Summary) -> str:
 
 def to_markdown(s: Summary, meta: dict) -> str:
     out = [
-        "# M1: the events the ending really depends on",
+        "# M1: the events that made Cal who he is",
         "",
         "Pool picked from the model's knowledge of the novel, not the text; "
         f"{check_summary(s.pool)}. Pool prompt `{meta.get('prompt_hash', '?')}`, judge input `{s.hash}`.",
@@ -118,14 +118,14 @@ def to_markdown(s: Summary, meta: dict) -> str:
         "",
         to_mermaid(s),
         "",
-        "| # | Event | Thread | Ch. | Kept | Effect if removed | Affects | Judge's reason | Checked |",
+        "| # | Event | What it does to Cal | Ch. | Kept | Without it, Cal… | Affects | Judge's reason | Checked |",
         "|---|---|---|---|---|---|---|---|---|",
     ]
     for i, e in enumerate(s.pool, 1):
         t = s.tallies.get(e.id)
         reason = t.typical.reason if t and t.typical else ""
         effect = (t.effect or "") if t else ""
-        cells = [str(i), f"**{e.title}**", e.thread, str(e.chapter), kept_mark(e, t), effect,
+        cells = [str(i), f"**{e.title}**", e.for_cal, str(e.chapter), kept_mark(e, t), effect,
                  affects_titles(t, s.by_id), reason, verified_mark(e)]
         out.append("| " + " | ".join(cell(c) for c in cells) + " |")
     return "\n".join(out) + "\n"
@@ -139,7 +139,7 @@ def table_rows(s: Summary) -> str:
         effect = (t.effect or "") if t else ""
         cls = "" if e.id in s.kept else ' class="cut"'
         rows.append(
-            f"<tr{cls}><td>{i}</td><td><strong>{html.escape(e.title)}</strong><br>{html.escape(e.summary)}</td>"
+            f"<tr{cls}><td>{i}</td><td><strong>{html.escape(e.title)}</strong><br>{html.escape(e.summary)}<br><em>For Cal:</em> {html.escape(e.for_cal)}</td>"
             f"<td>{html.escape(e.thread)}</td><td>{e.chapter}</td><td>{html.escape(kept_mark(e, t))}</td>"
             f"<td>{html.escape(effect)}</td><td>{html.escape(affects_titles(t, s.by_id))}</td>"
             f"<td>{html.escape(reason)}</td><td>{verified_mark(e)}</td></tr>")
@@ -162,7 +162,7 @@ def to_html(s: Summary, meta: dict) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>East of Eden significant events</title>
+<title>What made Cal</title>
 <style>
 {STYLE}tr.cut td {{ color:var(--muted); }}
 tr.cut strong {{ font-weight:normal; text-decoration:line-through; }}
@@ -171,7 +171,7 @@ p.lead {{ margin:0 0 12px; }}
 </head>
 <body>
 <main>
-<h1>East of Eden: the events the ending really depends on</h1>
+<h1>East of Eden: the events that made Cal who he is</h1>
 <p class="meta">Pool picked from the model's knowledge of the novel, not the text; {check_summary(s.pool)}.
 Pool prompt {html.escape(meta.get('prompt_hash', '?'))}, judge input {s.hash}. Arrows run from cause to effect;
 where the judge cut an event, its arrows are joined up so the path stays visible.</p>
@@ -182,7 +182,7 @@ where the judge cut an event, its arrows are joined up so the path stays visible
 </div>
 <div class="table-wrap">
 <table>
-<thead><tr><th>#</th><th>Event</th><th>Thread</th><th>Ch.</th><th>Kept</th><th>Effect if removed</th>
+<thead><tr><th>#</th><th>Event</th><th>Thread</th><th>Ch.</th><th>Kept</th><th>Without it, Cal…</th>
 <th>Affects</th><th>Judge's reason</th><th>Checked</th></tr></thead>
 <tbody>
 {table_rows(s)}

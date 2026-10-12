@@ -54,7 +54,7 @@ python -m eden render                 # redraw from the pinned picks only, with 
                                       # both take --stage mvp|m0|m1 (default: mvp)
 python -m eden extract --stage m0     # M0: 20 events with causes, written to output/m0/
 # M1: first write your own picks in output/m1/reference.json, then:
-python -m eden extract --stage m1     # propose a pool of 35 candidates; check each one in your copy
+python -m eden extract --stage m1     # propose 30 events that shaped Cal; check each one in your copy
 python -m eden judge --runs 5         # the significance test, 5 times over the same pool
 pytest                                # uses a fake client, so it costs nothing
 ```
