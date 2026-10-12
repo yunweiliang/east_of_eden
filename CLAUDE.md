@@ -107,7 +107,7 @@ Event {
 |---|---|---|---|---|
 | **MVP** | 10 linear events → Cal tells Aron about Cathy | Extract events, grounded in citations | Linear timeline | All 10 are cited and in order, and the user agrees with the picks |
 | **M0** | 20 non-linear events → the reveal | `causes[]` edges plus parallel threads | Swimlane graph (DAG) where threads converge | Every node leads to the reveal, and parallel lanes merge visibly |
-| **M1** | The agent chooses how many events (X) | Significance rule: remove an event, and if the path to the ending breaks or a key motive changes, it was significant | Graph plus the agent's reasons for keeping or cutting each event | The picks stay stable across runs and the user agrees with the cuts |
+| **M1** | The agent chooses how many events (X) | Significance rule: remove an event, and if Cal would make a different choice, or be a different person, at the reveal, it was significant (revised from plot significance, 2026-10-12) | Graph plus the agent's reasons for keeping or cutting each event | The picks stay stable across runs and the user agrees with the cuts |
 | **M2** | Character state model | Per event: each character's knowledge, beliefs, desires and wounds. Typed edges | Graph the user can step through, showing character state at each event | Correctly tracks who knows Kate = Cathy, and when |
 | **M3** | Counterfactual dependency | For each node: "if this didn't happen, does the ending still occur?" | Nodes colored necessary, contributing or overdetermined | Overdetermined nodes are identified (Cal's anger has many sources) |
 | **M4** | Alternate plot generation | Target: no reveal, Aron survives, Cal free of guilt. Find the smallest set of changes that reaches it | Before and after graphs side by side, differences highlighted | The after-graph satisfies all three goals |
@@ -251,15 +251,19 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
     leads to the reveal, at least two threads. Writes `output/m0/graph.md` (Mermaid, one box per thread)
     and `output/m0/graph.html` (swimlanes: one lane per thread, events in story order, arrows from cause to
     effect).
-  - `m1/`: two passes. `extract --stage m1` proposes and pins a pool of 35 candidates in M0's schema
-    (the prompt says "the novel, not the 1955 film"). `python -m eden judge --runs N` then applies the
-    significance test N times: each run gives every candidate a `Verdict` (the effect of removing it:
-    "path breaks", "key motive changes" or "no real change", plus the later events it `affects`, which
-    must be downstream in the graph). Events the reader marked false are left out, with paths bridged
-    around them. Runs go to `output/m1/judge/` and are compared only when their `judge_hash` (everything
-    the judge saw) matches. Writes `output/m1/graph.md` (the full pool, cuts faded) and `graph.html`
-    (swimlanes of the events kept by most runs, plus each event's keep rate and the judge's reason).
-    The reader's own picks go in `output/m1/reference.json`, and the page reports recall against them.
+  - `m1/`: two passes, measuring *character* significance (user decision, 2026-10-12): which events
+    explain why Cal is the way he is when he takes Aron to Kate. `extract --stage m1` proposes and pins a
+    pool of 30 Cal-centered candidates in M0's schema plus `for_cal`, one plain sentence on what the event
+    does to Cal (the prompt also says "the novel, not the 1955 film" and "be exact about who does what").
+    `python -m eden judge --runs N` then applies the test N times: each run gives every candidate a
+    `Verdict` (without this event, Cal at the reveal "changes his choice", "changes who he is" or shows "no
+    real change", plus the later events it `affects`, which must be downstream in the graph). Events the
+    reader marked false are left out, with paths bridged around them. Runs go to `output/m1/judge/` and are
+    compared only when their `judge_hash` (everything the judge saw) matches. Writes `output/m1/graph.md`
+    and `graph.html` (swimlanes of the events kept by most runs, plus each event's keep rate and the
+    judge's reason). The reader's own picks go in `output/m1/reference.json`, and the page reports recall.
+    The first version (`m1-pool-1`, `m1-judge-1`) measured plot significance; its pool and five runs are
+    archived in `output/m1/` and git history.
 - `eden/publish.py`: portfolio tooling (`portfolio`, `preview`, `publish`).
 - `python -m eden {extract,render} --stage <stage>`. `extract` skips the model call when the pinned picks
   match the stage's prompt hash.
