@@ -22,5 +22,14 @@
       "chapter": null,
       "pool_id": "lettuce-fails"
     }
-  ]
+  ],
+  "reader_cuts": [
+    "twins-born",
+    "samuel-farewell",
+    "cal-arrested",
+    "war-draft-board",
+    "lee-lends",
+    "aron-stanford"
+  ],
+  "reader_cuts_note": "Events the judge kept that the reader would cut (2026-10-12, after the first 5 judge runs). The reader agreed with the judge's 8 cuts. Reader: 'all these events are factually significant to plot point, but they don't explain why Caleb is the way he is.'"
 }
