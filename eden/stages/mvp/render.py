@@ -5,7 +5,7 @@ from __future__ import annotations
 import html
 from pathlib import Path
 
-from ...core.html import cell, node_id, verified_mark, wrapped
+from ...core.html import cell, mermaid_label, node_id, verified_mark, wrapped
 from .schema import Event
 
 WIDTH_PER_EVENT = 190
@@ -17,8 +17,7 @@ MARGIN = 80
 def to_mermaid(events: list[Event]) -> str:
     lines = ["```mermaid", "flowchart LR"]
     for e in events:
-        label = f"{html.escape(e.title, quote=False)}<br/><i>Ch. {e.chapter}</i>".replace('"', "#quot;")
-        lines.append(f'    {node_id(e.id)}["{label}"]')
+        lines.append(f'    {node_id(e.id)}["{mermaid_label(e)}"]')
     for a, b in zip(events, events[1:]):
         lines.append(f"    {node_id(a.id)} --> {node_id(b.id)}")
     focal = next((e for e in events if e.is_focal_event), None)

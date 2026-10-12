@@ -1,4 +1,11 @@
-"""M0: 20 events with causes and threads, drawn as swimlanes that converge on Cal's reveal.
+"""M0: 20 events with causes and threads, converging on Cal's reveal.
 
-Built in steps. Not registered in eden.stages.STAGES until it provides the full stage interface.
+Provides the same names as every stage (see eden/stages/mvp/__init__.py).
 """
+
+from .prompt import DEFAULT_COUNT, PROMPT_VERSION, SYSTEM, TASK
+from .render import render
+from .schema import Event, EventList, ModelEvent
+from .validate import validate
+
+NAME = "m0"

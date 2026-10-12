@@ -221,6 +221,8 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
   - `ModelEvent` is what the model fills in. `Event` adds `user_verified`, which only the user sets, so
     the model's schema never contains it.
   - `mvp/`: the linear timeline. Also provides the portfolio timeline.
+  - `m0/`: 20 events with `causes` and `thread`. Checks: causes point backward (no loops), every event
+    leads to the reveal, at least two threads. Writes `output/m0/graph.md` (Mermaid, one box per thread).
 - `eden/publish.py`: portfolio tooling (`portfolio`, `preview`, `publish`).
 - `python -m eden {extract,render} --stage <stage>`. `extract` skips the model call when the pinned picks
   match the stage's prompt hash.

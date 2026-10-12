@@ -50,8 +50,17 @@ def all_lead_to_reveal(events: list[Event]) -> list[str]:
             for e in events if e.id not in reached]
 
 
+def uses_several_threads(events: list[Event]) -> list[str]:
+    """M0 is about parallel threads converging, so a single-thread graph misses the point."""
+    threads = {e.thread for e in events}
+    if events and len(threads) < 2:
+        return [f"All events are in the {threads.pop()} thread; use at least two threads and show where they meet."]
+    return []
+
+
 def validate(events: list[Event], expected_count: int) -> Report:
     r = common_checks(events, expected_count)
     r.errors += causes_point_backward(events)
     r.errors += all_lead_to_reveal(events)
+    r.errors += uses_several_threads(events)
     return r
