@@ -50,69 +50,58 @@ p.lead { margin:0 0 12px; }
 <p class="meta">Pool picked from the model's knowledge of the novel, not the text; 30/30 checked by the reader, 30 true.
 Pool prompt 428c3e46ef1d4fc7, judge input 880fa683ce19a9e1. Arrows run from cause to effect;
 where the judge cut an event, its arrows are joined up so the path stays visible.</p>
-<p class="lead">Not judged yet: 30 candidates, all shown. Run <code>python -m eden judge</code> to apply the significance test.</p>
-<p>Your reference set has 4 events. The pool contains 4 of them (recall 100%), and the judge hasn&#x27;t ruled yet.</p>
+<p class="lead">5 judge run(s) over 30 candidates. Kept per run: 18, 19, 19, 19, 19; runs agree 98% on average (shared keeps / all keeps, per pair). Kept by most runs: <strong>19 of 30</strong>, drawn below.</p>
+<p>Your reference set has 4 events. The pool contains 4 of them (recall 100%), and the judge keeps 3.</p>
+<p>In the pool but cut by the judge: Cathy marries Adam and goes to Charles on the wedding night.</p>
+<p>Kept by the judge but not on your list: Cathy Ames is introduced as a born monster; Cathy shoots Adam and abandons the twins; Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas; Adam sinks into apathy while Lee raises the twins; Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest; Abra visits and warms to Aron&#x27;s gift; Abra tells Aron his mother is not dead; Cal prays not to be mean; Aron turns devout and plans the ministry; Lee tells Cal the truth and that his choices are his own; Cal follows Kate and confronts her; Adam serves on the wartime draft board; Cal partners with Will Hamilton to grow beans; Adam glows with pride over Aron&#x27;s college plans; Cal makes a fortune and plans a Thanksgiving gift.</p>
 <div class="scroll">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4072 600" width="4072" height="600" role="img" aria-label="Cause-and-effect graph of 30 events in 4 story threads">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2620 450" width="2620" height="450" role="img" aria-label="Cause-and-effect graph of 19 events in 3 story threads">
 <defs>
 <marker id="arrow" viewBox="0 0 10 10" refX="19" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="tip"/></marker>
 <marker id="arrow-focal" viewBox="0 0 10 10" refX="23" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="tip focal"/></marker>
 </defs>
-<rect x="0" y="0" width="4072" height="150" class="lane0"/>
+<rect x="0" y="0" width="2620" height="150" class="lane0"/>
 <text x="12" y="51" class="lane-name t0">Trask</text>
-<rect x="0" y="150" width="4072" height="150" class="lane1"/>
+<rect x="0" y="150" width="2620" height="150" class="lane1"/>
 <text x="12" y="201" class="lane-name t1">Cathy/Kate</text>
-<rect x="0" y="300" width="4072" height="150" class="lane0"/>
-<text x="12" y="351" class="lane-name t2">Hamilton</text>
-<rect x="0" y="450" width="4072" height="150" class="lane1"/>
-<text x="12" y="501" class="lane-name t3">Lee</text>
-<path d="M178,196 L310,196" class="edge" marker-end="url(#arrow)"><title>Cathy Ames is introduced as a born monster → Cathy marries Adam and goes to Charles on the wedding night</title></path>
-<path d="M310,196 C376,196 376,46 442,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy marries Adam and goes to Charles on the wedding night → The twins are born and Cathy rejects them</title></path>
-<path d="M442,46 C508,46 508,196 574,196" class="edge cross" marker-end="url(#arrow)"><title>The twins are born and Cathy rejects them → Cathy shoots Adam and abandons the twins</title></path>
-<path d="M574,196 C640,196 640,46 706,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy shoots Adam and abandons the twins → Adam hides the truth about the shooting</title></path>
-<path d="M574,196 C574,166.667 838,166.667 838,196" class="edge" marker-end="url(#arrow)"><title>Cathy shoots Adam and abandons the twins → Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas</title></path>
-<path d="M574,196 C772,196 772,46 970,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy shoots Adam and abandons the twins → Adam sinks into apathy while Lee raises the twins</title></path>
-<path d="M970,46 C1036,46 1036,346 1102,346" class="edge cross" marker-end="url(#arrow)"><title>Adam sinks into apathy while Lee raises the twins → Samuel strikes Adam to wake him</title></path>
-<path d="M1102,346 L1234,346" class="edge" marker-end="url(#arrow)"><title>Samuel strikes Adam to wake him → The twins are named after a talk about Cain and Abel</title></path>
-<path d="M1234,346 C1300,346 1300,496 1366,496" class="edge cross" marker-end="url(#arrow)"><title>The twins are named after a talk about Cain and Abel → Lee explains that rejection breeds rage and guilt</title></path>
-<path d="M1234,346 C1366,346 1366,496 1498,496" class="edge cross" marker-end="url(#arrow)"><title>The twins are named after a talk about Cain and Abel → Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest</title></path>
-<path d="M838,196 C1234,196 1234,346 1630,346" class="edge cross" marker-end="url(#arrow)"><title>Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas → Samuel tells Adam that Cathy runs a Salinas brothel</title></path>
-<path d="M1102,346 C1102,306 1630,306 1630,346" class="edge" marker-end="url(#arrow)"><title>Samuel strikes Adam to wake him → Samuel tells Adam that Cathy runs a Salinas brothel</title></path>
-<path d="M1630,346 C1696,346 1696,46 1762,46" class="edge cross" marker-end="url(#arrow)"><title>Samuel tells Adam that Cathy runs a Salinas brothel → Adam confronts Kate and is freed from her</title></path>
-<path d="M442,46 C442,-7.33333 1894,-7.33333 1894,46" class="edge" marker-end="url(#arrow)"><title>The twins are born and Cathy rejects them → Abra visits and warms to Aron&#x27;s gift</title></path>
-<path d="M1894,46 L2026,46" class="edge" marker-end="url(#arrow)"><title>Abra visits and warms to Aron&#x27;s gift → Abra tells Aron his mother is not dead</title></path>
-<path d="M706,46 C706,-7.33333 2026,-7.33333 2026,46" class="edge" marker-end="url(#arrow)"><title>Adam hides the truth about the shooting → Abra tells Aron his mother is not dead</title></path>
-<path d="M1894,46 C1894,16.6667 2158,16.6667 2158,46" class="edge" marker-end="url(#arrow)"><title>Abra visits and warms to Aron&#x27;s gift → Cal prays not to be mean</title></path>
-<path d="M2026,46 L2158,46" class="edge" marker-end="url(#arrow)"><title>Abra tells Aron his mother is not dead → Cal prays not to be mean</title></path>
-<path d="M1762,46 C1762,6 2290,6 2290,46" class="edge" marker-end="url(#arrow)"><title>Adam confronts Kate and is freed from her → Adam&#x27;s iced-lettuce venture fails</title></path>
-<path d="M2026,46 C2026,11.3333 2422,11.3333 2422,46" class="edge" marker-end="url(#arrow)"><title>Abra tells Aron his mother is not dead → Aron turns devout and plans the ministry</title></path>
-<path d="M838,196 C1696,196 1696,46 2554,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas → Cal discovers that the madam Kate is his mother</title></path>
-<path d="M2026,46 C2026,6 2554,6 2554,46" class="edge" marker-end="url(#arrow)"><title>Abra tells Aron his mother is not dead → Cal discovers that the madam Kate is his mother</title></path>
-<path d="M2158,46 C2158,11.3333 2554,11.3333 2554,46" class="edge" marker-end="url(#arrow)"><title>Cal prays not to be mean → Cal discovers that the madam Kate is his mother</title></path>
-<path d="M2554,46 C2620,46 2620,496 2686,496" class="edge cross" marker-end="url(#arrow)"><title>Cal discovers that the madam Kate is his mother → Lee tells Cal the truth and that his choices are his own</title></path>
-<path d="M1498,496 C1498,442.667 2686,442.667 2686,496" class="edge" marker-end="url(#arrow)"><title>Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest → Lee tells Cal the truth and that his choices are his own</title></path>
-<path d="M1366,496 C1366,442.667 2686,442.667 2686,496" class="edge" marker-end="url(#arrow)"><title>Lee explains that rejection breeds rage and guilt → Lee tells Cal the truth and that his choices are his own</title></path>
-<path d="M2554,46 C2554,16.6667 2818,16.6667 2818,46" class="edge" marker-end="url(#arrow)"><title>Cal discovers that the madam Kate is his mother → Cal follows Kate and confronts her</title></path>
-<path d="M2686,496 C2752,496 2752,46 2818,46" class="edge cross" marker-end="url(#arrow)"><title>Lee tells Cal the truth and that his choices are his own → Cal follows Kate and confronts her</title></path>
-<path d="M1762,46 C1762,-7.33333 2950,-7.33333 2950,46" class="edge" marker-end="url(#arrow)"><title>Adam confronts Kate and is freed from her → Adam serves on the wartime draft board</title></path>
-<path d="M2290,46 C2290,-4.66667 3082,-4.66667 3082,46" class="edge" marker-end="url(#arrow)"><title>Adam&#x27;s iced-lettuce venture fails → Cal partners with Will Hamilton to grow beans</title></path>
-<path d="M2950,46 L3082,46" class="edge" marker-end="url(#arrow)"><title>Adam serves on the wartime draft board → Cal partners with Will Hamilton to grow beans</title></path>
-<path d="M3082,46 C3148,46 3148,496 3214,496" class="edge cross" marker-end="url(#arrow)"><title>Cal partners with Will Hamilton to grow beans → Lee lends Cal the money to start</title></path>
-<path d="M2686,496 C2686,456 3214,456 3214,496" class="edge" marker-end="url(#arrow)"><title>Lee tells Cal the truth and that his choices are his own → Lee lends Cal the money to start</title></path>
-<path d="M2422,46 C2422,-7.33333 3346,-7.33333 3346,46" class="edge" marker-end="url(#arrow)"><title>Aron turns devout and plans the ministry → Adam glows with pride over Aron&#x27;s college plans</title></path>
-<path d="M3346,46 L3478,46" class="edge" marker-end="url(#arrow)"><title>Adam glows with pride over Aron&#x27;s college plans → Aron goes away to Stanford</title></path>
-<path d="M3214,496 C3412,496 3412,46 3610,46" class="edge cross" marker-end="url(#arrow)"><title>Lee lends Cal the money to start → Cal makes a fortune and plans a Thanksgiving gift</title></path>
-<path d="M3478,46 L3610,46" class="edge" marker-end="url(#arrow)"><title>Aron goes away to Stanford → Cal makes a fortune and plans a Thanksgiving gift</title></path>
-<path d="M3610,46 L3742,46" class="edge" marker-end="url(#arrow)"><title>Cal makes a fortune and plans a Thanksgiving gift → Adam rejects Cal&#x27;s money and praises Aron instead</title></path>
-<path d="M2950,46 C2950,-4.66667 3742,-4.66667 3742,46" class="edge" marker-end="url(#arrow)"><title>Adam serves on the wartime draft board → Adam rejects Cal&#x27;s money and praises Aron instead</title></path>
-<path d="M3346,46 C3346,11.3333 3742,11.3333 3742,46" class="edge" marker-end="url(#arrow)"><title>Adam glows with pride over Aron&#x27;s college plans → Adam rejects Cal&#x27;s money and praises Aron instead</title></path>
-<path d="M3742,46 C3808,46 3808,496 3874,496" class="edge cross" marker-end="url(#arrow)"><title>Adam rejects Cal&#x27;s money and praises Aron instead → Lee tries to steady Cal after the rejection</title></path>
-<path d="M2686,496 C2686,442.667 3874,442.667 3874,496" class="edge" marker-end="url(#arrow)"><title>Lee tells Cal the truth and that his choices are his own → Lee tries to steady Cal after the rejection</title></path>
-<path d="M3742,46 C3742,16.6667 4006,16.6667 4006,46" class="edge focal" marker-end="url(#arrow-focal)"><title>Adam rejects Cal&#x27;s money and praises Aron instead → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
-<path d="M3874,496 C3940,496 3940,46 4006,46" class="edge cross focal" marker-end="url(#arrow-focal)"><title>Lee tries to steady Cal after the rejection → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
-<path d="M2818,46 C2818,-7.33333 4006,-7.33333 4006,46" class="edge focal" marker-end="url(#arrow-focal)"><title>Cal follows Kate and confronts her → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
-<path d="M2422,46 C2422,-7.33333 4006,-7.33333 4006,46" class="edge focal" marker-end="url(#arrow-focal)"><title>Aron turns devout and plans the ministry → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
-<path d="M1366,496 C2686,496 2686,46 4006,46" class="edge cross focal" marker-end="url(#arrow-focal)"><title>Lee explains that rejection breeds rage and guilt → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
+<rect x="0" y="300" width="2620" height="150" class="lane0"/>
+<text x="12" y="351" class="lane-name t3">Lee</text>
+<path d="M178,196 L310,196" class="edge" marker-end="url(#arrow)"><title>Cathy Ames is introduced as a born monster → Cathy shoots Adam and abandons the twins</title></path>
+<path d="M310,196 L442,196" class="edge" marker-end="url(#arrow)"><title>Cathy shoots Adam and abandons the twins → Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas</title></path>
+<path d="M310,196 C442,196 442,46 574,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy shoots Adam and abandons the twins → Adam sinks into apathy while Lee raises the twins</title></path>
+<path d="M574,46 C640,46 640,346 706,346" class="edge cross" marker-end="url(#arrow)"><title>Adam sinks into apathy while Lee raises the twins → Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest</title></path>
+<path d="M178,196 C508,196 508,46 838,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy Ames is introduced as a born monster → Abra visits and warms to Aron&#x27;s gift</title></path>
+<path d="M838,46 L970,46" class="edge" marker-end="url(#arrow)"><title>Abra visits and warms to Aron&#x27;s gift → Abra tells Aron his mother is not dead</title></path>
+<path d="M310,196 C640,196 640,46 970,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy shoots Adam and abandons the twins → Abra tells Aron his mother is not dead</title></path>
+<path d="M838,46 C838,16.6667 1102,16.6667 1102,46" class="edge" marker-end="url(#arrow)"><title>Abra visits and warms to Aron&#x27;s gift → Cal prays not to be mean</title></path>
+<path d="M970,46 L1102,46" class="edge" marker-end="url(#arrow)"><title>Abra tells Aron his mother is not dead → Cal prays not to be mean</title></path>
+<path d="M442,196 C838,196 838,46 1234,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas → Adam&#x27;s iced-lettuce venture fails</title></path>
+<path d="M574,46 C574,0.666667 1234,0.666667 1234,46" class="edge" marker-end="url(#arrow)"><title>Adam sinks into apathy while Lee raises the twins → Adam&#x27;s iced-lettuce venture fails</title></path>
+<path d="M970,46 C970,11.3333 1366,11.3333 1366,46" class="edge" marker-end="url(#arrow)"><title>Abra tells Aron his mother is not dead → Aron turns devout and plans the ministry</title></path>
+<path d="M442,196 C970,196 970,46 1498,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas → Cal discovers that the madam Kate is his mother</title></path>
+<path d="M970,46 C970,6 1498,6 1498,46" class="edge" marker-end="url(#arrow)"><title>Abra tells Aron his mother is not dead → Cal discovers that the madam Kate is his mother</title></path>
+<path d="M1102,46 C1102,11.3333 1498,11.3333 1498,46" class="edge" marker-end="url(#arrow)"><title>Cal prays not to be mean → Cal discovers that the madam Kate is his mother</title></path>
+<path d="M1498,46 C1564,46 1564,346 1630,346" class="edge cross" marker-end="url(#arrow)"><title>Cal discovers that the madam Kate is his mother → Lee tells Cal the truth and that his choices are his own</title></path>
+<path d="M706,346 C706,292.667 1630,292.667 1630,346" class="edge" marker-end="url(#arrow)"><title>Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest → Lee tells Cal the truth and that his choices are his own</title></path>
+<path d="M574,46 C1102,46 1102,346 1630,346" class="edge cross" marker-end="url(#arrow)"><title>Adam sinks into apathy while Lee raises the twins → Lee tells Cal the truth and that his choices are his own</title></path>
+<path d="M1498,46 C1498,16.6667 1762,16.6667 1762,46" class="edge" marker-end="url(#arrow)"><title>Cal discovers that the madam Kate is his mother → Cal follows Kate and confronts her</title></path>
+<path d="M1630,346 C1696,346 1696,46 1762,46" class="edge cross" marker-end="url(#arrow)"><title>Lee tells Cal the truth and that his choices are his own → Cal follows Kate and confronts her</title></path>
+<path d="M442,196 C1168,196 1168,46 1894,46" class="edge cross" marker-end="url(#arrow)"><title>Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas → Adam serves on the wartime draft board</title></path>
+<path d="M574,46 C574,-7.33333 1894,-7.33333 1894,46" class="edge" marker-end="url(#arrow)"><title>Adam sinks into apathy while Lee raises the twins → Adam serves on the wartime draft board</title></path>
+<path d="M1234,46 C1234,-4.66667 2026,-4.66667 2026,46" class="edge" marker-end="url(#arrow)"><title>Adam&#x27;s iced-lettuce venture fails → Cal partners with Will Hamilton to grow beans</title></path>
+<path d="M1894,46 L2026,46" class="edge" marker-end="url(#arrow)"><title>Adam serves on the wartime draft board → Cal partners with Will Hamilton to grow beans</title></path>
+<path d="M1366,46 C1366,-4.66667 2158,-4.66667 2158,46" class="edge" marker-end="url(#arrow)"><title>Aron turns devout and plans the ministry → Adam glows with pride over Aron&#x27;s college plans</title></path>
+<path d="M2026,46 C2026,16.6667 2290,16.6667 2290,46" class="edge" marker-end="url(#arrow)"><title>Cal partners with Will Hamilton to grow beans → Cal makes a fortune and plans a Thanksgiving gift</title></path>
+<path d="M1630,346 C1960,346 1960,46 2290,46" class="edge cross" marker-end="url(#arrow)"><title>Lee tells Cal the truth and that his choices are his own → Cal makes a fortune and plans a Thanksgiving gift</title></path>
+<path d="M2158,46 L2290,46" class="edge" marker-end="url(#arrow)"><title>Adam glows with pride over Aron&#x27;s college plans → Cal makes a fortune and plans a Thanksgiving gift</title></path>
+<path d="M2290,46 L2422,46" class="edge" marker-end="url(#arrow)"><title>Cal makes a fortune and plans a Thanksgiving gift → Adam rejects Cal&#x27;s money and praises Aron instead</title></path>
+<path d="M1894,46 C1894,6 2422,6 2422,46" class="edge" marker-end="url(#arrow)"><title>Adam serves on the wartime draft board → Adam rejects Cal&#x27;s money and praises Aron instead</title></path>
+<path d="M2158,46 C2158,16.6667 2422,16.6667 2422,46" class="edge" marker-end="url(#arrow)"><title>Adam glows with pride over Aron&#x27;s college plans → Adam rejects Cal&#x27;s money and praises Aron instead</title></path>
+<path d="M2422,46 L2554,46" class="edge focal" marker-end="url(#arrow-focal)"><title>Adam rejects Cal&#x27;s money and praises Aron instead → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
+<path d="M1630,346 C2092,346 2092,46 2554,46" class="edge cross focal" marker-end="url(#arrow-focal)"><title>Lee tells Cal the truth and that his choices are his own → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
+<path d="M1762,46 C1762,-4.66667 2554,-4.66667 2554,46" class="edge focal" marker-end="url(#arrow-focal)"><title>Cal follows Kate and confronts her → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
+<path d="M1366,46 C1366,-7.33333 2554,-7.33333 2554,46" class="edge focal" marker-end="url(#arrow-focal)"><title>Aron turns devout and plans the ministry → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
+<path d="M574,46 C574,-7.33333 2554,-7.33333 2554,46" class="edge focal" marker-end="url(#arrow-focal)"><title>Adam sinks into apathy while Lee raises the twins → Cal takes Aron to Kate&#x27;s house and shows him their mother</title></path>
 <g><title>Cathy Ames is introduced as a born monster (ch. 8): The narrator presents young Cathy as someone born without ordinary conscience, who manipulates everyone around her. She ends her childhood by burning down her parents&#x27; house with them inside and vanishing.
 Caused by: (starts a thread)</title>
 <circle cx="178" cy="196" r="8" class="node t1"/>
@@ -121,241 +110,154 @@ Caused by: (starts a thread)</title>
 <text x="178" y="258" class="title">born monster</text>
 <text x="178" y="274" class="chap">Ch. 8</text>
 </g>
-<g><title>Cathy marries Adam and goes to Charles on the wedding night (ch. 11): Beaten and taken in at the Trask farm, Cathy marries the smitten Adam. On their wedding night she drugs him and goes to his brother Charles&#x27;s bed.
+<g><title>Cathy shoots Adam and abandons the twins (ch. 17): About a week after the birth, Cathy tells Adam she is leaving. When he tries to stop her, she shoots him in the shoulder and walks out, leaving the infants behind.
 Caused by: Cathy Ames is introduced as a born monster</title>
 <circle cx="310" cy="196" r="8" class="node t1"/>
-<text x="310" y="226" class="title">Cathy marries</text>
-<text x="310" y="242" class="title">Adam and goes to</text>
-<text x="310" y="258" class="title">Charles on the</text>
-<text x="310" y="274" class="title">wedding night</text>
-<text x="310" y="290" class="chap">Ch. 11</text>
-</g>
-<g><title>The twins are born and Cathy rejects them (ch. 17): Samuel Hamilton delivers Cathy&#x27;s twin boys. Cathy bites his hand during the birth and shows no interest in the babies.
-Caused by: Cathy marries Adam and goes to Charles on the wedding night</title>
-<circle cx="442" cy="46" r="8" class="node t0"/>
-<text x="442" y="76" class="title">The twins are</text>
-<text x="442" y="92" class="title">born and Cathy</text>
-<text x="442" y="108" class="title">rejects them</text>
-<text x="442" y="124" class="chap">Ch. 17</text>
-</g>
-<g><title>Cathy shoots Adam and abandons the twins (ch. 17): About a week after the birth, Cathy tells Adam she is leaving. When he tries to stop her, she shoots him in the shoulder and walks out, leaving the infants behind.
-Caused by: The twins are born and Cathy rejects them</title>
-<circle cx="574" cy="196" r="8" class="node t1"/>
-<text x="574" y="226" class="title">Cathy shoots Adam</text>
-<text x="574" y="242" class="title">and abandons the</text>
-<text x="574" y="258" class="title">twins</text>
-<text x="574" y="274" class="chap">Ch. 17</text>
-</g>
-<g><title>Adam hides the truth about the shooting (ch. 18): When Deputy Horace Quinn questions him, the wounded Adam insists the shooting was an accident. He tries to shield Cathy and keep her flight hidden.
-Caused by: Cathy shoots Adam and abandons the twins</title>
-<circle cx="706" cy="46" r="8" class="node t0"/>
-<text x="706" y="76" class="title">Adam hides the</text>
-<text x="706" y="92" class="title">truth about the</text>
-<text x="706" y="108" class="title">shooting</text>
-<text x="706" y="124" class="chap">Ch. 18</text>
+<text x="310" y="226" class="title">Cathy shoots Adam</text>
+<text x="310" y="242" class="title">and abandons the</text>
+<text x="310" y="258" class="title">twins</text>
+<text x="310" y="274" class="chap">Ch. 17</text>
 </g>
 <g><title>Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas (ch. 19): Cathy goes to Salinas, takes the name Kate, and joins Faye&#x27;s brothel. She soon makes herself indispensable to its owner.
 Caused by: Cathy shoots Adam and abandons the twins</title>
-<circle cx="838" cy="196" r="8" class="node t1"/>
-<text x="838" y="226" class="title">Cathy becomes</text>
-<text x="838" y="242" class="title">&#x27;Kate&#x27; at Faye&#x27;s</text>
-<text x="838" y="258" class="title">brothel in</text>
-<text x="838" y="274" class="title">Salinas</text>
-<text x="838" y="290" class="chap">Ch. 19</text>
+<circle cx="442" cy="196" r="8" class="node t1"/>
+<text x="442" y="226" class="title">Cathy becomes</text>
+<text x="442" y="242" class="title">&#x27;Kate&#x27; at Faye&#x27;s</text>
+<text x="442" y="258" class="title">brothel in</text>
+<text x="442" y="274" class="title">Salinas</text>
+<text x="442" y="290" class="chap">Ch. 19</text>
 </g>
 <g><title>Adam sinks into apathy while Lee raises the twins (ch. 22): For more than a year Adam barely looks at his sons and has not even named them. Lee, the Chinese servant, cares for the boys.
 Caused by: Cathy shoots Adam and abandons the twins</title>
-<circle cx="970" cy="46" r="8" class="node t0"/>
-<text x="970" y="76" class="title">Adam sinks into</text>
-<text x="970" y="92" class="title">apathy while Lee</text>
-<text x="970" y="108" class="title">raises the twins</text>
-<text x="970" y="124" class="chap">Ch. 22</text>
-</g>
-<g><title>Samuel strikes Adam to wake him (ch. 22): Samuel, furious at Adam&#x27;s neglect of the boys, knocks him down. The blow shocks Adam back toward responsibility.
-Caused by: Adam sinks into apathy while Lee raises the twins</title>
-<circle cx="1102" cy="346" r="8" class="node t2"/>
-<text x="1102" y="376" class="title">Samuel strikes</text>
-<text x="1102" y="392" class="title">Adam to wake him</text>
-<text x="1102" y="408" class="chap">Ch. 22</text>
-</g>
-<g><title>The twins are named after a talk about Cain and Abel (ch. 22): Samuel, Adam and Lee read and debate the story of Cain and Abel while choosing names. The boys become Caleb and Aron.
-Caused by: Samuel strikes Adam to wake him</title>
-<circle cx="1234" cy="346" r="8" class="node t2"/>
-<text x="1234" y="376" class="title">The twins are</text>
-<text x="1234" y="392" class="title">named after a</text>
-<text x="1234" y="408" class="title">talk about Cain</text>
-<text x="1234" y="424" class="title">and Abel</text>
-<text x="1234" y="440" class="chap">Ch. 22</text>
-</g>
-<g><title>Lee explains that rejection breeds rage and guilt (ch. 24): Lee argues that the Cain story is everyone&#x27;s story. A child&#x27;s deepest terror is not being loved, and rejection leads to anger, crime and guilt.
-Caused by: The twins are named after a talk about Cain and Abel</title>
-<circle cx="1366" cy="496" r="8" class="node t3"/>
-<text x="1366" y="526" class="title">Lee explains that</text>
-<text x="1366" y="542" class="title">rejection breeds</text>
-<text x="1366" y="558" class="title">rage and guilt</text>
-<text x="1366" y="574" class="chap">Ch. 24</text>
+<circle cx="574" cy="46" r="8" class="node t0"/>
+<text x="574" y="76" class="title">Adam sinks into</text>
+<text x="574" y="92" class="title">apathy while Lee</text>
+<text x="574" y="108" class="title">raises the twins</text>
+<text x="574" y="124" class="chap">Ch. 22</text>
 </g>
 <g><title>Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest (ch. 24): Lee reports that his elderly Chinese relatives studied Hebrew to understand the Cain verse. They concluded the word timshel means &#x27;thou mayest&#x27;, so humans can choose to overcome sin.
-Caused by: The twins are named after a talk about Cain and Abel</title>
-<circle cx="1498" cy="496" r="8" class="node t3"/>
-<text x="1498" y="526" class="title">Lee&#x27;s elders</text>
-<text x="1498" y="542" class="title">arrive at</text>
-<text x="1498" y="558" class="title">&#x27;timshel&#x27;, thou</text>
-<text x="1498" y="574" class="title">mayest</text>
-<text x="1498" y="590" class="chap">Ch. 24</text>
-</g>
-<g><title>Samuel tells Adam that Cathy runs a Salinas brothel (ch. 24): On his farewell visit, Samuel tells Adam that Cathy is alive in Salinas, calling herself Kate and running a brothel. He hopes the truth will free Adam.
-Caused by: Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas, Samuel strikes Adam to wake him</title>
-<circle cx="1630" cy="346" r="8" class="node t2"/>
-<text x="1630" y="376" class="title">Samuel tells Adam</text>
-<text x="1630" y="392" class="title">that Cathy runs a</text>
-<text x="1630" y="408" class="title">Salinas brothel</text>
-<text x="1630" y="424" class="chap">Ch. 24</text>
-</g>
-<g><title>Adam confronts Kate and is freed from her (ch. 25): Adam visits Kate at her brothel. She taunts him and boasts of her hold over powerful men, but he sees her clearly and walks out released from her spell.
-Caused by: Samuel tells Adam that Cathy runs a Salinas brothel</title>
-<circle cx="1762" cy="46" r="8" class="node t0"/>
-<text x="1762" y="76" class="title">Adam confronts</text>
-<text x="1762" y="92" class="title">Kate and is freed</text>
-<text x="1762" y="108" class="title">from her</text>
-<text x="1762" y="124" class="chap">Ch. 25</text>
+Caused by: Adam sinks into apathy while Lee raises the twins</title>
+<circle cx="706" cy="346" r="8" class="node t3"/>
+<text x="706" y="376" class="title">Lee&#x27;s elders</text>
+<text x="706" y="392" class="title">arrive at</text>
+<text x="706" y="408" class="title">&#x27;timshel&#x27;, thou</text>
+<text x="706" y="424" class="title">mayest</text>
+<text x="706" y="440" class="chap">Ch. 24</text>
 </g>
 <g><title>Abra visits and warms to Aron&#x27;s gift (ch. 27): A rainstorm strands young Abra and her parents at the Trask place. Abra is drawn to gentle Aron, who gives her a rabbit, and Cal feels pushed aside.
-Caused by: The twins are born and Cathy rejects them</title>
-<circle cx="1894" cy="46" r="8" class="node t0"/>
-<text x="1894" y="76" class="title">Abra visits and</text>
-<text x="1894" y="92" class="title">warms to Aron&#x27;s</text>
-<text x="1894" y="108" class="title">gift</text>
-<text x="1894" y="124" class="chap">Ch. 27</text>
+Caused by: Cathy Ames is introduced as a born monster</title>
+<circle cx="838" cy="46" r="8" class="node t0"/>
+<text x="838" y="76" class="title">Abra visits and</text>
+<text x="838" y="92" class="title">warms to Aron&#x27;s</text>
+<text x="838" y="108" class="title">gift</text>
+<text x="838" y="124" class="chap">Ch. 27</text>
 </g>
 <g><title>Abra tells Aron his mother is not dead (ch. 27): Abra repeats what she overheard from her parents: the twins&#x27; mother did not die but ran away. This challenges the story the boys were told.
-Caused by: Abra visits and warms to Aron&#x27;s gift, Adam hides the truth about the shooting</title>
-<circle cx="2026" cy="46" r="8" class="node t0"/>
-<text x="2026" y="76" class="title">Abra tells Aron</text>
-<text x="2026" y="92" class="title">his mother is not</text>
-<text x="2026" y="108" class="title">dead</text>
-<text x="2026" y="124" class="chap">Ch. 27</text>
+Caused by: Abra visits and warms to Aron&#x27;s gift, Cathy shoots Adam and abandons the twins</title>
+<circle cx="970" cy="46" r="8" class="node t0"/>
+<text x="970" y="76" class="title">Abra tells Aron</text>
+<text x="970" y="92" class="title">his mother is not</text>
+<text x="970" y="108" class="title">dead</text>
+<text x="970" y="124" class="chap">Ch. 27</text>
 </g>
 <g><title>Cal prays not to be mean (ch. 27): Alone at night, Cal asks God to make him like Aron and not mean. He promises anything if people will love him.
 Caused by: Abra visits and warms to Aron&#x27;s gift, Abra tells Aron his mother is not dead</title>
-<circle cx="2158" cy="46" r="8" class="node t0"/>
-<text x="2158" y="76" class="title">Cal prays not to</text>
-<text x="2158" y="92" class="title">be mean</text>
-<text x="2158" y="108" class="chap">Ch. 27</text>
+<circle cx="1102" cy="46" r="8" class="node t0"/>
+<text x="1102" y="76" class="title">Cal prays not to</text>
+<text x="1102" y="92" class="title">be mean</text>
+<text x="1102" y="108" class="chap">Ch. 27</text>
 </g>
 <g><title>Adam&#x27;s iced-lettuce venture fails (ch. 36): Adam ships lettuce east in iced railroad cars, but the train is delayed and the crop rots. He loses much of his fortune and becomes a laughingstock in Salinas.
-Caused by: Adam confronts Kate and is freed from her</title>
-<circle cx="2290" cy="46" r="8" class="node t0"/>
-<text x="2290" y="76" class="title">Adam&#x27;s iced-</text>
-<text x="2290" y="92" class="title">lettuce venture</text>
-<text x="2290" y="108" class="title">fails</text>
-<text x="2290" y="124" class="chap">Ch. 36</text>
+Caused by: Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas, Adam sinks into apathy while Lee raises the twins</title>
+<circle cx="1234" cy="46" r="8" class="node t0"/>
+<text x="1234" y="76" class="title">Adam&#x27;s iced-</text>
+<text x="1234" y="92" class="title">lettuce venture</text>
+<text x="1234" y="108" class="title">fails</text>
+<text x="1234" y="124" class="chap">Ch. 36</text>
 </g>
 <g><title>Aron turns devout and plans the ministry (ch. 37): Under the influence of the Episcopal minister Mr. Rolf, Aron becomes intensely religious. He talks of becoming a minister and swears off worldly impurity.
 Caused by: Abra tells Aron his mother is not dead</title>
-<circle cx="2422" cy="46" r="8" class="node t0"/>
-<text x="2422" y="76" class="title">Aron turns devout</text>
-<text x="2422" y="92" class="title">and plans the</text>
-<text x="2422" y="108" class="title">ministry</text>
-<text x="2422" y="124" class="chap">Ch. 37</text>
+<circle cx="1366" cy="46" r="8" class="node t0"/>
+<text x="1366" y="76" class="title">Aron turns devout</text>
+<text x="1366" y="92" class="title">and plans the</text>
+<text x="1366" y="108" class="title">ministry</text>
+<text x="1366" y="124" class="chap">Ch. 37</text>
 </g>
 <g><title>Cal discovers that the madam Kate is his mother (ch. 38): Restless and sleepless, Cal roams Salinas at night. Through the town&#x27;s talk he learns that Kate, owner of the notorious brothel, is his mother.
 Caused by: Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas, Abra tells Aron his mother is not dead, Cal prays not to be mean</title>
-<circle cx="2554" cy="46" r="8" class="node t0"/>
-<text x="2554" y="76" class="title">Cal discovers</text>
-<text x="2554" y="92" class="title">that the madam</text>
-<text x="2554" y="108" class="title">Kate is his</text>
-<text x="2554" y="124" class="title">mother</text>
-<text x="2554" y="140" class="chap">Ch. 38</text>
+<circle cx="1498" cy="46" r="8" class="node t0"/>
+<text x="1498" y="76" class="title">Cal discovers</text>
+<text x="1498" y="92" class="title">that the madam</text>
+<text x="1498" y="108" class="title">Kate is his</text>
+<text x="1498" y="124" class="title">mother</text>
+<text x="1498" y="140" class="chap">Ch. 38</text>
 </g>
 <g><title>Lee tells Cal the truth and that his choices are his own (ch. 39): When Cal presses him, Lee confirms who Kate is and tells him the story of his parents. Lee insists Cal has his father in him as well, and that whatever he does will be his own doing, not his mother&#x27;s.
-Caused by: Cal discovers that the madam Kate is his mother, Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest, Lee explains that rejection breeds rage and guilt</title>
-<circle cx="2686" cy="496" r="8" class="node t3"/>
-<text x="2686" y="526" class="title">Lee tells Cal the</text>
-<text x="2686" y="542" class="title">truth and that</text>
-<text x="2686" y="558" class="title">his choices are</text>
-<text x="2686" y="574" class="title">his own</text>
-<text x="2686" y="590" class="chap">Ch. 39</text>
+Caused by: Cal discovers that the madam Kate is his mother, Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest, Adam sinks into apathy while Lee raises the twins</title>
+<circle cx="1630" cy="346" r="8" class="node t3"/>
+<text x="1630" y="376" class="title">Lee tells Cal the</text>
+<text x="1630" y="392" class="title">truth and that</text>
+<text x="1630" y="408" class="title">his choices are</text>
+<text x="1630" y="424" class="title">his own</text>
+<text x="1630" y="440" class="chap">Ch. 39</text>
 </g>
 <g><title>Cal follows Kate and confronts her (ch. 40): Cal trails Kate on her walks until she brings him into her room. She tries to draw him in as someone like herself and asks about Aron. Cal sees her fear and leaves no longer afraid of her.
 Caused by: Cal discovers that the madam Kate is his mother, Lee tells Cal the truth and that his choices are his own</title>
-<circle cx="2818" cy="46" r="8" class="node t0"/>
-<text x="2818" y="76" class="title">Cal follows Kate</text>
-<text x="2818" y="92" class="title">and confronts her</text>
-<text x="2818" y="108" class="chap">Ch. 40</text>
+<circle cx="1762" cy="46" r="8" class="node t0"/>
+<text x="1762" y="76" class="title">Cal follows Kate</text>
+<text x="1762" y="92" class="title">and confronts her</text>
+<text x="1762" y="108" class="chap">Ch. 40</text>
 </g>
 <g><title>Adam serves on the wartime draft board (ch. 42): When America enters the First World War, Adam sits on the local draft board. He is troubled by the young men he sends off to fight.
-Caused by: Adam confronts Kate and is freed from her</title>
-<circle cx="2950" cy="46" r="8" class="node t0"/>
-<text x="2950" y="76" class="title">Adam serves on</text>
-<text x="2950" y="92" class="title">the wartime draft</text>
-<text x="2950" y="108" class="title">board</text>
-<text x="2950" y="124" class="chap">Ch. 42</text>
+Caused by: Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas, Adam sinks into apathy while Lee raises the twins</title>
+<circle cx="1894" cy="46" r="8" class="node t0"/>
+<text x="1894" y="76" class="title">Adam serves on</text>
+<text x="1894" y="92" class="title">the wartime draft</text>
+<text x="1894" y="108" class="title">board</text>
+<text x="1894" y="124" class="chap">Ch. 42</text>
 </g>
 <g><title>Cal partners with Will Hamilton to grow beans (ch. 43): Cal goes to the businessman Will Hamilton with a plan to grow and sell beans while wartime demand is high. He hopes to rebuild the money his father lost.
 Caused by: Adam&#x27;s iced-lettuce venture fails, Adam serves on the wartime draft board</title>
-<circle cx="3082" cy="46" r="8" class="node t0"/>
-<text x="3082" y="76" class="title">Cal partners with</text>
-<text x="3082" y="92" class="title">Will Hamilton to</text>
-<text x="3082" y="108" class="title">grow beans</text>
-<text x="3082" y="124" class="chap">Ch. 43</text>
-</g>
-<g><title>Lee lends Cal the money to start (ch. 43): Cal needs five thousand dollars for his share of the bean deal. Lee gives it to him from his own savings.
-Caused by: Cal partners with Will Hamilton to grow beans, Lee tells Cal the truth and that his choices are his own</title>
-<circle cx="3214" cy="496" r="8" class="node t3"/>
-<text x="3214" y="526" class="title">Lee lends Cal the</text>
-<text x="3214" y="542" class="title">money to start</text>
-<text x="3214" y="558" class="chap">Ch. 43</text>
+<circle cx="2026" cy="46" r="8" class="node t0"/>
+<text x="2026" y="76" class="title">Cal partners with</text>
+<text x="2026" y="92" class="title">Will Hamilton to</text>
+<text x="2026" y="108" class="title">grow beans</text>
+<text x="2026" y="124" class="chap">Ch. 43</text>
 </g>
 <g><title>Adam glows with pride over Aron&#x27;s college plans (ch. 44): Aron pushes to finish high school early and enter Stanford. Adam is openly proud of him.
 Caused by: Aron turns devout and plans the ministry</title>
-<circle cx="3346" cy="46" r="8" class="node t0"/>
-<text x="3346" y="76" class="title">Adam glows with</text>
-<text x="3346" y="92" class="title">pride over Aron&#x27;s</text>
-<text x="3346" y="108" class="title">college plans</text>
-<text x="3346" y="124" class="chap">Ch. 44</text>
-</g>
-<g><title>Aron goes away to Stanford (ch. 46): Aron leaves home early for Stanford, carrying his father&#x27;s hopes. Cal stays behind in Salinas.
-Caused by: Adam glows with pride over Aron&#x27;s college plans</title>
-<circle cx="3478" cy="46" r="8" class="node t0"/>
-<text x="3478" y="76" class="title">Aron goes away to</text>
-<text x="3478" y="92" class="title">Stanford</text>
-<text x="3478" y="108" class="chap">Ch. 46</text>
+<circle cx="2158" cy="46" r="8" class="node t0"/>
+<text x="2158" y="76" class="title">Adam glows with</text>
+<text x="2158" y="92" class="title">pride over Aron&#x27;s</text>
+<text x="2158" y="108" class="title">college plans</text>
+<text x="2158" y="124" class="chap">Ch. 44</text>
 </g>
 <g><title>Cal makes a fortune and plans a Thanksgiving gift (ch. 48): The bean deal earns Cal fifteen thousand dollars. He gets the money in new bills and plans to give it to Adam at Thanksgiving dinner, when Aron is home.
-Caused by: Lee lends Cal the money to start, Aron goes away to Stanford</title>
-<circle cx="3610" cy="46" r="8" class="node t0"/>
-<text x="3610" y="76" class="title">Cal makes a</text>
-<text x="3610" y="92" class="title">fortune and plans</text>
-<text x="3610" y="108" class="title">a Thanksgiving</text>
-<text x="3610" y="124" class="title">gift</text>
-<text x="3610" y="140" class="chap">Ch. 48</text>
+Caused by: Cal partners with Will Hamilton to grow beans, Lee tells Cal the truth and that his choices are his own, Adam glows with pride over Aron&#x27;s college plans</title>
+<circle cx="2290" cy="46" r="8" class="node t0"/>
+<text x="2290" y="76" class="title">Cal makes a</text>
+<text x="2290" y="92" class="title">fortune and plans</text>
+<text x="2290" y="108" class="title">a Thanksgiving</text>
+<text x="2290" y="124" class="title">gift</text>
+<text x="2290" y="140" class="chap">Ch. 48</text>
 </g>
 <g><title>Adam rejects Cal&#x27;s money and praises Aron instead (ch. 49): At Thanksgiving, Cal gives Adam the money. Adam refuses it as profit made from the war while he sends boys to die. He says the gift he wants is a good life like Aron&#x27;s.
 Caused by: Cal makes a fortune and plans a Thanksgiving gift, Adam serves on the wartime draft board, Adam glows with pride over Aron&#x27;s college plans</title>
-<circle cx="3742" cy="46" r="8" class="node t0"/>
-<text x="3742" y="76" class="title">Adam rejects</text>
-<text x="3742" y="92" class="title">Cal&#x27;s money and</text>
-<text x="3742" y="108" class="title">praises Aron</text>
-<text x="3742" y="124" class="title">instead</text>
-<text x="3742" y="140" class="chap">Ch. 49</text>
-</g>
-<g><title>Lee tries to steady Cal after the rejection (ch. 49): Lee goes to the stricken Cal and urges him not to let his hurt and anger take control of him.
-Caused by: Adam rejects Cal&#x27;s money and praises Aron instead, Lee tells Cal the truth and that his choices are his own</title>
-<circle cx="3874" cy="496" r="8" class="node t3"/>
-<text x="3874" y="526" class="title">Lee tries to</text>
-<text x="3874" y="542" class="title">steady Cal after</text>
-<text x="3874" y="558" class="title">the rejection</text>
-<text x="3874" y="574" class="chap">Ch. 49</text>
+<circle cx="2422" cy="46" r="8" class="node t0"/>
+<text x="2422" y="76" class="title">Adam rejects</text>
+<text x="2422" y="92" class="title">Cal&#x27;s money and</text>
+<text x="2422" y="108" class="title">praises Aron</text>
+<text x="2422" y="124" class="title">instead</text>
+<text x="2422" y="140" class="chap">Ch. 49</text>
 </g>
 <g><title>Cal takes Aron to Kate&#x27;s house and shows him their mother (ch. 49): That night, still raw from his father&#x27;s rejection, Cal leads Aron to Kate&#x27;s brothel. There he confronts his brother with the truth that its madam is their mother, Cathy.
-Caused by: Adam rejects Cal&#x27;s money and praises Aron instead, Lee tries to steady Cal after the rejection, Cal follows Kate and confronts her, Aron turns devout and plans the ministry, Lee explains that rejection breeds rage and guilt</title>
-<circle cx="4006" cy="46" r="12" class="node focal"/>
-<text x="4006" y="76" class="title">Cal takes Aron to</text>
-<text x="4006" y="92" class="title">Kate&#x27;s house and</text>
-<text x="4006" y="108" class="title">shows him their</text>
-<text x="4006" y="124" class="title">mother</text>
-<text x="4006" y="140" class="chap">Ch. 49</text>
+Caused by: Adam rejects Cal&#x27;s money and praises Aron instead, Lee tells Cal the truth and that his choices are his own, Cal follows Kate and confronts her, Aron turns devout and plans the ministry, Adam sinks into apathy while Lee raises the twins</title>
+<circle cx="2554" cy="46" r="12" class="node focal"/>
+<text x="2554" y="76" class="title">Cal takes Aron to</text>
+<text x="2554" y="92" class="title">Kate&#x27;s house and</text>
+<text x="2554" y="108" class="title">shows him their</text>
+<text x="2554" y="124" class="title">mother</text>
+<text x="2554" y="140" class="chap">Ch. 49</text>
 </g>
 </svg>
 </div>
@@ -364,36 +266,36 @@ Caused by: Adam rejects Cal&#x27;s money and praises Aron instead, Lee tries to 
 <thead><tr><th>#</th><th>Event</th><th>Thread</th><th>Ch.</th><th>Kept</th><th>Without it, Cal…</th>
 <th>Affects</th><th>Judge's reason</th><th>Checked</th></tr></thead>
 <tbody>
-<tr><td>1</td><td><strong>Cathy Ames is introduced as a born monster</strong><br>The narrator presents young Cathy as someone born without ordinary conscience, who manipulates everyone around her. She ends her childhood by burning down her parents&#x27; house with them inside and vanishing.<br><em>For Cal:</em> Cal will one day learn that his mother is this woman, and fear that her coldness lives in him.</td><td>Cathy/Kate</td><td>8</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>2</td><td><strong>Cathy marries Adam and goes to Charles on the wedding night</strong><br>Beaten and taken in at the Trask farm, Cathy marries the smitten Adam. On their wedding night she drugs him and goes to his brother Charles&#x27;s bed.<br><em>For Cal:</em> Cal is born from a marriage built on his mother&#x27;s deceit, a secret kept from him.</td><td>Cathy/Kate</td><td>11</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>3</td><td><strong>The twins are born and Cathy rejects them</strong><br>Samuel Hamilton delivers Cathy&#x27;s twin boys. Cathy bites his hand during the birth and shows no interest in the babies.<br><em>For Cal:</em> From birth Cal is unwanted by his mother, though he will not know it for years.</td><td>Trask</td><td>17</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>4</td><td><strong>Cathy shoots Adam and abandons the twins</strong><br>About a week after the birth, Cathy tells Adam she is leaving. When he tries to stop her, she shoots him in the shoulder and walks out, leaving the infants behind.<br><em>For Cal:</em> Cal loses his mother as a baby and grows up without knowing why.</td><td>Cathy/Kate</td><td>17</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>5</td><td><strong>Adam hides the truth about the shooting</strong><br>When Deputy Horace Quinn questions him, the wounded Adam insists the shooting was an accident. He tries to shield Cathy and keep her flight hidden.<br><em>For Cal:</em> The silence that will surround Cal&#x27;s mother throughout his childhood begins here.</td><td>Trask</td><td>18</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>6</td><td><strong>Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas</strong><br>Cathy goes to Salinas, takes the name Kate, and joins Faye&#x27;s brothel. She soon makes herself indispensable to its owner.<br><em>For Cal:</em> Cal&#x27;s mother is living a few miles away under a new name, a secret waiting for him.</td><td>Cathy/Kate</td><td>19</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>7</td><td><strong>Adam sinks into apathy while Lee raises the twins</strong><br>For more than a year Adam barely looks at his sons and has not even named them. Lee, the Chinese servant, cares for the boys.<br><em>For Cal:</em> Cal&#x27;s first years are spent with an absent-minded father and a loving servant, Lee, in his place.</td><td>Trask</td><td>22</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>8</td><td><strong>Samuel strikes Adam to wake him</strong><br>Samuel, furious at Adam&#x27;s neglect of the boys, knocks him down. The blow shocks Adam back toward responsibility.<br><em>For Cal:</em> Cal&#x27;s father is forced to start paying attention to him, but only partly.</td><td>Hamilton</td><td>22</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>9</td><td><strong>The twins are named after a talk about Cain and Abel</strong><br>Samuel, Adam and Lee read and debate the story of Cain and Abel while choosing names. The boys become Caleb and Aron.<br><em>For Cal:</em> Cal is given a name tied to the Cain-and-Abel story he will half-live out with Aron.</td><td>Hamilton</td><td>22</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>10</td><td><strong>Lee explains that rejection breeds rage and guilt</strong><br>Lee argues that the Cain story is everyone&#x27;s story. A child&#x27;s deepest terror is not being loved, and rejection leads to anger, crime and guilt.<br><em>For Cal:</em> Lee forms an idea of the rejected son that will guide how he raises and counsels Cal.</td><td>Lee</td><td>24</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>11</td><td><strong>Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest</strong><br>Lee reports that his elderly Chinese relatives studied Hebrew to understand the Cain verse. They concluded the word timshel means &#x27;thou mayest&#x27;, so humans can choose to overcome sin.<br><em>For Cal:</em> Lee forms the belief in personal choice that he will later pass on to Cal.</td><td>Lee</td><td>24</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>12</td><td><strong>Samuel tells Adam that Cathy runs a Salinas brothel</strong><br>On his farewell visit, Samuel tells Adam that Cathy is alive in Salinas, calling herself Kate and running a brothel. He hopes the truth will free Adam.<br><em>For Cal:</em> The adults around Cal now know his mother&#x27;s whereabouts and will keep it from him.</td><td>Hamilton</td><td>24</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>13</td><td><strong>Adam confronts Kate and is freed from her</strong><br>Adam visits Kate at her brothel. She taunts him and boasts of her hold over powerful men, but he sees her clearly and walks out released from her spell.<br><em>For Cal:</em> Cal&#x27;s father comes back to life but keeps the truth about Cal&#x27;s mother locked away.</td><td>Trask</td><td>25</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>14</td><td><strong>Abra visits and warms to Aron&#x27;s gift</strong><br>A rainstorm strands young Abra and her parents at the Trask place. Abra is drawn to gentle Aron, who gives her a rabbit, and Cal feels pushed aside.<br><em>For Cal:</em> Cal feels that people naturally love Aron more than him, and resents it.</td><td>Trask</td><td>27</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>15</td><td><strong>Abra tells Aron his mother is not dead</strong><br>Abra repeats what she overheard from her parents: the twins&#x27; mother did not die but ran away. This challenges the story the boys were told.<br><em>For Cal:</em> Cal begins to sense that the story of his dead mother may be a lie.</td><td>Trask</td><td>27</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>16</td><td><strong>Cal prays not to be mean</strong><br>Alone at night, Cal asks God to make him like Aron and not mean. He promises anything if people will love him.<br><em>For Cal:</em> Cal fears he is mean by nature and desperately wants to be loved like Aron.</td><td>Trask</td><td>27</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>17</td><td><strong>Adam&#x27;s iced-lettuce venture fails</strong><br>Adam ships lettuce east in iced railroad cars, but the train is delayed and the crop rots. He loses much of his fortune and becomes a laughingstock in Salinas.<br><em>For Cal:</em> Cal sees his father humiliated and poorer, and later wants to make it up to him.</td><td>Trask</td><td>36</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>18</td><td><strong>Aron turns devout and plans the ministry</strong><br>Under the influence of the Episcopal minister Mr. Rolf, Aron becomes intensely religious. He talks of becoming a minister and swears off worldly impurity.<br><em>For Cal:</em> Cal watches his brother build a pure, protected world that the truth about their mother could shatter.</td><td>Trask</td><td>37</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>19</td><td><strong>Cal discovers that the madam Kate is his mother</strong><br>Restless and sleepless, Cal roams Salinas at night. Through the town&#x27;s talk he learns that Kate, owner of the notorious brothel, is his mother.<br><em>For Cal:</em> Cal learns his mother is a brothel keeper and fears her evil is in him.</td><td>Trask</td><td>38</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>20</td><td><strong>Lee tells Cal the truth and that his choices are his own</strong><br>When Cal presses him, Lee confirms who Kate is and tells him the story of his parents. Lee insists Cal has his father in him as well, and that whatever he does will be his own doing, not his mother&#x27;s.<br><em>For Cal:</em> Cal learns he cannot blame his mother&#x27;s blood for what he does; he is free and responsible.</td><td>Lee</td><td>39</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>21</td><td><strong>Cal follows Kate and confronts her</strong><br>Cal trails Kate on her walks until she brings him into her room. She tries to draw him in as someone like herself and asks about Aron. Cal sees her fear and leaves no longer afraid of her.<br><em>For Cal:</em> Cal meets his mother, refuses to be like her, and keeps the secret from Aron.</td><td>Trask</td><td>40</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>22</td><td><strong>Adam serves on the wartime draft board</strong><br>When America enters the First World War, Adam sits on the local draft board. He is troubled by the young men he sends off to fight.<br><em>For Cal:</em> Cal&#x27;s father grows morally burdened by the war in a way that will turn against Cal&#x27;s gift.</td><td>Trask</td><td>42</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>23</td><td><strong>Cal partners with Will Hamilton to grow beans</strong><br>Cal goes to the businessman Will Hamilton with a plan to grow and sell beans while wartime demand is high. He hopes to rebuild the money his father lost.<br><em>For Cal:</em> Cal hopes to win his father&#x27;s love by earning back what he lost.</td><td>Trask</td><td>43</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>24</td><td><strong>Lee lends Cal the money to start</strong><br>Cal needs five thousand dollars for his share of the bean deal. Lee gives it to him from his own savings.<br><em>For Cal:</em> Cal is trusted with Lee&#x27;s savings and feels his plan to please his father can work.</td><td>Lee</td><td>43</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>25</td><td><strong>Adam glows with pride over Aron&#x27;s college plans</strong><br>Aron pushes to finish high school early and enter Stanford. Adam is openly proud of him.<br><em>For Cal:</em> Cal sees his father lavish pride on Aron and feels himself overlooked.</td><td>Trask</td><td>44</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>26</td><td><strong>Aron goes away to Stanford</strong><br>Aron leaves home early for Stanford, carrying his father&#x27;s hopes. Cal stays behind in Salinas.<br><em>For Cal:</em> With Aron gone and praised from afar, Cal plans a gift to win a share of his father&#x27;s pride.</td><td>Trask</td><td>46</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>27</td><td><strong>Cal makes a fortune and plans a Thanksgiving gift</strong><br>The bean deal earns Cal fifteen thousand dollars. He gets the money in new bills and plans to give it to Adam at Thanksgiving dinner, when Aron is home.<br><em>For Cal:</em> Cal believes this gift will finally make his father love him.</td><td>Trask</td><td>48</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>28</td><td><strong>Adam rejects Cal&#x27;s money and praises Aron instead</strong><br>At Thanksgiving, Cal gives Adam the money. Adam refuses it as profit made from the war while he sends boys to die. He says the gift he wants is a good life like Aron&#x27;s.<br><em>For Cal:</em> Cal feels utterly rejected by his father and blinded by jealousy of Aron.</td><td>Trask</td><td>49</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>29</td><td><strong>Lee tries to steady Cal after the rejection</strong><br>Lee goes to the stricken Cal and urges him not to let his hurt and anger take control of him.<br><em>For Cal:</em> Cal is reminded he can master his rage, but his pain is stronger than the warning.</td><td>Lee</td><td>49</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
-<tr><td>30</td><td><strong>Cal takes Aron to Kate&#x27;s house and shows him their mother</strong><br>That night, still raw from his father&#x27;s rejection, Cal leads Aron to Kate&#x27;s brothel. There he confronts his brother with the truth that its madam is their mother, Cathy.<br><em>For Cal:</em> Cal strikes out at the favored brother by destroying Aron&#x27;s innocence, and soon will be crushed by guilt.</td><td>Trask</td><td>49</td><td>not judged yet</td><td></td><td></td><td></td><td>✓ checked</td></tr>
+<tr><td>1</td><td><strong>Cathy Ames is introduced as a born monster</strong><br>The narrator presents young Cathy as someone born without ordinary conscience, who manipulates everyone around her. She ends her childhood by burning down her parents&#x27; house with them inside and vanishing.<br><em>For Cal:</em> Cal will one day learn that his mother is this woman, and fear that her coldness lives in him.</td><td>Cathy/Kate</td><td>8</td><td>5/5</td><td>changes who he is</td><td>Cal discovers that the madam Kate is his mother, Lee tells Cal the truth and that his choices are his own, Cal follows Kate and confronts her, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Cathy&#x27;s monstrous nature is what Cal fears he has inherited. It is also what makes the truth about her a weapon. Without it, his mother would not be a source of shame and dread for him.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>2</td><td><strong>Cathy marries Adam and goes to Charles on the wedding night</strong><br>Beaten and taken in at the Trask farm, Cathy marries the smitten Adam. On their wedding night she drugs him and goes to his brother Charles&#x27;s bed.<br><em>For Cal:</em> Cal is born from a marriage built on his mother&#x27;s deceit, a secret kept from him.</td><td>Cathy/Kate</td><td>11</td><td>0/5</td><td>no real change</td><td></td><td>Cal never learns of the drugging or of Charles. His sense of himself at the reveal does not depend on it.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>3</td><td><strong>The twins are born and Cathy rejects them</strong><br>Samuel Hamilton delivers Cathy&#x27;s twin boys. Cathy bites his hand during the birth and shows no interest in the babies.<br><em>For Cal:</em> From birth Cal is unwanted by his mother, though he will not know it for years.</td><td>Trask</td><td>17</td><td>0/5</td><td>no real change</td><td></td><td>The birth is needed for Cal to exist. But Cathy&#x27;s indifference at the delivery is unknown to him and does not shape his motives.</td><td>✓ checked</td></tr>
+<tr><td>4</td><td><strong>Cathy shoots Adam and abandons the twins</strong><br>About a week after the birth, Cathy tells Adam she is leaving. When he tries to stop her, she shoots him in the shoulder and walks out, leaving the infants behind.<br><em>For Cal:</em> Cal loses his mother as a baby and grows up without knowing why.</td><td>Cathy/Kate</td><td>17</td><td>5/5</td><td>changes who he is</td><td>Abra tells Aron his mother is not dead, Cal discovers that the madam Kate is his mother, Lee tells Cal the truth and that his choices are his own, Cal follows Kate and confronts her</td><td>Her abandonment makes Cal a motherless boy raised on a false story. That gap and that lie are what he later uncovers and turns against Aron.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>5</td><td><strong>Adam hides the truth about the shooting</strong><br>When Deputy Horace Quinn questions him, the wounded Adam insists the shooting was an accident. He tries to shield Cathy and keep her flight hidden.<br><em>For Cal:</em> The silence that will surround Cal&#x27;s mother throughout his childhood begins here.</td><td>Trask</td><td>18</td><td>0/5</td><td>no real change</td><td></td><td>Adam&#x27;s lie to the deputy is legal concealment that Cal never knows about. The silence the boys grow up with comes from later choices.</td><td>✓ checked</td></tr>
+<tr><td>6</td><td><strong>Cathy becomes &#x27;Kate&#x27; at Faye&#x27;s brothel in Salinas</strong><br>Cathy goes to Salinas, takes the name Kate, and joins Faye&#x27;s brothel. She soon makes herself indispensable to its owner.<br><em>For Cal:</em> Cal&#x27;s mother is living a few miles away under a new name, a secret waiting for him.</td><td>Cathy/Kate</td><td>19</td><td>5/5</td><td>changes his choice</td><td>Cal discovers that the madam Kate is his mother, Cal follows Kate and confronts her, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Because his mother is a Salinas brothel madam, the truth carries the shame that can shatter pure Aron. Without that, there is nothing for Cal to take him to.</td><td>✓ checked</td></tr>
+<tr><td>7</td><td><strong>Adam sinks into apathy while Lee raises the twins</strong><br>For more than a year Adam barely looks at his sons and has not even named them. Lee, the Chinese servant, cares for the boys.<br><em>For Cal:</em> Cal&#x27;s first years are spent with an absent-minded father and a loving servant, Lee, in his place.</td><td>Trask</td><td>22</td><td>5/5</td><td>changes who he is</td><td>Lee tells Cal the truth and that his choices are his own, Lee lends Cal the money to start, Lee tries to steady Cal after the rejection</td><td>Adam&#x27;s withdrawal leaves Lee as Cal&#x27;s true guide and confidant. It also starts Cal&#x27;s lifelong hunger for his distant father&#x27;s attention.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>8</td><td><strong>Samuel strikes Adam to wake him</strong><br>Samuel, furious at Adam&#x27;s neglect of the boys, knocks him down. The blow shocks Adam back toward responsibility.<br><em>For Cal:</em> Cal&#x27;s father is forced to start paying attention to him, but only partly.</td><td>Hamilton</td><td>22</td><td>0/5</td><td>no real change</td><td></td><td>The blow wakes Adam enough to name the boys. It moves the plot but leaves no mark Cal carries to the reveal.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>9</td><td><strong>The twins are named after a talk about Cain and Abel</strong><br>Samuel, Adam and Lee read and debate the story of Cain and Abel while choosing names. The boys become Caleb and Aron.<br><em>For Cal:</em> Cal is given a name tied to the Cain-and-Abel story he will half-live out with Aron.</td><td>Hamilton</td><td>22</td><td>0/5</td><td>no real change</td><td></td><td>The naming talk is thematic framing among the adults. Cal&#x27;s motives at the reveal come from what is later done to him, not from this conversation.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>10</td><td><strong>Lee explains that rejection breeds rage and guilt</strong><br>Lee argues that the Cain story is everyone&#x27;s story. A child&#x27;s deepest terror is not being loved, and rejection leads to anger, crime and guilt.<br><em>For Cal:</em> Lee forms an idea of the rejected son that will guide how he raises and counsels Cal.</td><td>Lee</td><td>24</td><td>0/5</td><td>no real change</td><td></td><td>Lee&#x27;s speech diagnoses the rejected son&#x27;s rage but is never heard by Cal. It explains his act rather than forming him.</td><td>✓ checked</td></tr>
+<tr><td>11</td><td><strong>Lee&#x27;s elders arrive at &#x27;timshel&#x27;, thou mayest</strong><br>Lee reports that his elderly Chinese relatives studied Hebrew to understand the Cain verse. They concluded the word timshel means &#x27;thou mayest&#x27;, so humans can choose to overcome sin.<br><em>For Cal:</em> Lee forms the belief in personal choice that he will later pass on to Cal.</td><td>Lee</td><td>24</td><td>5/5</td><td>changes who he is</td><td>Lee tells Cal the truth and that his choices are his own, Cal follows Kate and confronts her, Lee tries to steady Cal after the rejection, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Through Lee, timshel gives Cal the belief that his deeds are his own and not his mother&#x27;s blood. So he strikes at Aron knowing the act is his choice.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>12</td><td><strong>Samuel tells Adam that Cathy runs a Salinas brothel</strong><br>On his farewell visit, Samuel tells Adam that Cathy is alive in Salinas, calling herself Kate and running a brothel. He hopes the truth will free Adam.<br><em>For Cal:</em> The adults around Cal now know his mother&#x27;s whereabouts and will keep it from him.</td><td>Hamilton</td><td>24</td><td>0/5</td><td>no real change</td><td></td><td>This frees Adam but touches Cal only through plot. Cal&#x27;s discovery of Kate comes through other channels.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>13</td><td><strong>Adam confronts Kate and is freed from her</strong><br>Adam visits Kate at her brothel. She taunts him and boasts of her hold over powerful men, but he sees her clearly and walks out released from her spell.<br><em>For Cal:</em> Cal&#x27;s father comes back to life but keeps the truth about Cal&#x27;s mother locked away.</td><td>Trask</td><td>25</td><td>0/5</td><td>no real change</td><td></td><td>Adam&#x27;s release from Cathy restarts his ambitions. For Cal it is only a plot link to later events.</td><td>✓ checked</td></tr>
+<tr><td>14</td><td><strong>Abra visits and warms to Aron&#x27;s gift</strong><br>A rainstorm strands young Abra and her parents at the Trask place. Abra is drawn to gentle Aron, who gives her a rabbit, and Cal feels pushed aside.<br><em>For Cal:</em> Cal feels that people naturally love Aron more than him, and resents it.</td><td>Trask</td><td>27</td><td>5/5</td><td>changes who he is</td><td>Cal prays not to be mean</td><td>Watching Abra warm to gentle Aron while he is pushed aside plants Cal&#x27;s conviction that people naturally love his brother more. That jealousy drives the reveal.</td><td>✓ checked</td></tr>
+<tr><td>15</td><td><strong>Abra tells Aron his mother is not dead</strong><br>Abra repeats what she overheard from her parents: the twins&#x27; mother did not die but ran away. This challenges the story the boys were told.<br><em>For Cal:</em> Cal begins to sense that the story of his dead mother may be a lie.</td><td>Trask</td><td>27</td><td>5/5</td><td>changes who he is</td><td>Cal prays not to be mean, Cal discovers that the madam Kate is his mother</td><td>Abra&#x27;s news first makes Cal suspect the dead-mother story is a lie. It sets him searching for what the adults are hiding.</td><td>✓ checked</td></tr>
+<tr><td>16</td><td><strong>Cal prays not to be mean</strong><br>Alone at night, Cal asks God to make him like Aron and not mean. He promises anything if people will love him.<br><em>For Cal:</em> Cal fears he is mean by nature and desperately wants to be loved like Aron.</td><td>Trask</td><td>27</td><td>4/5</td><td>changes who he is</td><td>Cal discovers that the madam Kate is his mother, Lee tells Cal the truth and that his choices are his own, Cal follows Kate and confronts her, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>The prayer shows Cal already fearing he is mean by nature and aching to be loved like Aron. That fear and longing are the inner wound the reveal comes from.</td><td>✓ checked</td></tr>
+<tr><td>17</td><td><strong>Adam&#x27;s iced-lettuce venture fails</strong><br>Adam ships lettuce east in iced railroad cars, but the train is delayed and the crop rots. He loses much of his fortune and becomes a laughingstock in Salinas.<br><em>For Cal:</em> Cal sees his father humiliated and poorer, and later wants to make it up to him.</td><td>Trask</td><td>36</td><td>5/5</td><td>changes his choice</td><td>Cal partners with Will Hamilton to grow beans, Lee lends Cal the money to start, Cal makes a fortune and plans a Thanksgiving gift, Adam rejects Cal&#x27;s money and praises Aron instead, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Adam&#x27;s loss gives Cal his plan to win his father by restoring the money. Without it there is no gift, no rejection and no night of revenge.</td><td>✓ checked</td></tr>
+<tr><td>18</td><td><strong>Aron turns devout and plans the ministry</strong><br>Under the influence of the Episcopal minister Mr. Rolf, Aron becomes intensely religious. He talks of becoming a minister and swears off worldly impurity.<br><em>For Cal:</em> Cal watches his brother build a pure, protected world that the truth about their mother could shatter.</td><td>Trask</td><td>37</td><td>5/5</td><td>changes his choice</td><td>Adam glows with pride over Aron&#x27;s college plans, Adam rejects Cal&#x27;s money and praises Aron instead, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Aron&#x27;s fragile purity is exactly what the truth about Kate can destroy. Cal chooses that truth as his weapon because of it.</td><td>✓ checked</td></tr>
+<tr><td>19</td><td><strong>Cal discovers that the madam Kate is his mother</strong><br>Restless and sleepless, Cal roams Salinas at night. Through the town&#x27;s talk he learns that Kate, owner of the notorious brothel, is his mother.<br><em>For Cal:</em> Cal learns his mother is a brothel keeper and fears her evil is in him.</td><td>Trask</td><td>38</td><td>5/5</td><td>changes his choice</td><td>Lee tells Cal the truth and that his choices are his own, Cal follows Kate and confronts her, Lee tries to steady Cal after the rejection, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Without knowing Kate is his mother, Cal has no secret to reveal. He also lacks the fear of her that shapes him.</td><td>✓ checked</td></tr>
+<tr><td>20</td><td><strong>Lee tells Cal the truth and that his choices are his own</strong><br>When Cal presses him, Lee confirms who Kate is and tells him the story of his parents. Lee insists Cal has his father in him as well, and that whatever he does will be his own doing, not his mother&#x27;s.<br><em>For Cal:</em> Cal learns he cannot blame his mother&#x27;s blood for what he does; he is free and responsible.</td><td>Lee</td><td>39</td><td>5/5</td><td>changes who he is</td><td>Cal follows Kate and confronts her, Lee lends Cal the money to start, Lee tries to steady Cal after the rejection, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Lee tells Cal that he has his father in him too and that his deeds are his own. So Cal acts without the excuse of bad blood and carries full responsibility.</td><td>✓ checked</td></tr>
+<tr><td>21</td><td><strong>Cal follows Kate and confronts her</strong><br>Cal trails Kate on her walks until she brings him into her room. She tries to draw him in as someone like herself and asks about Aron. Cal sees her fear and leaves no longer afraid of her.<br><em>For Cal:</em> Cal meets his mother, refuses to be like her, and keeps the secret from Aron.</td><td>Trask</td><td>40</td><td>5/5</td><td>changes his choice</td><td>Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Facing Kate frees Cal from his fear of her, and she shows interest in Aron. This gives Cal the knowledge and nerve to lead his brother straight to her.</td><td>✓ checked</td></tr>
+<tr><td>22</td><td><strong>Adam serves on the wartime draft board</strong><br>When America enters the First World War, Adam sits on the local draft board. He is troubled by the young men he sends off to fight.<br><em>For Cal:</em> Cal&#x27;s father grows morally burdened by the war in a way that will turn against Cal&#x27;s gift.</td><td>Trask</td><td>42</td><td>5/5</td><td>changes his choice</td><td>Adam rejects Cal&#x27;s money and praises Aron instead, Lee tries to steady Cal after the rejection, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Adam&#x27;s guilt over sending boys to war makes him scorn Cal&#x27;s war-profit money. That rejection triggers the reveal.</td><td>✓ checked</td></tr>
+<tr><td>23</td><td><strong>Cal partners with Will Hamilton to grow beans</strong><br>Cal goes to the businessman Will Hamilton with a plan to grow and sell beans while wartime demand is high. He hopes to rebuild the money his father lost.<br><em>For Cal:</em> Cal hopes to win his father&#x27;s love by earning back what he lost.</td><td>Trask</td><td>43</td><td>5/5</td><td>changes his choice</td><td>Lee lends Cal the money to start, Cal makes a fortune and plans a Thanksgiving gift, Adam rejects Cal&#x27;s money and praises Aron instead, Lee tries to steady Cal after the rejection, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>The bean venture is Cal&#x27;s bid for his father&#x27;s love. Its failure to win Adam is what turns into the vengeful act.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>24</td><td><strong>Lee lends Cal the money to start</strong><br>Cal needs five thousand dollars for his share of the bean deal. Lee gives it to him from his own savings.<br><em>For Cal:</em> Cal is trusted with Lee&#x27;s savings and feels his plan to please his father can work.</td><td>Lee</td><td>43</td><td>0/5</td><td>no real change</td><td></td><td>The loan finances the scheme but does not alter Cal&#x27;s hopes, fears or resentments at the reveal.</td><td>✓ checked</td></tr>
+<tr><td>25</td><td><strong>Adam glows with pride over Aron&#x27;s college plans</strong><br>Aron pushes to finish high school early and enter Stanford. Adam is openly proud of him.<br><em>For Cal:</em> Cal sees his father lavish pride on Aron and feels himself overlooked.</td><td>Trask</td><td>44</td><td>5/5</td><td>changes who he is</td><td>Aron goes away to Stanford, Cal makes a fortune and plans a Thanksgiving gift, Adam rejects Cal&#x27;s money and praises Aron instead, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Seeing his father glow over Aron sharpens Cal&#x27;s sense of being the lesser son. That jealousy gives the reveal its target.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>26</td><td><strong>Aron goes away to Stanford</strong><br>Aron leaves home early for Stanford, carrying his father&#x27;s hopes. Cal stays behind in Salinas.<br><em>For Cal:</em> With Aron gone and praised from afar, Cal plans a gift to win a share of his father&#x27;s pride.</td><td>Trask</td><td>46</td><td>0/5</td><td>no real change</td><td></td><td>Aron&#x27;s departure mainly sets the timing of the Thanksgiving gift. Cal&#x27;s jealousy and motives are already in place.</td><td>✓ checked</td></tr>
+<tr><td>27</td><td><strong>Cal makes a fortune and plans a Thanksgiving gift</strong><br>The bean deal earns Cal fifteen thousand dollars. He gets the money in new bills and plans to give it to Adam at Thanksgiving dinner, when Aron is home.<br><em>For Cal:</em> Cal believes this gift will finally make his father love him.</td><td>Trask</td><td>48</td><td>5/5</td><td>changes his choice</td><td>Adam rejects Cal&#x27;s money and praises Aron instead, Lee tries to steady Cal after the rejection, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>Cal stakes all his hope of love on this gift. That is why its rejection hurts badly enough to drive him to wound Aron.</td><td>✓ checked</td></tr>
+<tr><td>28</td><td><strong>Adam rejects Cal&#x27;s money and praises Aron instead</strong><br>At Thanksgiving, Cal gives Adam the money. Adam refuses it as profit made from the war while he sends boys to die. He says the gift he wants is a good life like Aron&#x27;s.<br><em>For Cal:</em> Cal feels utterly rejected by his father and blinded by jealousy of Aron.</td><td>Trask</td><td>49</td><td>5/5</td><td>changes his choice</td><td>Lee tries to steady Cal after the rejection, Cal takes Aron to Kate&#x27;s house and shows him their mother</td><td>The rejection, and Adam&#x27;s praise of Aron in its place, is the immediate wound Cal answers by destroying his brother&#x27;s innocence.</td><td>✓ checked</td></tr>
+<tr class="cut"><td>29</td><td><strong>Lee tries to steady Cal after the rejection</strong><br>Lee goes to the stricken Cal and urges him not to let his hurt and anger take control of him.<br><em>For Cal:</em> Cal is reminded he can master his rage, but his pain is stronger than the warning.</td><td>Lee</td><td>49</td><td>0/5</td><td>no real change</td><td></td><td>Lee&#x27;s warning goes unheeded. Cal already knew from Lee that his choices are his own, so he acts the same and for the same reasons.</td><td>✓ checked</td></tr>
+<tr><td>30</td><td><strong>Cal takes Aron to Kate&#x27;s house and shows him their mother</strong><br>That night, still raw from his father&#x27;s rejection, Cal leads Aron to Kate&#x27;s brothel. There he confronts his brother with the truth that its madam is their mother, Cathy.<br><em>For Cal:</em> Cal strikes out at the favored brother by destroying Aron&#x27;s innocence, and soon will be crushed by guilt.</td><td>Trask</td><td>49</td><td>5/5</td><td>changes his choice</td><td></td><td>This is the focal event itself.</td><td>✓ checked</td></tr>
 </tbody>
 </table>
 </div>

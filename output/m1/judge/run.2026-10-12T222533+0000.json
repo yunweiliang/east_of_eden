@@ -1,0 +1,263 @@
+{
+  "meta": {
+    "stage": "m1-judge",
+    "model": "claude-opus-5-5",
+    "served_by": "claude-opus-5-5",
+    "judge_hash": "880fa683ce19a9e1",
+    "pool_prompt_hash": "428c3e46ef1d4fc7",
+    "attempts": 1,
+    "usage": {
+      "input_tokens": 8425,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 7559
+    },
+    "cost_usd": 0.1849,
+    "created": "2026-10-12T22:25:33+00:00",
+    "errors": []
+  },
+  "verdicts": [
+    {
+      "event_id": "cathy-born-monster",
+      "effect": "changes who he is",
+      "affects": [
+        "cal-learns-of-kate",
+        "cal-meets-kate",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Cathy's lack of conscience is what makes the truth about her a source of shame, and what makes Cal fear her nature lives in him. Without it the mother he exposes would not be the monster he dreads resembling."
+    },
+    {
+      "event_id": "cathy-wedding-night",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "Cal never learns about the wedding-night betrayal or the question of Charles's paternity. It moves the plot toward the twins' birth but shapes nothing in him."
+    },
+    {
+      "event_id": "twins-born",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The birth is a precondition for Cal existing at all, not something that forms his outlook. Cathy's indifference reaches him only through later events."
+    },
+    {
+      "event_id": "cathy-shoots-adam",
+      "effect": "changes who he is",
+      "affects": [
+        "lee-tells-cal",
+        "cal-meets-kate",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Her abandonment leaves the motherless hole and the hidden story that Cal later uncovers. Lee recounts it to him, and it colors how he sees her and himself."
+    },
+    {
+      "event_id": "adam-covers-shooting",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The lie to Deputy Quinn concerns the public account of the shooting. The family silence Cal grows up inside comes from Adam's later choices, so Cal is unchanged."
+    },
+    {
+      "event_id": "cathy-becomes-kate",
+      "effect": "changes his choice",
+      "affects": [
+        "cal-learns-of-kate",
+        "cal-meets-kate",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Without Kate the Salinas madam, there is no shameful mother nearby to discover or to lead Aron to. The weapon Cal uses would not exist."
+    },
+    {
+      "event_id": "adam-stupor-lee-raises",
+      "effect": "changes who he is",
+      "affects": [
+        "lee-tells-cal",
+        "lee-after-rejection",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Lee becomes Cal's real parent and confidant, which is why his counsel weighs on Cal. Adam's early emotional absence also seeds Cal's hunger for his father's love."
+    },
+    {
+      "event_id": "samuel-strikes-adam",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The blow rouses Adam enough to name the boys, but it only moves the plot. Cal's character and motives at the reveal are untouched."
+    },
+    {
+      "event_id": "naming-cain-abel",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The naming conversation frames the theme, but Cal is not shaped by it. Its consequence for him runs through Lee's later ideas, which are judged on their own."
+    },
+    {
+      "event_id": "lee-rejection-speech",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The speech states the pattern Cal will live out, but Cal never hears it and it does not form him. It explains him thematically rather than changing him."
+    },
+    {
+      "event_id": "timshel",
+      "effect": "changes who he is",
+      "affects": [
+        "lee-tells-cal",
+        "lee-after-rejection",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Lee's belief that people can choose underlies his insistence that Cal's acts are his own. As a result, Cal at the reveal knows he cannot blame his mother's blood."
+    },
+    {
+      "event_id": "samuel-tells-adam-kate",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "This concerns Adam's release from Cathy. Cal is not involved and learns of Kate by his own route."
+    },
+    {
+      "event_id": "adam-visits-kate",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "Adam's confrontation frees him from Cathy, but Cal never knows of it. It mainly moves Adam's story forward."
+    },
+    {
+      "event_id": "bradley-visit-rabbit",
+      "effect": "changes who he is",
+      "affects": [
+        "cal-prayer",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Watching Abra drawn to gentle Aron plants Cal's sense that others naturally love his brother more. That jealousy erupts at the reveal."
+    },
+    {
+      "event_id": "abra-tells-aron-mother",
+      "effect": "changes who he is",
+      "affects": [
+        "cal-learns-of-kate",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Abra's news cracks the dead-mother story and starts Cal's suspicion. It primes him to seek out and hold the truth Aron does not want."
+    },
+    {
+      "event_id": "cal-prayer",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The prayer reveals a fear of his own meanness that Cal already carries; it does not create it. He would be the same at the reveal without the scene."
+    },
+    {
+      "event_id": "lettuce-failure",
+      "effect": "changes his choice",
+      "affects": [
+        "cal-will-beans",
+        "cal-readies-gift",
+        "adam-rejects-gift",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Adam's loss gives Cal the goal of earning the money back. Without it there is no gift, no rejection, and no wounded night that sends him to Kate's with Aron."
+    },
+    {
+      "event_id": "aron-turns-religious",
+      "effect": "changes who he is",
+      "affects": [
+        "adam-rejects-gift",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Aron's fragile purity is what Adam holds up against Cal and what Cal knows the truth will shatter. Without it his blow would land on a less sheltered brother, carrying a different meaning."
+    },
+    {
+      "event_id": "cal-learns-of-kate",
+      "effect": "changes his choice",
+      "affects": [
+        "lee-tells-cal",
+        "cal-meets-kate",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Without knowing Kate is his mother, Cal has nothing to reveal. He could not take Aron to her."
+    },
+    {
+      "event_id": "lee-tells-cal",
+      "effect": "changes who he is",
+      "affects": [
+        "cal-meets-kate",
+        "lee-after-rejection",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Lee's insistence that Cal's acts are his own, and not his mother's, means Cal acts knowing he is responsible. That knowledge sets up his crushing guilt."
+    },
+    {
+      "event_id": "cal-meets-kate",
+      "effect": "changes his choice",
+      "affects": [
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Having faced Kate and kept her secret from Aron, Cal holds the truth in reserve as something only he can deliver. Without the meeting he would not lead Aron to her door as he does."
+    },
+    {
+      "event_id": "adam-draft-board",
+      "effect": "changes his choice",
+      "affects": [
+        "adam-rejects-gift",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Adam's guilt over sending boys to die is why he spurns war-profit money. Without it the gift might be accepted and Cal would have no wound to avenge."
+    },
+    {
+      "event_id": "cal-will-beans",
+      "effect": "changes his choice",
+      "affects": [
+        "cal-readies-gift",
+        "adam-rejects-gift",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "The bean venture is Cal's plan to buy his father's love. Its failure to do so produces the rejection that drives the reveal."
+    },
+    {
+      "event_id": "lee-lends-cal",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The loan supplies the money, but it does not shape Cal's feelings or motives at the reveal. It only moves the plot."
+    },
+    {
+      "event_id": "adam-pride-aron",
+      "effect": "changes who he is",
+      "affects": [
+        "cal-readies-gift",
+        "adam-rejects-gift",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Seeing Adam's open pride in Aron sharpens Cal's sense of being the overlooked son. That jealousy turns his hurt against Aron."
+    },
+    {
+      "event_id": "aron-leaves-stanford",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "Aron's departure mainly arranges the timing of the Thanksgiving gathering. Cal's jealousy and hopes already exist without it."
+    },
+    {
+      "event_id": "cal-readies-gift",
+      "effect": "changes his choice",
+      "affects": [
+        "adam-rejects-gift",
+        "lee-after-rejection",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "Cal's whole hope of being loved is staked on this gift. That is why its refusal devastates him enough to strike at Aron that night."
+    },
+    {
+      "event_id": "adam-rejects-gift",
+      "effect": "changes his choice",
+      "affects": [
+        "lee-after-rejection",
+        "cal-reveals-kate-to-aron"
+      ],
+      "reason": "The rejection, and the praise of Aron that comes with it, is the immediate wound that drives Cal to destroy his brother's innocence. Without it he keeps the secret."
+    },
+    {
+      "event_id": "lee-after-rejection",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "Lee's steadying words do not hold back Cal's pain. Cal already knew his acts were his own, so he goes to the reveal the same person."
+    },
+    {
+      "event_id": "cal-reveals-kate-to-aron",
+      "effect": "changes his choice",
+      "affects": [],
+      "reason": "This is the focal event: Cal, rejected and jealous, shows Aron that their mother is the madam Kate."
+    }
+  ]
+}
