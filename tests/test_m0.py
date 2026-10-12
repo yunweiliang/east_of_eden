@@ -108,3 +108,33 @@ def test_graph_draws_lanes_and_arrows():
     assert "n_a --> n_b" in md and "n_x --> n_reveal" in md
     assert "(starts a thread)" in md
     assert to_markdown(GRAPH, {"prompt_hash": "p"}) == md  # deterministic
+
+
+from eden.stages.m0.render import COL, edge_path, render, to_html
+
+
+def test_swimlanes_draw_one_lane_per_used_thread_in_fixed_order():
+    svg = to_html(GRAPH, {"prompt_hash": "p"})
+    assert svg.index(">Trask</text>") < svg.index(">Cathy/Kate</text>")
+    assert ">Hamilton</text>" not in svg and ">Lee</text>" not in svg  # no empty lanes
+
+
+def test_swimlanes_draw_one_arrow_per_cause_and_mark_the_reveal():
+    page = to_html(GRAPH, {"prompt_hash": "p"})
+    assert page.count('class="edge') == sum(len(e.causes) for e in GRAPH)
+    assert page.count('class="edge cross focal"') == 1  # x (Cathy/Kate) -> reveal (Trask)
+    assert 'class="node focal"' in page
+
+
+def test_arrow_shapes():
+    assert edge_path(0, 46, COL, 46).startswith("M0,46 L")       # next-door, same lane: straight
+    assert " C" in edge_path(0, 46, 3 * COL, 46)                  # longer jump, same lane: arcs over
+    assert edge_path(0, 46, COL, 196) == f"M0,46 C{COL / 2:g},46 {COL / 2:g},196 {COL},196"  # across lanes
+
+
+def test_model_text_is_escaped_in_the_drawing(tmp_path):
+    evil = lane("a", [], "Lee", 2)
+    evil.title = "<script>alert(1)</script>"
+    paths = render([evil, lane("reveal", ["a"], "Trask", 49, focal=True)], {"prompt_hash": "p"}, tmp_path)
+    assert [p.name for p in paths] == ["graph.md", "graph.html"]
+    assert "<script>" not in (tmp_path / "graph.html").read_text()

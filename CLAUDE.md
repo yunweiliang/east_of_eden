@@ -222,7 +222,9 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
     the model's schema never contains it.
   - `mvp/`: the linear timeline. Also provides the portfolio timeline.
   - `m0/`: 20 events with `causes` and `thread`. Checks: causes point backward (no loops), every event
-    leads to the reveal, at least two threads. Writes `output/m0/graph.md` (Mermaid, one box per thread).
+    leads to the reveal, at least two threads. Writes `output/m0/graph.md` (Mermaid, one box per thread)
+    and `output/m0/graph.html` (swimlanes: one lane per thread, events in story order, arrows from cause to
+    effect).
 - `eden/publish.py`: portfolio tooling (`portfolio`, `preview`, `publish`).
 - `python -m eden {extract,render} --stage <stage>`. `extract` skips the model call when the pinned picks
   match the stage's prompt hash.
