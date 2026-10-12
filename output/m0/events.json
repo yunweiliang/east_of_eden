@@ -33,7 +33,7 @@
       "is_focal_event": false,
       "causes": [],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "edwards-beats-cathy",
@@ -51,7 +51,7 @@
         "cathy-burns-home"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-reaches-trasks",
@@ -70,7 +70,7 @@
         "edwards-beats-cathy"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "adam-marries-cathy",
@@ -89,7 +89,7 @@
         "cathy-reaches-trasks"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-drugs-adam",
@@ -108,7 +108,7 @@
         "adam-marries-cathy"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "twins-born",
@@ -129,7 +129,7 @@
         "cathy-drugs-adam"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-shoots-adam",
@@ -147,7 +147,7 @@
         "twins-born"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cathy-joins-faye",
@@ -165,7 +165,7 @@
         "cathy-shoots-adam"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "kate-takes-faye-house",
@@ -183,7 +183,7 @@
         "cathy-joins-faye"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "twins-named",
@@ -202,7 +202,7 @@
         "cathy-shoots-adam"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "samuel-tells-adam",
@@ -222,7 +222,7 @@
         "twins-named"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "adam-visits-kate",
@@ -241,7 +241,7 @@
         "cathy-drugs-adam"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "move-to-salinas",
@@ -261,7 +261,7 @@
         "adam-visits-kate"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "lettuce-fails",
@@ -280,7 +280,7 @@
         "move-to-salinas"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cal-learns-mother",
@@ -300,7 +300,7 @@
         "kate-takes-faye-house"
       ],
       "thread": "Lee",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cal-confronts-kate",
@@ -318,7 +318,7 @@
         "cal-learns-mother"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "will-bean-deal",
@@ -336,7 +336,7 @@
         "lettuce-fails"
       ],
       "thread": "Hamilton",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cal-borrows-from-kate",
@@ -355,7 +355,7 @@
         "will-bean-deal"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": false
     },
     {
       "id": "gift-rejected",
@@ -377,7 +377,7 @@
         "lettuce-fails"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     },
     {
       "id": "cal-reveals-kate-to-aron",
@@ -398,7 +398,7 @@
         "cal-learns-mother"
       ],
       "thread": "Trask",
-      "user_verified": null
+      "user_verified": true
     }
   ]
 }
