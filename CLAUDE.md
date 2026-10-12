@@ -207,6 +207,25 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
   - **Output:** a small comparison table plus each model's timeline, side by side.
   - **When:** fits naturally alongside M1, which already measures stability across runs.
 
+- **Related work: read and cite** (user, 2026-10-12).
+  - **Sources** (details checked against library catalogues; the books themselves not yet read):
+    - Ryan, Marie-Laure. *Possible Worlds, Artificial Intelligence, and Narrative Theory.*
+      Bloomington: Indiana University Press, 1991. Applies possible-worlds theory and ideas from
+      artificial intelligence to narrative, including a theory of narrative conflict and how plot moves
+      forward. Closest to the cause graph (M0–M3).
+    - Dannenberg, Hilary P. *Coincidence and Counterfactuality: Plotting Time and Space in Narrative
+      Fiction.* Lincoln: University of Nebraska Press, 2008 (Frontiers of Narrative). Studies
+      counterfactuality in fiction, centered on moments where characters' life paths meet or split apart.
+      Closest to the latest divergence point (M6).
+  - **Before citing either for a specific claim:** read at least its introduction, and check whether it
+    discusses Steinbeck. Until then, cite them only for their general approach.
+  - **Still unknown:** whether anyone has done a *computational* counterfactual analysis of this novel or
+    similar ones. Ask the English professor (below), or search the library, before calling the approach new.
+
+- **Ask an English professor for a second opinion** (user, 2026-10-12): is the question interesting, is
+  "character-consistent" a fair test, is the reveal the right moment, and what prior work exists. Best
+  before M2, while reframing is still cheap.
+
 ## Code layout
 
 - `eden/core/`: shared by every stage.
