@@ -5,7 +5,7 @@
     {
       "title": "adam rejects cals money",
       "chapter": null,
-      "pool_id": null
+      "pool_id": "thanksgiving-rejection"
     },
     {
       "title": "cal finds out about cathy",
@@ -15,12 +15,12 @@
     {
       "title": "cathy marrying adam",
       "chapter": null,
-      "pool_id": null
+      "pool_id": "adam-marries-cathy"
     },
     {
       "title": "adam's business failure",
       "chapter": null,
-      "pool_id": null
+      "pool_id": "lettuce-fails"
     }
   ]
 }
