@@ -27,7 +27,7 @@ PRICES = {
 
 @dataclass
 class RunResult:
-    events: list
+    items: list  # the stage's events, or the judge's verdicts
     report: Report
     attempts: int
     usage: dict
@@ -85,10 +85,15 @@ def _add_usage(total: dict, usage) -> None:
         total[key] += getattr(usage, key, 0) or 0
 
 
-def extract_events(stage, count: int, client: anthropic.Anthropic | None = None) -> RunResult:
-    """Ask the model for `count` events in the stage's schema, repairing until the stage's checks pass."""
+def ask_with_repairs(system: str, task: str, list_cls, parse, check, redo: str,
+                     client: anthropic.Anthropic | None = None) -> RunResult:
+    """Ask for a structured list, then repair it until `check` passes or the repairs run out.
+
+    parse turns the validated `list_cls` answer into the items to keep; check(items) returns a Report;
+    redo is what to ask for in a repair turn ("the full corrected list of 20 events").
+    """
     client = client or anthropic.Anthropic()
-    messages = [{"role": "user", "content": stage.TASK.format(count=count)}]
+    messages = [{"role": "user", "content": task}]
     usage = {"input_tokens": 0, "cache_creation_input_tokens": 0, "cache_read_input_tokens": 0, "output_tokens": 0}
     served_by = MODEL
 
@@ -96,11 +101,11 @@ def extract_events(stage, count: int, client: anthropic.Anthropic | None = None)
         with client.beta.messages.stream(
             model=MODEL,
             max_tokens=64000,
-            system=stage.SYSTEM,
+            system=system,
             messages=messages,
             output_config={
                 "effort": "high",
-                "format": {"type": "json_schema", "schema": strict_schema(stage.EventList)},
+                "format": {"type": "json_schema", "schema": strict_schema(list_cls)},
             },
             betas=["server-side-fallback-2026-07-01"],
             fallbacks="default",
@@ -112,19 +117,29 @@ def extract_events(stage, count: int, client: anthropic.Anthropic | None = None)
         if response.stop_reason == "refusal":
             raise RuntimeError(f"Model declined the request: {response.stop_details}")
         if response.stop_reason == "max_tokens":
-            raise RuntimeError("Response hit max_tokens before finishing the event list.")
+            raise RuntimeError("Response hit max_tokens before finishing the list.")
 
         text = next(b.text for b in response.content if b.type == "text")
-        events = [stage.Event(**e.model_dump()) for e in stage.EventList.model_validate(json.loads(text)).events]
-        report = stage.validate(events, count)
+        items = parse(list_cls.model_validate(json.loads(text)))
+        report = check(items)
         if report.ok or attempt > MAX_REPAIRS:
-            return RunResult(events, report, attempt, usage, cost_of(usage, served_by), served_by)
+            return RunResult(items, report, attempt, usage, cost_of(usage, served_by), served_by)
 
         # Append-only repair turn: keep the model's answer and tell it exactly what failed.
         messages.append({"role": "assistant", "content": response.content})
         messages.append({
             "role": "user",
-            "content": "Your list failed these checks. Return the full corrected list of "
-                       f"{count} events.\n- " + "\n- ".join(report.errors),
+            "content": f"Your list failed these checks. Return {redo}.\n- " + "\n- ".join(report.errors),
         })
     raise AssertionError("unreachable")
+
+
+def extract_events(stage, count: int, client: anthropic.Anthropic | None = None) -> RunResult:
+    """Ask the model for `count` events in the stage's schema, repairing until the stage's checks pass."""
+    return ask_with_repairs(
+        stage.SYSTEM, stage.TASK.format(count=count), stage.EventList,
+        parse=lambda answer: [stage.Event(**e.model_dump()) for e in answer.events],
+        check=lambda events: stage.validate(events, count),
+        redo=f"the full corrected list of {count} events",
+        client=client,
+    )

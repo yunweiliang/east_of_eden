@@ -106,7 +106,7 @@ def test_sends_only_the_task_and_the_memory_prompt():
     assert result.report.ok and result.attempts == 1
     assert isinstance(call["messages"][0]["content"], str)
     assert "no text is provided" in call["system"]
-    assert all(e.user_verified is None for e in result.events)
+    assert all(e.user_verified is None for e in result.items)
 
 
 def test_render_shows_reader_checks():

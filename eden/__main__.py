@@ -40,12 +40,12 @@ def cmd_extract(args) -> None:
         "errors": result.report.errors,
         "warnings": result.report.warnings,
     }
-    backup = save_run(out_dir, meta, result.events)
+    backup = save_run(out_dir, meta, result.items)
     if backup:
         print(f"Previous picks kept as {backup}")
     log_runtime_cost(RUNTIME_LEDGER, meta)
 
-    print(f"{len(result.events)} events after {result.attempts} attempt(s); agent runtime cost ${result.cost_usd}")
+    print(f"{len(result.items)} events after {result.attempts} attempt(s); agent runtime cost ${result.cost_usd}")
     for line in result.report.errors:
         print(f"ERROR   {line}")
     for line in result.report.warnings:

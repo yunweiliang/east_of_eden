@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ...core.checks import Report
 from ..m0.validate import validate  # noqa: F401  (the pool is an M0 graph, so it gets M0's checks)
+from .graph import downstream
 from .schema import Event, Verdict
 
 
@@ -27,21 +28,6 @@ def reveal_is_kept(events: list[Event], verdicts: list[Verdict]) -> list[str]:
     focal = {e.id for e in events if e.is_focal_event}
     return [f"[{v.event_id}] is the reveal itself; it can't be cut." for v in verdicts
             if v.event_id in focal and not v.keep]
-
-
-def downstream(events: list[Event], start: str) -> set[str]:
-    """Every event that `start` leads to by following arrows forward, from cause to effect."""
-    effects = {e.id: [] for e in events}  # cause id -> the events that list it as a cause
-    for e in events:
-        for c in e.causes:
-            effects.setdefault(c, []).append(e.id)
-    reached, to_visit = set(), [start]
-    while to_visit:
-        for nxt in effects.get(to_visit.pop(), []):
-            if nxt not in reached:
-                reached.add(nxt)
-                to_visit.append(nxt)
-    return reached
 
 
 def claims_follow_the_graph(events: list[Event], verdicts: list[Verdict]) -> list[str]:
