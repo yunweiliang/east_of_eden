@@ -1,0 +1,326 @@
+{
+  "meta": {
+    "stage": "m1-judge",
+    "model": "claude-opus-5-5",
+    "served_by": "claude-opus-5-5",
+    "judge_hash": "cc07a831ba19de0b",
+    "pool_prompt_hash": "098852498603b60d",
+    "attempts": 1,
+    "usage": {
+      "input_tokens": 7945,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 6026
+    },
+    "cost_usd": 0.1523,
+    "created": "2026-10-12T21:39:35+00:00",
+    "errors": []
+  },
+  "verdicts": [
+    {
+      "event_id": "samuel-arrives",
+      "effect": "path breaks",
+      "affects": [
+        "samuel-visits-ranch",
+        "samuel-strikes-adam",
+        "samuel-farewell",
+        "samuel-tells-kate",
+        "adam-visits-kate"
+      ],
+      "reason": "Without Samuel there is no friend to rouse Adam from his stupor or tell him that Cathy is Kate. Adam's confrontation and release, and the later move to Salinas, lose their source."
+    },
+    {
+      "event_id": "cyrus-dies-fortune",
+      "effect": "path breaks",
+      "affects": [
+        "cathy-on-porch",
+        "adam-buys-ranch",
+        "lettuce-fails",
+        "lee-lends",
+        "bean-deal",
+        "thanksgiving-rejection"
+      ],
+      "reason": "The inheritance funds Adam's California ranch and the money he loses on lettuce. That loss is what Cal tries to repay, leading to the rejected gift."
+    },
+    {
+      "event_id": "cathy-burns-home",
+      "effect": "path breaks",
+      "affects": [
+        "edwards-beats-cathy",
+        "cathy-on-porch"
+      ],
+      "reason": "Cathy's escape from her family under a false identity starts the road that leads her to Edwards and then to the Trask door."
+    },
+    {
+      "event_id": "edwards-beats-cathy",
+      "effect": "path breaks",
+      "affects": [
+        "cathy-on-porch",
+        "adam-marries-cathy"
+      ],
+      "reason": "The beating is what leaves Cathy helpless on the Trask porch, where Adam takes her in. Without it she never enters Adam's life."
+    },
+    {
+      "event_id": "cathy-on-porch",
+      "effect": "path breaks",
+      "affects": [
+        "adam-marries-cathy",
+        "adam-buys-ranch",
+        "twins-born"
+      ],
+      "reason": "Adam meets and falls for Cathy only because she arrives broken at his house."
+    },
+    {
+      "event_id": "adam-marries-cathy",
+      "effect": "path breaks",
+      "affects": [
+        "adam-buys-ranch",
+        "twins-born",
+        "cathy-shoots-adam"
+      ],
+      "reason": "The marriage brings Cathy to California and produces the twins."
+    },
+    {
+      "event_id": "cathy-sleeps-charles",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The doubt over paternity is thematic. The twins are born and raised as Adam's sons either way, and the reveal does not rely on it."
+    },
+    {
+      "event_id": "adam-buys-ranch",
+      "effect": "path breaks",
+      "affects": [
+        "samuel-visits-ranch",
+        "twins-born",
+        "cathy-shoots-adam",
+        "cathy-joins-faye"
+      ],
+      "reason": "Settling in the Salinas Valley puts Cathy near Salinas, where she becomes Kate, and brings Adam into Samuel's orbit."
+    },
+    {
+      "event_id": "samuel-visits-ranch",
+      "effect": "path breaks",
+      "affects": [
+        "samuel-strikes-adam",
+        "samuel-tells-kate",
+        "adam-visits-kate"
+      ],
+      "reason": "This visit begins the friendship that later lets Samuel strike Adam awake and tell him the truth about Kate."
+    },
+    {
+      "event_id": "lee-drops-pidgin",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "Lee's bond with Samuel deepens the novel's discussions, but Lee's devotion to Adam's household and his loan to Cal do not depend on it."
+    },
+    {
+      "event_id": "twins-born",
+      "effect": "path breaks",
+      "affects": [
+        "cathy-shoots-adam",
+        "cathy-joins-faye",
+        "cal-reveals-kate"
+      ],
+      "reason": "Cal and Aron must exist, and Cathy leaves only after giving birth."
+    },
+    {
+      "event_id": "cathy-shoots-adam",
+      "effect": "path breaks",
+      "affects": [
+        "cathy-joins-faye",
+        "kate-poisons-faye",
+        "samuel-strikes-adam"
+      ],
+      "reason": "Her violent departure is what turns her into Kate in Salinas and leaves Adam numb."
+    },
+    {
+      "event_id": "quinn-investigates",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The town would know Cathy ran off regardless, so the gossip Abra repeats does not hinge on this investigation."
+    },
+    {
+      "event_id": "cathy-joins-faye",
+      "effect": "path breaks",
+      "affects": [
+        "kate-poisons-faye",
+        "samuel-tells-kate",
+        "cal-follows-kate",
+        "cal-confronts-kate",
+        "cal-reveals-kate"
+      ],
+      "reason": "Cathy becoming the Salinas prostitute Kate is the very secret Cal later reveals."
+    },
+    {
+      "event_id": "kate-poisons-faye",
+      "effect": "path breaks",
+      "affects": [
+        "samuel-tells-kate",
+        "adam-visits-kate",
+        "cal-confronts-kate",
+        "cal-reveals-kate"
+      ],
+      "reason": "Taking over the brothel makes Kate the notorious madam whose house Adam, then Cal, then Aron enter."
+    },
+    {
+      "event_id": "samuel-strikes-adam",
+      "effect": "path breaks",
+      "affects": [
+        "twins-named",
+        "samuel-tells-kate"
+      ],
+      "reason": "Without Samuel's blow Adam stays numb to his sons and his past, and the household that leads to the later events never forms as it does."
+    },
+    {
+      "event_id": "twins-named",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The boys would be named anyway once Adam woke. The Cain-and-Abel framing is thematic rather than causal."
+    },
+    {
+      "event_id": "samuel-farewell",
+      "effect": "key motive changes",
+      "affects": [
+        "samuel-tells-kate"
+      ],
+      "reason": "Samuel tells Adam about Kate because he is leaving and near the end of his life. Without his farewell he might stay silent or tell Adam for different reasons."
+    },
+    {
+      "event_id": "samuel-tells-kate",
+      "effect": "path breaks",
+      "affects": [
+        "adam-visits-kate",
+        "move-salinas",
+        "cal-arrested",
+        "cal-follows-kate"
+      ],
+      "reason": "Adam learns where Cathy is only through Samuel. That knowledge lets him confront her and later tell Cal the truth."
+    },
+    {
+      "event_id": "adam-visits-kate",
+      "effect": "path breaks",
+      "affects": [
+        "move-salinas",
+        "cal-follows-kate"
+      ],
+      "reason": "Freed of his obsession, Adam can move the family into Kate's town and later speak to Cal about her."
+    },
+    {
+      "event_id": "aron-rabbit-abra",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "The scene sets up the Aron-Abra bond, but Cal's revelation of Kate to Aron does not depend on it."
+    },
+    {
+      "event_id": "abra-mother-alive",
+      "effect": "no real change",
+      "affects": [],
+      "reason": "Aron's belief in a pure, dead mother comes from Adam's story and survives Abra's gossip. The reveal shatters him either way."
+    },
+    {
+      "event_id": "move-salinas",
+      "effect": "path breaks",
+      "affects": [
+        "lettuce-fails",
+        "aron-religious",
+        "cal-arrested",
+        "cal-follows-kate",
+        "cal-reveals-kate"
+      ],
+      "reason": "Living in Salinas puts the twins within reach of Kate's house and sets up the lettuce venture and Aron's churchgoing."
+    },
+    {
+      "event_id": "lettuce-fails",
+      "effect": "path breaks",
+      "affects": [
+        "lee-lends",
+        "bean-deal",
+        "thanksgiving-rejection"
+      ],
+      "reason": "Adam's loss is the reason Cal wants to earn money for him, which produces the gift Adam rejects."
+    },
+    {
+      "event_id": "aron-religious",
+      "effect": "path breaks",
+      "affects": [
+        "aron-stanford",
+        "cal-reveals-kate"
+      ],
+      "reason": "Aron's fervent purity is what makes the revelation so devastating to him, and it shapes the idealized son Adam favors."
+    },
+    {
+      "event_id": "cal-arrested",
+      "effect": "path breaks",
+      "affects": [
+        "cal-follows-kate",
+        "cal-confronts-kate"
+      ],
+      "reason": "On the way home after the raid Adam tells Cal that his mother is alive and in Salinas, which sends Cal after Kate."
+    },
+    {
+      "event_id": "cal-follows-kate",
+      "effect": "path breaks",
+      "affects": [
+        "cal-confronts-kate",
+        "cal-reveals-kate"
+      ],
+      "reason": "Shadowing Kate is how Cal confirms who she is and comes to her attention."
+    },
+    {
+      "event_id": "cal-confronts-kate",
+      "effect": "path breaks",
+      "affects": [
+        "cal-reveals-kate"
+      ],
+      "reason": "Meeting Kate face to face gives Cal access to her house and room, so he can bring Aron straight to her."
+    },
+    {
+      "event_id": "war-draft-board",
+      "effect": "path breaks",
+      "affects": [
+        "bean-deal",
+        "thanksgiving-rejection"
+      ],
+      "reason": "Wartime prices make the bean profit possible. Adam's draft-board guilt is why he refuses the money as war profit."
+    },
+    {
+      "event_id": "lee-lends",
+      "effect": "path breaks",
+      "affects": [
+        "bean-deal",
+        "thanksgiving-rejection"
+      ],
+      "reason": "Cal needs Lee's money as capital to enter the bean deal."
+    },
+    {
+      "event_id": "bean-deal",
+      "effect": "path breaks",
+      "affects": [
+        "thanksgiving-rejection"
+      ],
+      "reason": "The profit is the gift Cal offers and Adam rejects."
+    },
+    {
+      "event_id": "aron-stanford",
+      "effect": "key motive changes",
+      "affects": [
+        "thanksgiving-rejection"
+      ],
+      "reason": "Aron's success at Stanford is what Adam holds up against Cal's money. Without it the rejection lacks its sharpest comparison, which is what stings Cal into revenge."
+    },
+    {
+      "event_id": "thanksgiving-rejection",
+      "effect": "path breaks",
+      "affects": [
+        "cal-reveals-kate"
+      ],
+      "reason": "Adam's rejection drives Cal's jealous, vengeful decision to show Aron their mother that night."
+    },
+    {
+      "event_id": "cal-reveals-kate",
+      "effect": "path breaks",
+      "affects": [],
+      "reason": "This is the focal event."
+    }
+  ]
+}
