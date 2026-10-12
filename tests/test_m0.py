@@ -40,3 +40,25 @@ def test_catches_self_cause_unknown_id_and_forward_arrow():
     assert "[a] cause 'b' comes later" in errors
     assert "[b] lists itself" in errors
     assert "[c] cause 'ghost' is not an event" in errors
+
+
+from eden.stages.m0.validate import all_lead_to_reveal
+
+
+def focal(id, causes):
+    e = m0(id, causes)
+    e.is_focal_event = True
+    return e
+
+
+def test_two_threads_merging_into_the_reveal_pass():
+    # a -> b -> reveal  and  x -> reveal: two lanes converging
+    events = [m0("a", []), m0("x", []), m0("b", ["a"]), focal("reveal", ["b", "x"])]
+    assert all_lead_to_reveal(events) == []
+
+
+def test_catches_a_dead_end():
+    # d causes nothing that reaches the reveal
+    events = [m0("a", []), m0("d", []), focal("reveal", ["a"])]
+    errors = all_lead_to_reveal(events)
+    assert len(errors) == 1 and errors[0].startswith("[d] doesn't lead to the reveal")

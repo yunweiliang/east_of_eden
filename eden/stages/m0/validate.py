@@ -27,7 +27,31 @@ def causes_point_backward(events: list[Event]) -> list[str]:
     return errors
 
 
+def all_lead_to_reveal(events: list[Event]) -> list[str]:
+    """Every event must be connected to the focal event by a chain of causes.
+
+    Start at the reveal and walk backward along the arrows, collecting every event we can reach.
+    Anything never reached is a dead end: it doesn't help cause the reveal.
+    """
+    by_id = {e.id: e for e in events}
+    focal = next((e for e in events if e.is_focal_event), None)
+    if focal is None:
+        return []  # common_checks already reports a missing focal event
+    reached = {focal.id}
+    to_visit = [focal.id]  # events whose causes we still have to look at
+    while to_visit:
+        current = by_id[to_visit.pop()]
+        for cause in current.causes:
+            if cause in by_id and cause not in reached:
+                reached.add(cause)
+                to_visit.append(cause)
+    return [f"[{e.id}] doesn't lead to the reveal: no chain of causes connects it to the focal event. "
+            "List it as a cause of a later event, or replace it."
+            for e in events if e.id not in reached]
+
+
 def validate(events: list[Event], expected_count: int) -> Report:
     r = common_checks(events, expected_count)
     r.errors += causes_point_backward(events)
+    r.errors += all_lead_to_reveal(events)
     return r
