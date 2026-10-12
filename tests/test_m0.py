@@ -99,7 +99,7 @@ def test_repair_turn_fixes_a_dead_end():
     result = extract_events(m0_stage, 4, client=client)
     assert result.attempts == 2 and result.report.ok
     assert "[d] doesn't lead to the reveal" in client.calls[1]["messages"][-1]["content"]
-    assert all(isinstance(e, m0_stage.Event) for e in result.events)
+    assert all(isinstance(e, m0_stage.Event) for e in result.items)
 
 
 def test_graph_draws_lanes_and_arrows():

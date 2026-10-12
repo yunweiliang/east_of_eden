@@ -225,6 +225,15 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
     leads to the reveal, at least two threads. Writes `output/m0/graph.md` (Mermaid, one box per thread)
     and `output/m0/graph.html` (swimlanes: one lane per thread, events in story order, arrows from cause to
     effect).
+  - `m1/`: two passes. `extract --stage m1` proposes and pins a pool of 35 candidates in M0's schema
+    (the prompt says "the novel, not the 1955 film"). `python -m eden judge --runs N` then applies the
+    significance test N times: each run gives every candidate a `Verdict` (the effect of removing it:
+    "path breaks", "key motive changes" or "no real change", plus the later events it `affects`, which
+    must be downstream in the graph). Events the reader marked false are left out, with paths bridged
+    around them. Runs go to `output/m1/judge/` and are compared only when their `judge_hash` (everything
+    the judge saw) matches. Writes `output/m1/graph.md` (the full pool, cuts faded) and `graph.html`
+    (swimlanes of the events kept by most runs, plus each event's keep rate and the judge's reason).
+    The reader's own picks go in `output/m1/reference.json`, and the page reports recall against them.
 - `eden/publish.py`: portfolio tooling (`portfolio`, `preview`, `publish`).
 - `python -m eden {extract,render} --stage <stage>`. `extract` skips the model call when the pinned picks
   match the stage's prompt hash.
@@ -244,4 +253,4 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
     `_data/lock.json`. The user does the encrypting, since only they know the passcode. They run
     `python -m eden publish` on their laptop; the browser tool `tools/lock.html` does the same job.
     Claude never asks for the passcode or stores it.
-- Evaluation: a reference event set the user curates by hand before M1.
+- Evaluation: a reference event set the user curates by hand before M1 (`output/m1/reference.json`).

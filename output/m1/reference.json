@@ -1,0 +1,4 @@
+{
+  "how": "Before the first M1 run, list the events you think the ending really depends on: a title in your own words and the chapter. Leave pool_id null. Once the pool exists, set pool_id to the id of the matching pool event, or leave it null if the pool doesn't have it.",
+  "events": []
+}

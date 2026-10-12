@@ -159,6 +159,43 @@ def table_rows(events: list[Event]) -> str:
     )
 
 
+STYLE = """:root { --bg:#fbfaf7; --lane:#f2efe8; --fg:#1f1d1a; --muted:#6b665e; --line:#b9b2a6; --edge:#8f887c;
+  --focal:#a3402a; --t0:#3d6b8c; --t1:#7a4f8f; --t2:#5f7f3a; --t3:#9a6a1f; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#16150f; --lane:#1f1e18; --fg:#ece8df; --muted:#a39d91; --line:#5a554c; --edge:#8a8478;
+    --focal:#e0806a; --t0:#7fb0d1; --t1:#c39bd6; --t2:#9cc274; --t3:#d9a85a; }
+}
+body { margin:0; padding:24px 16px; background:var(--bg); color:var(--fg);
+  font:15px/1.5 Georgia, 'Times New Roman', serif; }
+main { max-width:1200px; margin:0 auto; }
+h1 { font-size:1.6rem; margin:0 0 4px; overflow-wrap:anywhere; }
+p.meta { color:var(--muted); margin:0 0 20px; font-size:.9rem; }
+.scroll { overflow-x:auto; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+svg { display:block; }
+.lane0 { fill:var(--bg); }
+.lane1 { fill:var(--lane); }
+.lane-name { font-size:13px; font-weight:bold; }
+.edge { fill:none; stroke:var(--edge); stroke-width:1.5; opacity:.8; }
+.edge.cross { stroke-dasharray:5 3; }
+.edge.focal { stroke:var(--focal); stroke-width:2; opacity:1; }
+.tip { fill:var(--edge); }
+.tip.focal { fill:var(--focal); }
+.node { stroke:var(--bg); stroke-width:2; }
+.node.focal { fill:var(--focal); }
+.t0 { fill:var(--t0); } .t1 { fill:var(--t1); } .t2 { fill:var(--t2); } .t3 { fill:var(--t3); }
+text { font-family:Georgia, serif; }
+text.title, text.chap { text-anchor:middle; paint-order:stroke; stroke:var(--bg); stroke-width:4px;
+  stroke-linejoin:round; }
+text.title { fill:var(--fg); font-size:13px; }
+text.chap { fill:var(--muted); font-size:11px; font-style:italic; }
+.table-wrap { overflow-x:auto; }
+td:nth-child(2) { min-width:220px; }
+table { border-collapse:collapse; width:100%; margin-top:24px; font-size:.92rem; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--line); }
+th { color:var(--muted); font-weight:normal; }
+"""
+
+
 def to_html(events: list[Event], meta: dict) -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -167,41 +204,7 @@ def to_html(events: list[Event], meta: dict) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>East of Eden cause graph</title>
 <style>
-:root {{ --bg:#fbfaf7; --lane:#f2efe8; --fg:#1f1d1a; --muted:#6b665e; --line:#b9b2a6; --edge:#8f887c;
-  --focal:#a3402a; --t0:#3d6b8c; --t1:#7a4f8f; --t2:#5f7f3a; --t3:#9a6a1f; }}
-@media (prefers-color-scheme: dark) {{
-  :root {{ --bg:#16150f; --lane:#1f1e18; --fg:#ece8df; --muted:#a39d91; --line:#5a554c; --edge:#8a8478;
-    --focal:#e0806a; --t0:#7fb0d1; --t1:#c39bd6; --t2:#9cc274; --t3:#d9a85a; }}
-}}
-body {{ margin:0; padding:24px 16px; background:var(--bg); color:var(--fg);
-  font:15px/1.5 Georgia, 'Times New Roman', serif; }}
-main {{ max-width:1200px; margin:0 auto; }}
-h1 {{ font-size:1.6rem; margin:0 0 4px; overflow-wrap:anywhere; }}
-p.meta {{ color:var(--muted); margin:0 0 20px; font-size:.9rem; }}
-.scroll {{ overflow-x:auto; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }}
-svg {{ display:block; }}
-.lane0 {{ fill:var(--bg); }}
-.lane1 {{ fill:var(--lane); }}
-.lane-name {{ font-size:13px; font-weight:bold; }}
-.edge {{ fill:none; stroke:var(--edge); stroke-width:1.5; opacity:.8; }}
-.edge.cross {{ stroke-dasharray:5 3; }}
-.edge.focal {{ stroke:var(--focal); stroke-width:2; opacity:1; }}
-.tip {{ fill:var(--edge); }}
-.tip.focal {{ fill:var(--focal); }}
-.node {{ stroke:var(--bg); stroke-width:2; }}
-.node.focal {{ fill:var(--focal); }}
-.t0 {{ fill:var(--t0); }} .t1 {{ fill:var(--t1); }} .t2 {{ fill:var(--t2); }} .t3 {{ fill:var(--t3); }}
-text {{ font-family:Georgia, serif; }}
-text.title, text.chap {{ text-anchor:middle; paint-order:stroke; stroke:var(--bg); stroke-width:4px;
-  stroke-linejoin:round; }}
-text.title {{ fill:var(--fg); font-size:13px; }}
-text.chap {{ fill:var(--muted); font-size:11px; font-style:italic; }}
-.table-wrap {{ overflow-x:auto; }}
-td:nth-child(2) {{ min-width:220px; }}
-table {{ border-collapse:collapse; width:100%; margin-top:24px; font-size:.92rem; }}
-th, td {{ text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--line); }}
-th {{ color:var(--muted); font-weight:normal; }}
-</style>
+{STYLE}</style>
 </head>
 <body>
 <main>
