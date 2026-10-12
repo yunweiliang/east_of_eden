@@ -217,8 +217,15 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
       Fiction.* Lincoln: University of Nebraska Press, 2008 (Frontiers of Narrative). Studies
       counterfactuality in fiction, centered on moments where characters' life paths meet or split apart.
       Closest to the latest divergence point (M6).
-  - **Before citing either for a specific claim:** read at least its introduction, and check whether it
-    discusses Steinbeck. Until then, cite them only for their general approach.
+    - Qin, Lianhui, Antoine Bosselut, Ari Holtzman, Chandra Bhagavatula, Elizabeth Clark and Yejin Choi.
+      "Counterfactual Story Reasoning and Generation." EMNLP-IJCNLP 2019. University of Washington (Allen
+      School) and the Allen Institute for AI. https://arxiv.org/pdf/1909.04076v1. Introduces counterfactual
+      story rewriting: given a five-sentence story and a changed event, minimally rewrite the ending
+      (the TimeTravel dataset). Closest to M4's "smallest set of changes". Differs from this project: the
+      change is given rather than searched for, the stories are short and invented rather than a novel,
+      and the goal is an AI benchmark rather than a question about a book.
+  - **Before citing any of these for a specific claim:** read at least its introduction, and check whether it
+    discusses Steinbeck (for the paper, its introduction). Until then, cite them only for their general approach.
   - **Still unknown:** whether anyone has done a *computational* counterfactual analysis of this novel or
     similar ones. Ask the English professor (below), or search the library, before calling the approach new.
 
