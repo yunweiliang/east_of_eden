@@ -226,8 +226,9 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
     and `output/m0/graph.html` (swimlanes: one lane per thread, events in story order, arrows from cause to
     effect).
   - `m1/` (in progress): a pinned pool of candidate events in M0's schema, plus a judge that gives each a
-    `Verdict` (the effect of removing it: "path breaks", "key motive changes" or "no real change"). Run
-    several times; the keep rate per event measures stability.
+    `Verdict` (the effect of removing it: "path breaks", "key motive changes" or "no real change", plus the
+    later events it `affects`, which must be downstream in the graph). Run several times; the keep rate per
+    event measures stability.
 - `eden/publish.py`: portfolio tooling (`portfolio`, `preview`, `publish`).
 - `python -m eden {extract,render} --stage <stage>`. `extract` skips the model call when the pinned picks
   match the stage's prompt hash.

@@ -28,6 +28,9 @@ class Verdict(BaseModel):
 
     event_id: str = Field(description="Id of the candidate event this verdict is about")
     effect: Effect = Field(description="What happens to the path to the reveal if this event is removed")
+    affects: list[str] = Field(description="Ids of the later events in the pool that would not happen, or would "
+                                           "happen for a different reason, without this one. Empty only for "
+                                           "\"no real change\"")
     reason: str = Field(description="One or two sentences: what breaks or changes without it, or why nothing does")
 
     @property
