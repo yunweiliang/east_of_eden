@@ -3,682 +3,619 @@
     "stage": "m1",
     "model": "claude-opus-5-5",
     "served_by": "claude-opus-5-5",
-    "prompt_hash": "098852498603b60d",
+    "prompt_hash": "428c3e46ef1d4fc7",
     "grounding": "memory",
     "attempts": 1,
     "usage": {
-      "input_tokens": 1582,
+      "input_tokens": 1856,
       "cache_creation_input_tokens": 0,
       "cache_read_input_tokens": 0,
-      "output_tokens": 29884
+      "output_tokens": 32288
     },
-    "cost_usd": 0.604,
-    "created": "2026-10-12T19:07:51+00:00",
+    "cost_usd": 0.6532,
+    "created": "2026-10-12T22:08:11+00:00",
     "errors": [],
     "warnings": []
   },
   "events": [
     {
-      "id": "samuel-arrives",
-      "title": "Samuel Hamilton settles in the Salinas Valley",
-      "chapter": 2,
-      "characters": [
-        "Samuel Hamilton",
-        "Liza Hamilton"
-      ],
-      "summary": "Samuel and Liza Hamilton come from Ireland and take up poor hill land near King City. Samuel becomes the valley's inventive, generous blacksmith, well-digger and midwife.",
-      "citation": "Samuel and Liza",
-      "rationale": "Places Samuel where he can later befriend Adam, deliver and name the twins, and tell Adam where Cathy is.",
-      "is_focal_event": false,
-      "causes": [],
-      "thread": "Hamilton",
-      "user_verified": true
-    },
-    {
-      "id": "cyrus-dies-fortune",
-      "title": "Cyrus Trask dies leaving a large fortune",
-      "chapter": 7,
-      "characters": [
-        "Cyrus Trask",
-        "Adam Trask",
-        "Charles Trask"
-      ],
-      "summary": "Adam learns that their father has died and left the brothers a surprisingly large fortune of doubtful origin. The money keeps both brothers comfortable on the Connecticut farm.",
-      "citation": "hundred thousand dollars",
-      "rationale": "The inheritance later lets Adam buy a California ranch and fund the lettuce scheme whose loss drives Cal's plan.",
-      "is_focal_event": false,
-      "causes": [],
-      "thread": "Trask",
-      "user_verified": true
-    },
-    {
-      "id": "cathy-burns-home",
-      "title": "Cathy burns her parents' house and fakes her death",
+      "id": "cathy-born-monster",
+      "title": "Cathy Ames is introduced as a born monster",
       "chapter": 8,
       "characters": [
         "Cathy Ames"
       ],
-      "summary": "Teenaged Cathy Ames sets fire to her family home, killing her parents, and makes it look as if she died too. She then leaves town under a new identity.",
-      "citation": "monsters born in the world",
-      "rationale": "Starts Cathy's path of reinvention that leads her to Edwards and then to the Trasks.",
+      "summary": "The narrator presents young Cathy as someone born without ordinary conscience, who manipulates everyone around her. She ends her childhood by burning down her parents' house with them inside and vanishing.",
+      "citation": "I believe there are monsters born in the world to human parents",
+      "rationale": "This is the nature Cal later fears he has inherited. His dread of the 'bad blood' in him, and his wish to use it against Aron, starts here.",
       "is_focal_event": false,
       "causes": [],
       "thread": "Cathy/Kate",
-      "user_verified": true
+      "for_cal": "Cal will one day learn that his mother is this woman, and fear that her coldness lives in him.",
+      "user_verified": null
     },
     {
-      "id": "edwards-beats-cathy",
-      "title": "Mr. Edwards beats Cathy nearly to death",
-      "chapter": 9,
-      "characters": [
-        "Cathy Ames",
-        "Mr. Edwards"
-      ],
-      "summary": "Cathy becomes the mistress of the whoremaster Mr. Edwards and manipulates him. When he learns of her schemes he beats her savagely and leaves her for dead.",
-      "citation": "Mr. Edwards",
-      "rationale": "The beating leaves Cathy crawling for help, which brings her to the Trask farm.",
-      "is_focal_event": false,
-      "causes": [
-        "cathy-burns-home"
-      ],
-      "thread": "Cathy/Kate",
-      "user_verified": true
-    },
-    {
-      "id": "cathy-on-porch",
-      "title": "Injured Cathy turns up at the Trask farmhouse",
-      "chapter": 10,
+      "id": "cathy-wedding-night",
+      "title": "Cathy marries Adam and goes to Charles on the wedding night",
+      "chapter": 11,
       "characters": [
         "Cathy Ames",
         "Adam Trask",
         "Charles Trask"
       ],
-      "summary": "The broken, bloodied Cathy reaches the Trask brothers' door. Adam is tender toward her while Charles distrusts her at once.",
-      "citation": "Cathy on the porch",
-      "rationale": "Brings Cathy into Adam's life, the start of the marriage that produces Cal and Aron.",
+      "summary": "Beaten and taken in at the Trask farm, Cathy marries the smitten Adam. On their wedding night she drugs him and goes to his brother Charles's bed.",
+      "citation": "wedding night",
+      "rationale": "The marriage produces the twins and leaves even their fatherhood uncertain. It ties Cal to a mother who never loved his father.",
       "is_focal_event": false,
       "causes": [
-        "edwards-beats-cathy",
-        "cyrus-dies-fortune"
+        "cathy-born-monster"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": true
+      "for_cal": "Cal is born from a marriage built on his mother's deceit, a secret kept from him.",
+      "user_verified": null
     },
     {
-      "id": "adam-marries-cathy",
-      "title": "Adam marries Cathy",
-      "chapter": 11,
+      "id": "twins-born",
+      "title": "The twins are born and Cathy rejects them",
+      "chapter": 17,
       "characters": [
-        "Adam Trask",
-        "Cathy Ames",
-        "Charles Trask"
-      ],
-      "summary": "Infatuated, Adam marries the recovering Cathy despite Charles's warnings. He announces he will take her to California.",
-      "citation": "married",
-      "rationale": "The marriage makes Cathy the twins' mother and sets the move west.",
-      "is_focal_event": false,
-      "causes": [
-        "cathy-on-porch"
-      ],
-      "thread": "Trask",
-      "user_verified": true
-    },
-    {
-      "id": "cathy-sleeps-charles",
-      "title": "Cathy drugs Adam and goes to Charles on the wedding night",
-      "chapter": 11,
-      "characters": [
-        "Cathy Ames",
-        "Charles Trask",
-        "Adam Trask"
-      ],
-      "summary": "On her wedding night Cathy gives Adam the sleeping medicine meant for her and goes to Charles's bed. The twins' paternity is left uncertain.",
-      "citation": "the medicine",
-      "rationale": "Shows Cathy's nature and clouds which brother fathered the twins, feeding the Cain-and-Abel inheritance Cal fears.",
-      "is_focal_event": false,
-      "causes": [
-        "adam-marries-cathy"
-      ],
-      "thread": "Cathy/Kate",
-      "user_verified": true
-    },
-    {
-      "id": "adam-buys-ranch",
-      "title": "Adam buys the Bordoni ranch",
-      "chapter": 13,
-      "characters": [
-        "Adam Trask",
-        "Cathy Trask"
-      ],
-      "summary": "Adam brings the pregnant Cathy to the Salinas Valley and buys the old Bordoni place near King City. He dreams of making a garden of it.",
-      "citation": "Bordoni",
-      "rationale": "Places the Trasks near the Hamiltons and near Salinas, where Cathy will later run a brothel.",
-      "is_focal_event": false,
-      "causes": [
-        "adam-marries-cathy",
-        "cyrus-dies-fortune"
-      ],
-      "thread": "Trask",
-      "user_verified": true
-    },
-    {
-      "id": "samuel-visits-ranch",
-      "title": "Samuel comes to plan Adam's wells",
-      "chapter": 15,
-      "characters": [
+        "Cathy Trask",
         "Samuel Hamilton",
         "Adam Trask",
         "Lee"
       ],
-      "summary": "Samuel comes to the Trask place to plan wells for Adam. He begins a lasting friendship with Adam and feels uneasy about Cathy.",
-      "citation": "wells",
-      "rationale": "Ties the Hamilton thread to the Trasks, so Samuel is on hand for the birth and later guidance.",
+      "summary": "Samuel Hamilton delivers Cathy's twin boys. Cathy bites his hand during the birth and shows no interest in the babies.",
+      "citation": "Samuel's hand",
+      "rationale": "Cal begins life unwanted by his mother. That rejection becomes the hidden wound behind his later behavior.",
       "is_focal_event": false,
       "causes": [
-        "samuel-arrives",
-        "adam-buys-ranch"
+        "cathy-wedding-night"
       ],
-      "thread": "Hamilton",
-      "user_verified": true
-    },
-    {
-      "id": "lee-drops-pidgin",
-      "title": "Lee drops his pidgin with Samuel",
-      "chapter": 15,
-      "characters": [
-        "Lee",
-        "Samuel Hamilton"
-      ],
-      "summary": "Adam's Chinese servant Lee recognizes Samuel's sympathy and speaks to him in fluent English. The two become close friends and thinkers.",
-      "citation": "pidgin",
-      "rationale": "Begins the Lee-Samuel bond behind the naming of the twins and Lee's role as their true parent.",
-      "is_focal_event": false,
-      "causes": [
-        "samuel-visits-ranch"
-      ],
-      "thread": "Lee",
-      "user_verified": true
-    },
-    {
-      "id": "twins-born",
-      "title": "Samuel delivers the twins and Cathy bites him",
-      "chapter": 17,
-      "characters": [
-        "Samuel Hamilton",
-        "Cathy Trask",
-        "Lee",
-        "Adam Trask"
-      ],
-      "summary": "Samuel delivers Cathy's twin boys. Cathy, cold and hostile, bites his hand savagely during the birth.",
-      "citation": "bit",
-      "rationale": "Brings Cal and Aron into the world, the two brothers of the focal event.",
-      "is_focal_event": false,
-      "causes": [
-        "cathy-sleeps-charles",
-        "adam-buys-ranch",
-        "samuel-visits-ranch"
-      ],
-      "thread": "Hamilton",
-      "user_verified": true
+      "thread": "Trask",
+      "for_cal": "From birth Cal is unwanted by his mother, though he will not know it for years.",
+      "user_verified": null
     },
     {
       "id": "cathy-shoots-adam",
-      "title": "Cathy shoots Adam and abandons the family",
+      "title": "Cathy shoots Adam and abandons the twins",
       "chapter": 17,
       "characters": [
         "Cathy Trask",
         "Adam Trask"
       ],
-      "summary": "A week after the birth Cathy announces she is leaving. When Adam tries to stop her she shoots him in the shoulder and walks out on her husband and sons.",
-      "citation": "shot",
-      "rationale": "Her desertion creates the hidden-mother secret that Cal later exposes to Aron.",
+      "summary": "About a week after the birth, Cathy tells Adam she is leaving. When he tries to stop her, she shoots him in the shoulder and walks out, leaving the infants behind.",
+      "citation": "shot him",
+      "rationale": "The mother's desertion creates the empty space and the lie that shape Cal's childhood. It also sets up the truth he later uses as a weapon.",
       "is_focal_event": false,
       "causes": [
         "twins-born"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": true
+      "for_cal": "Cal loses his mother as a baby and grows up without knowing why.",
+      "user_verified": null
     },
     {
-      "id": "quinn-investigates",
-      "title": "Horace Quinn investigates the shooting",
+      "id": "adam-covers-shooting",
+      "title": "Adam hides the truth about the shooting",
       "chapter": 18,
       "characters": [
-        "Horace Quinn",
-        "Adam Trask"
+        "Adam Trask",
+        "Horace Quinn"
       ],
-      "summary": "Deputy Horace Quinn questions Adam, who insists the shooting was an accident. The sheriff learns where Cathy has gone but keeps it quiet.",
+      "summary": "When Deputy Horace Quinn questions him, the wounded Adam insists the shooting was an accident. He tries to shield Cathy and keep her flight hidden.",
       "citation": "Horace Quinn",
-      "rationale": "The cover-up keeps Cathy's fate hidden, so the boys grow up thinking their mother is gone.",
+      "rationale": "Adam's habit of hiding Cathy's truth starts here. It grows into the family lie that Cal later breaks open.",
       "is_focal_event": false,
       "causes": [
         "cathy-shoots-adam"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "The silence that will surround Cal's mother throughout his childhood begins here.",
+      "user_verified": null
     },
     {
-      "id": "cathy-joins-faye",
-      "title": "Cathy goes to work at Faye's brothel as Kate",
+      "id": "cathy-becomes-kate",
+      "title": "Cathy becomes 'Kate' at Faye's brothel in Salinas",
       "chapter": 19,
       "characters": [
         "Cathy Trask",
         "Faye"
       ],
-      "summary": "Cathy arrives in Salinas and joins Faye's house under the name Kate. She quickly makes herself Faye's favorite.",
-      "citation": "Faye",
-      "rationale": "Starts Kate's Salinas life, putting her in the town where her sons will live.",
+      "summary": "Cathy goes to Salinas, takes the name Kate, and joins Faye's brothel. She soon makes herself indispensable to its owner.",
+      "citation": "Faye's",
+      "rationale": "It puts Cal's mother, under another name, in the very town where the boys will later live. That makes Cal's discovery and the later visit with Aron possible.",
       "is_focal_event": false,
       "causes": [
         "cathy-shoots-adam"
       ],
       "thread": "Cathy/Kate",
-      "user_verified": true
+      "for_cal": "Cal's mother is living a few miles away under a new name, a secret waiting for him.",
+      "user_verified": null
     },
     {
-      "id": "kate-poisons-faye",
-      "title": "Kate poisons Faye and takes over the brothel",
-      "chapter": 21,
+      "id": "adam-stupor-lee-raises",
+      "title": "Adam sinks into apathy while Lee raises the twins",
+      "chapter": 22,
       "characters": [
-        "Kate",
-        "Faye"
+        "Adam Trask",
+        "Lee",
+        "Samuel Hamilton"
       ],
-      "summary": "After Faye names her heir, Kate slowly poisons her. Faye dies, and Kate inherits the house, which she turns into a notorious establishment.",
-      "citation": "croton oil",
-      "rationale": "Gives Kate the brothel that Cal later visits and to which he takes Aron.",
+      "summary": "For more than a year Adam barely looks at his sons and has not even named them. Lee, the Chinese servant, cares for the boys.",
+      "citation": "no names",
+      "rationale": "Cal's earliest life is marked by a father who hardly sees him. Lee becomes his true guide, a bond that matters right up to the focal night.",
       "is_focal_event": false,
       "causes": [
-        "cathy-joins-faye"
+        "cathy-shoots-adam"
       ],
-      "thread": "Cathy/Kate",
-      "user_verified": true
+      "thread": "Trask",
+      "for_cal": "Cal's first years are spent with an absent-minded father and a loving servant, Lee, in his place.",
+      "user_verified": null
     },
     {
       "id": "samuel-strikes-adam",
-      "title": "Samuel strikes Adam out of his stupor",
+      "title": "Samuel strikes Adam to wake him",
+      "chapter": 22,
+      "characters": [
+        "Samuel Hamilton",
+        "Adam Trask"
+      ],
+      "summary": "Samuel, furious at Adam's neglect of the boys, knocks him down. The blow shocks Adam back toward responsibility.",
+      "citation": "knocked",
+      "rationale": "It forces Adam to take up fatherhood, however imperfectly. Cal will spend his youth trying to win that father's love.",
+      "is_focal_event": false,
+      "causes": [
+        "adam-stupor-lee-raises"
+      ],
+      "thread": "Hamilton",
+      "for_cal": "Cal's father is forced to start paying attention to him, but only partly.",
+      "user_verified": null
+    },
+    {
+      "id": "naming-cain-abel",
+      "title": "The twins are named after a talk about Cain and Abel",
       "chapter": 22,
       "characters": [
         "Samuel Hamilton",
         "Adam Trask",
         "Lee"
       ],
-      "summary": "Finding the twins still unnamed over a year after Cathy left, Samuel provokes and strikes the numb Adam. Adam begins to wake to his sons.",
-      "citation": "Samuel hit him",
-      "rationale": "Rouses Adam enough to name and father the boys.",
+      "summary": "Samuel, Adam and Lee read and debate the story of Cain and Abel while choosing names. The boys become Caleb and Aron.",
+      "citation": "Am I my brother's keeper?",
+      "rationale": "The naming frames Cal as the Cain figure, the son whose gift is rejected and who strikes at his brother. The focal night replays that pattern.",
       "is_focal_event": false,
       "causes": [
-        "cathy-shoots-adam",
-        "samuel-visits-ranch"
+        "samuel-strikes-adam"
       ],
       "thread": "Hamilton",
-      "user_verified": true
+      "for_cal": "Cal is given a name tied to the Cain-and-Abel story he will half-live out with Aron.",
+      "user_verified": null
     },
     {
-      "id": "twins-named",
-      "title": "The twins are named Caleb and Aron",
-      "chapter": 22,
+      "id": "lee-rejection-speech",
+      "title": "Lee explains that rejection breeds rage and guilt",
+      "chapter": 24,
       "characters": [
         "Lee",
         "Samuel Hamilton",
-        "Adam Trask",
-        "Cal Trask",
-        "Aron Trask"
+        "Adam Trask"
       ],
-      "summary": "Lee, Samuel and Adam read the Cain and Abel story and discuss rejection and guilt. They name the boys Caleb and Aron.",
-      "citation": "Caleb",
-      "rationale": "Sets the Cain-Abel frame and the brothers' identities that the focal betrayal plays out.",
+      "summary": "Lee argues that the Cain story is everyone's story. A child's deepest terror is not being loved, and rejection leads to anger, crime and guilt.",
+      "citation": "The greatest terror a child can have is that he is not loved",
+      "rationale": "Lee spells out the very mechanism that drives Cal after Adam refuses his gift. It explains why that refusal makes Cal lash out at Aron.",
       "is_focal_event": false,
       "causes": [
-        "samuel-strikes-adam",
-        "lee-drops-pidgin"
+        "naming-cain-abel"
       ],
       "thread": "Lee",
-      "user_verified": true
+      "for_cal": "Lee forms an idea of the rejected son that will guide how he raises and counsels Cal.",
+      "user_verified": null
     },
     {
-      "id": "samuel-farewell",
-      "title": "Samuel, aging after Una's death, agrees to leave his ranch",
-      "chapter": 23,
+      "id": "timshel",
+      "title": "Lee's elders arrive at 'timshel', thou mayest",
+      "chapter": 24,
       "characters": [
+        "Lee",
         "Samuel Hamilton",
-        "Una",
-        "Tom Hamilton"
+        "Adam Trask"
       ],
-      "summary": "Grief over his daughter Una's death ages Samuel, and his children arrange to move him off the ranch. He makes farewell visits.",
-      "citation": "Una",
-      "rationale": "His farewell visit to Adam is when he decides to tell Adam the truth about Cathy.",
+      "summary": "Lee reports that his elderly Chinese relatives studied Hebrew to understand the Cain verse. They concluded the word timshel means 'thou mayest', so humans can choose to overcome sin.",
+      "citation": "Thou mayest",
+      "rationale": "Lee carries this belief in free choice into his later talks with Cal. Cal's sense that he alone is to blame for what he does comes from it.",
       "is_focal_event": false,
       "causes": [
-        "samuel-arrives"
+        "naming-cain-abel"
       ],
-      "thread": "Hamilton",
-      "user_verified": true
+      "thread": "Lee",
+      "for_cal": "Lee forms the belief in personal choice that he will later pass on to Cal.",
+      "user_verified": null
     },
     {
-      "id": "samuel-tells-kate",
+      "id": "samuel-tells-adam-kate",
       "title": "Samuel tells Adam that Cathy runs a Salinas brothel",
       "chapter": 24,
       "characters": [
         "Samuel Hamilton",
-        "Adam Trask",
-        "Lee"
+        "Adam Trask"
       ],
-      "summary": "After Lee explains timshel, Samuel tells Adam that Cathy is Kate, keeper of a Salinas whorehouse. He hopes the truth will free Adam.",
-      "citation": "timshel",
-      "rationale": "Lets Adam face Kate and break free, which leads to the move to Salinas.",
+      "summary": "On his farewell visit, Samuel tells Adam that Cathy is alive in Salinas, calling herself Kate and running a brothel. He hopes the truth will free Adam.",
+      "citation": "Kate",
+      "rationale": "The adults now know where the boys' mother is, yet keep it from them. That deepens the secret Cal will uncover alone.",
       "is_focal_event": false,
       "causes": [
-        "samuel-farewell",
-        "kate-poisons-faye",
-        "twins-named"
+        "cathy-becomes-kate",
+        "samuel-strikes-adam"
       ],
       "thread": "Hamilton",
-      "user_verified": true
+      "for_cal": "The adults around Cal now know his mother's whereabouts and will keep it from him.",
+      "user_verified": null
     },
     {
       "id": "adam-visits-kate",
-      "title": "Adam confronts Kate and is freed of her",
+      "title": "Adam confronts Kate and is freed from her",
       "chapter": 25,
       "characters": [
         "Adam Trask",
         "Kate"
       ],
-      "summary": "After Samuel's funeral Adam visits Kate's brothel. She mocks him and boasts of blackmail photographs, and Adam leaves released from his obsession.",
-      "citation": "pictures",
-      "rationale": "Adam is free to rebuild his life and later move the family to Salinas, near Kate.",
+      "summary": "Adam visits Kate at her brothel. She taunts him and boasts of her hold over powerful men, but he sees her clearly and walks out released from her spell.",
+      "citation": "photographs",
+      "rationale": "Freed, Adam can live again, yet he still hides Kate from his sons. Cal will have to face this mother on his own.",
       "is_focal_event": false,
       "causes": [
-        "samuel-tells-kate"
+        "samuel-tells-adam-kate"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal's father comes back to life but keeps the truth about Cal's mother locked away.",
+      "user_verified": null
     },
     {
-      "id": "aron-rabbit-abra",
-      "title": "Aron gives Abra a rabbit",
+      "id": "bradley-visit-rabbit",
+      "title": "Abra visits and warms to Aron's gift",
       "chapter": 27,
       "characters": [
-        "Aron Trask",
         "Cal Trask",
+        "Aron Trask",
         "Abra Bacon"
       ],
-      "summary": "When the Bacons shelter from rain at the Trask ranch, Aron offers Abra a rabbit in a box. Abra prefers the gentle Aron, while Cal feels shut out.",
+      "summary": "A rainstorm strands young Abra and her parents at the Trask place. Abra is drawn to gentle Aron, who gives her a rabbit, and Cal feels pushed aside.",
       "citation": "rabbit",
-      "rationale": "Begins the Aron-Abra bond and sharpens Cal's jealousy of his favored brother.",
+      "rationale": "This first episode of others preferring Aron over Cal feeds the jealousy and sense of being less loved that explode on the focal night.",
       "is_focal_event": false,
       "causes": [
-        "twins-named"
+        "twins-born"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal feels that people naturally love Aron more than him, and resents it.",
+      "user_verified": null
     },
     {
-      "id": "abra-mother-alive",
-      "title": "Abra tells Aron his mother may be alive",
+      "id": "abra-tells-aron-mother",
+      "title": "Abra tells Aron his mother is not dead",
       "chapter": 27,
       "characters": [
         "Abra Bacon",
-        "Aron Trask"
+        "Aron Trask",
+        "Cal Trask"
       ],
-      "summary": "Abra repeats gossip that the Trask boys' mother is not dead but ran away. Aron clings to his belief in a dead, pure mother.",
-      "citation": "your mother",
-      "rationale": "Shows Aron's idealized image of his mother, which the focal reveal shatters.",
+      "summary": "Abra repeats what she overheard from her parents: the twins' mother did not die but ran away. This challenges the story the boys were told.",
+      "citation": "ran away",
+      "rationale": "It plants the first doubt about their mother in the boys' world. It also shows that Aron's need for a pure, idealized mother is fragile.",
       "is_focal_event": false,
       "causes": [
-        "aron-rabbit-abra",
-        "quinn-investigates"
+        "bradley-visit-rabbit",
+        "adam-covers-shooting"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal begins to sense that the story of his dead mother may be a lie.",
+      "user_verified": null
     },
     {
-      "id": "move-salinas",
-      "title": "Adam moves the family to Salinas",
-      "chapter": 35,
+      "id": "cal-prayer",
+      "title": "Cal prays not to be mean",
+      "chapter": 27,
+      "characters": [
+        "Cal Trask"
+      ],
+      "summary": "Alone at night, Cal asks God to make him like Aron and not mean. He promises anything if people will love him.",
+      "citation": "Don't make me mean",
+      "rationale": "It shows the core of Cal: a hunger to be loved, matched with shame at his own cruelty. Both are at work when he hurts Aron years later.",
+      "is_focal_event": false,
+      "causes": [
+        "bradley-visit-rabbit",
+        "abra-tells-aron-mother"
+      ],
+      "thread": "Trask",
+      "for_cal": "Cal fears he is mean by nature and desperately wants to be loved like Aron.",
+      "user_verified": null
+    },
+    {
+      "id": "lettuce-failure",
+      "title": "Adam's iced-lettuce venture fails",
+      "chapter": 36,
       "characters": [
         "Adam Trask",
-        "Lee",
         "Cal Trask",
         "Aron Trask"
       ],
-      "summary": "Adam moves the household to Salinas for the boys' schooling. The twins now live in the same town as Kate's house.",
-      "citation": "Salinas",
-      "rationale": "Puts the boys within reach of Kate, making Cal's discovery and the visit possible.",
+      "summary": "Adam ships lettuce east in iced railroad cars, but the train is delayed and the crop rots. He loses much of his fortune and becomes a laughingstock in Salinas.",
+      "citation": "lettuce",
+      "rationale": "Cal later aims to earn back this lost money as a gift for his father. That gift's rejection triggers the focal event.",
       "is_focal_event": false,
       "causes": [
         "adam-visits-kate"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal sees his father humiliated and poorer, and later wants to make it up to him.",
+      "user_verified": null
     },
     {
-      "id": "lettuce-fails",
-      "title": "Adam's iced-lettuce venture fails",
-      "chapter": 36,
-      "characters": [
-        "Adam Trask",
-        "Will Hamilton"
-      ],
-      "summary": "Adam ships Salinas lettuce east packed in ice, but delays let it rot. He loses much of his fortune and is mocked in town.",
-      "citation": "lettuce",
-      "rationale": "Cal later tries to win his father's love by replacing the lost money.",
-      "is_focal_event": false,
-      "causes": [
-        "cyrus-dies-fortune",
-        "move-salinas"
-      ],
-      "thread": "Trask",
-      "user_verified": true
-    },
-    {
-      "id": "aron-religious",
-      "title": "Aron turns to the church",
+      "id": "aron-turns-religious",
+      "title": "Aron turns devout and plans the ministry",
       "chapter": 37,
       "characters": [
         "Aron Trask",
         "Mr. Rolf",
         "Abra Bacon"
       ],
-      "summary": "Aron takes up fervent religion under the Episcopal minister Mr. Rolf and talks of chastity and the priesthood. His purity makes him fragile.",
+      "summary": "Under the influence of the Episcopal minister Mr. Rolf, Aron becomes intensely religious. He talks of becoming a minister and swears off worldly impurity.",
       "citation": "Mr. Rolf",
-      "rationale": "Aron's piety makes the brothel revelation devastating.",
+      "rationale": "Cal knows Aron's purity cannot bear the truth about their mother. That is exactly why showing him Kate is such a devastating blow.",
       "is_focal_event": false,
       "causes": [
-        "move-salinas"
+        "abra-tells-aron-mother"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal watches his brother build a pure, protected world that the truth about their mother could shatter.",
+      "user_verified": null
     },
     {
-      "id": "cal-arrested",
-      "title": "Cal is picked up in a Chinatown raid",
+      "id": "cal-learns-of-kate",
+      "title": "Cal discovers that the madam Kate is his mother",
       "chapter": 38,
-      "characters": [
-        "Cal Trask",
-        "Adam Trask"
-      ],
-      "summary": "Cal, prowling at night, is caught in a police raid on a Chinatown gambling house. Adam comes to take him home.",
-      "citation": "Chinatown",
-      "rationale": "The walk home becomes the moment Adam tells Cal about his mother.",
-      "is_focal_event": false,
-      "causes": [
-        "move-salinas"
-      ],
-      "thread": "Trask",
-      "user_verified": true
-    },
-    {
-      "id": "adam-tells-cal",
-      "title": "Adam tells Cal the truth about his mother",
-      "chapter": 38,
-      "characters": [
-        "Adam Trask",
-        "Cal Trask"
-      ],
-      "summary": "Adam admits that the boys' mother is alive and runs a house in Salinas. Cal already half-knows and is troubled by her legacy in himself.",
-      "citation": "your mother",
-      "rationale": "Cal now holds the secret he later uses against Aron.",
-      "is_focal_event": false,
-      "causes": [
-        "cal-arrested",
-        "adam-visits-kate"
-      ],
-      "thread": "Trask",
-      "user_verified": false
-    },
-    {
-      "id": "cal-follows-kate",
-      "title": "Cal shadows Kate around Salinas",
-      "chapter": 39,
       "characters": [
         "Cal Trask",
         "Kate"
       ],
-      "summary": "Cal secretly follows Kate on her outings to study the woman who is his mother. He grows obsessed with whether her evil is in him.",
-      "citation": "followed",
-      "rationale": "Leads Cal to confront Kate and learn her house.",
+      "summary": "Restless and sleepless, Cal roams Salinas at night. Through the town's talk he learns that Kate, owner of the notorious brothel, is his mother.",
+      "citation": "Rabbit Holman",
+      "rationale": "This is the secret Cal will eventually turn against Aron. It also feeds his fear that he carries her badness.",
       "is_focal_event": false,
       "causes": [
-        "adam-tells-cal"
+        "cathy-becomes-kate",
+        "abra-tells-aron-mother",
+        "cal-prayer"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal learns his mother is a brothel keeper and fears her evil is in him.",
+      "user_verified": null
     },
     {
-      "id": "cal-confronts-kate",
-      "title": "Cal confronts Kate in her room",
+      "id": "lee-tells-cal",
+      "title": "Lee tells Cal the truth and that his choices are his own",
       "chapter": 39,
-      "characters": [
-        "Cal Trask",
-        "Kate",
-        "Joe Valery"
-      ],
-      "summary": "Cal enters Kate's house and faces her, rejecting the idea that he is like her. Kate has him thrown out.",
-      "citation": "Joe",
-      "rationale": "Cal now knows the way into Kate's house, which he uses to take Aron there.",
-      "is_focal_event": false,
-      "causes": [
-        "cal-follows-kate",
-        "kate-poisons-faye"
-      ],
-      "thread": "Trask",
-      "user_verified": true
-    },
-    {
-      "id": "war-draft-board",
-      "title": "America enters the war; Adam joins the draft board",
-      "chapter": 42,
-      "characters": [
-        "Adam Trask"
-      ],
-      "summary": "The United States enters World War I and Adam serves on the local draft board. Sending young men to war weighs on his conscience.",
-      "citation": "draft board",
-      "rationale": "War makes Cal's bean profits possible and makes Adam see them as war profiteering.",
-      "is_focal_event": false,
-      "causes": [],
-      "thread": "Trask",
-      "user_verified": true
-    },
-    {
-      "id": "lee-lends",
-      "title": "Lee lends Cal five thousand dollars",
-      "chapter": 43,
       "characters": [
         "Lee",
         "Cal Trask"
       ],
-      "summary": "Lee lends Cal money from the savings he once meant for a bookstore. Cal wants to earn back what Adam lost.",
-      "citation": "five thousand dollars",
-      "rationale": "Funds the bean venture behind Cal's gift.",
+      "summary": "When Cal presses him, Lee confirms who Kate is and tells him the story of his parents. Lee insists Cal has his father in him as well, and that whatever he does will be his own doing, not his mother's.",
+      "citation": "not your mother",
+      "rationale": "Lee takes away Cal's excuse of bad blood and makes him responsible for his acts. On the focal night Cal acts knowing the choice is his.",
       "is_focal_event": false,
       "causes": [
-        "lettuce-fails"
+        "cal-learns-of-kate",
+        "timshel",
+        "lee-rejection-speech"
       ],
       "thread": "Lee",
-      "user_verified": true
+      "for_cal": "Cal learns he cannot blame his mother's blood for what he does; he is free and responsible.",
+      "user_verified": null
     },
     {
-      "id": "bean-deal",
-      "title": "Cal and Will Hamilton profit from beans",
+      "id": "cal-meets-kate",
+      "title": "Cal follows Kate and confronts her",
+      "chapter": 40,
+      "characters": [
+        "Cal Trask",
+        "Kate"
+      ],
+      "summary": "Cal trails Kate on her walks until she brings him into her room. She tries to draw him in as someone like herself and asks about Aron. Cal sees her fear and leaves no longer afraid of her.",
+      "citation": "Kate",
+      "rationale": "Cal now knows Kate in person and knows the way to her house. He is the only son who has faced her, which lets him lead Aron there later.",
+      "is_focal_event": false,
+      "causes": [
+        "cal-learns-of-kate",
+        "lee-tells-cal"
+      ],
+      "thread": "Trask",
+      "for_cal": "Cal meets his mother, refuses to be like her, and keeps the secret from Aron.",
+      "user_verified": null
+    },
+    {
+      "id": "adam-draft-board",
+      "title": "Adam serves on the wartime draft board",
+      "chapter": 42,
+      "characters": [
+        "Adam Trask"
+      ],
+      "summary": "When America enters the First World War, Adam sits on the local draft board. He is troubled by the young men he sends off to fight.",
+      "citation": "draft board",
+      "rationale": "Adam's guilt over sending boys to die makes him reject money earned from wartime prices. That rejection pushes Cal to the focal act.",
+      "is_focal_event": false,
+      "causes": [
+        "adam-visits-kate"
+      ],
+      "thread": "Trask",
+      "for_cal": "Cal's father grows morally burdened by the war in a way that will turn against Cal's gift.",
+      "user_verified": null
+    },
+    {
+      "id": "cal-will-beans",
+      "title": "Cal partners with Will Hamilton to grow beans",
       "chapter": 43,
       "characters": [
         "Cal Trask",
         "Will Hamilton"
       ],
-      "summary": "Cal partners with Will Hamilton to contract beans cheaply and sell them high to wartime buyers. Cal clears about fifteen thousand dollars.",
+      "summary": "Cal goes to the businessman Will Hamilton with a plan to grow and sell beans while wartime demand is high. He hopes to rebuild the money his father lost.",
       "citation": "beans",
-      "rationale": "Produces the money Cal offers Adam, whose rejection triggers his revenge on Aron.",
+      "rationale": "The venture produces the gift Cal hopes will finally earn Adam's love. Its rejection sets off his revenge on Aron.",
       "is_focal_event": false,
       "causes": [
-        "lettuce-fails",
-        "lee-lends",
-        "war-draft-board"
+        "lettuce-failure",
+        "adam-draft-board"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal hopes to win his father's love by earning back what he lost.",
+      "user_verified": null
     },
     {
-      "id": "aron-stanford",
-      "title": "Aron leaves for Stanford",
-      "chapter": 45,
+      "id": "lee-lends-cal",
+      "title": "Lee lends Cal the money to start",
+      "chapter": 43,
+      "characters": [
+        "Lee",
+        "Cal Trask"
+      ],
+      "summary": "Cal needs five thousand dollars for his share of the bean deal. Lee gives it to him from his own savings.",
+      "citation": "five thousand dollars",
+      "rationale": "Lee's trust makes the gift possible and shows Cal that someone believes in him. That makes the coming rejection by Adam sting harder.",
+      "is_focal_event": false,
+      "causes": [
+        "cal-will-beans",
+        "lee-tells-cal"
+      ],
+      "thread": "Lee",
+      "for_cal": "Cal is trusted with Lee's savings and feels his plan to please his father can work.",
+      "user_verified": null
+    },
+    {
+      "id": "adam-pride-aron",
+      "title": "Adam glows with pride over Aron's college plans",
+      "chapter": 44,
+      "characters": [
+        "Adam Trask",
+        "Aron Trask",
+        "Cal Trask"
+      ],
+      "summary": "Aron pushes to finish high school early and enter Stanford. Adam is openly proud of him.",
+      "citation": "Stanford",
+      "rationale": "Adam's open delight in Aron sharpens Cal's sense of being the less loved son. Adam measures Cal against Aron at the Thanksgiving dinner.",
+      "is_focal_event": false,
+      "causes": [
+        "aron-turns-religious"
+      ],
+      "thread": "Trask",
+      "for_cal": "Cal sees his father lavish pride on Aron and feels himself overlooked.",
+      "user_verified": null
+    },
+    {
+      "id": "aron-leaves-stanford",
+      "title": "Aron goes away to Stanford",
+      "chapter": 46,
       "characters": [
         "Aron Trask",
         "Adam Trask",
-        "Abra Bacon"
+        "Cal Trask"
       ],
-      "summary": "Aron graduates early and goes to Stanford, to Adam's great pride. Away from home he idealizes his family and Abra.",
+      "summary": "Aron leaves home early for Stanford, carrying his father's hopes. Cal stays behind in Salinas.",
       "citation": "Stanford",
-      "rationale": "Adam's pride in Aron sharpens Cal's sense of rejection, and Aron's return home sets up the visit.",
+      "rationale": "Aron's absence makes his return at Thanksgiving a special occasion. Cal plans his gift for that same day, so the brothers are measured side by side.",
       "is_focal_event": false,
       "causes": [
-        "aron-religious"
+        "adam-pride-aron"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "With Aron gone and praised from afar, Cal plans a gift to win a share of his father's pride.",
+      "user_verified": null
     },
     {
-      "id": "thanksgiving-rejection",
-      "title": "Adam rejects Cal's Thanksgiving gift",
-      "chapter": 49,
+      "id": "cal-readies-gift",
+      "title": "Cal makes a fortune and plans a Thanksgiving gift",
+      "chapter": 48,
       "characters": [
         "Cal Trask",
+        "Lee"
+      ],
+      "summary": "The bean deal earns Cal fifteen thousand dollars. He gets the money in new bills and plans to give it to Adam at Thanksgiving dinner, when Aron is home.",
+      "citation": "fifteen thousand dollars",
+      "rationale": "All of Cal's hope of being loved is poured into this gift. Its rejection is the immediate trigger of the focal event.",
+      "is_focal_event": false,
+      "causes": [
+        "lee-lends-cal",
+        "aron-leaves-stanford"
+      ],
+      "thread": "Trask",
+      "for_cal": "Cal believes this gift will finally make his father love him.",
+      "user_verified": null
+    },
+    {
+      "id": "adam-rejects-gift",
+      "title": "Adam rejects Cal's money and praises Aron instead",
+      "chapter": 49,
+      "characters": [
         "Adam Trask",
+        "Cal Trask",
         "Aron Trask",
         "Lee"
       ],
-      "summary": "At Thanksgiving Cal gives Adam the money. Adam refuses it as profit from war and says he would rather have the goodness Aron has.",
-      "citation": "Thanksgiving",
-      "rationale": "The direct trigger: hurt and jealous, Cal decides to wound Aron.",
+      "summary": "At Thanksgiving, Cal gives Adam the money. Adam refuses it as profit made from the war while he sends boys to die. He says the gift he wants is a good life like Aron's.",
+      "citation": "I would have been so happy if you could have given me",
+      "rationale": "This is Cal's Cain moment: his offering is refused and his brother is held up as the better son. His hurt and rage go straight into revealing Kate to Aron.",
       "is_focal_event": false,
       "causes": [
-        "bean-deal",
-        "war-draft-board",
-        "aron-stanford"
+        "cal-readies-gift",
+        "adam-draft-board",
+        "adam-pride-aron"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal feels utterly rejected by his father and blinded by jealousy of Aron.",
+      "user_verified": null
     },
     {
-      "id": "cal-reveals-kate",
-      "title": "Cal takes Aron to Kate's house",
+      "id": "lee-after-rejection",
+      "title": "Lee tries to steady Cal after the rejection",
+      "chapter": 49,
+      "characters": [
+        "Lee",
+        "Cal Trask"
+      ],
+      "summary": "Lee goes to the stricken Cal and urges him not to let his hurt and anger take control of him.",
+      "citation": "Lee",
+      "rationale": "Even with Lee's warning that the choice is his, Cal chooses revenge. That makes the focal act his own deliberate decision.",
+      "is_focal_event": false,
+      "causes": [
+        "adam-rejects-gift",
+        "lee-tells-cal"
+      ],
+      "thread": "Lee",
+      "for_cal": "Cal is reminded he can master his rage, but his pain is stronger than the warning.",
+      "user_verified": null
+    },
+    {
+      "id": "cal-reveals-kate-to-aron",
+      "title": "Cal takes Aron to Kate's house and shows him their mother",
       "chapter": 49,
       "characters": [
         "Cal Trask",
         "Aron Trask",
         "Kate"
       ],
-      "summary": "That night Cal leads Aron to Kate's brothel and shows him that the madam is their mother. Aron is shattered.",
-      "citation": "Kate's house",
-      "rationale": "The focal event, where the Trask and Cathy/Kate threads meet.",
+      "summary": "That night, still raw from his father's rejection, Cal leads Aron to Kate's brothel. There he confronts his brother with the truth that its madam is their mother, Cathy.",
+      "citation": "your mother",
+      "rationale": "This is the focal event: jealousy, inherited fear, rejected love and the hidden truth come together in Cal's act against his brother.",
       "is_focal_event": true,
       "causes": [
-        "thanksgiving-rejection",
-        "cal-confronts-kate",
-        "aron-religious",
-        "abra-mother-alive"
+        "adam-rejects-gift",
+        "lee-after-rejection",
+        "cal-meets-kate",
+        "aron-turns-religious",
+        "lee-rejection-speech"
       ],
       "thread": "Trask",
-      "user_verified": true
+      "for_cal": "Cal strikes out at the favored brother by destroying Aron's innocence, and soon will be crushed by guilt.",
+      "user_verified": null
     }
   ]
 }

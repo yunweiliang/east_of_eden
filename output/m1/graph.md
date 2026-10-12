@@ -1,142 +1,126 @@
-# M1: the events the ending really depends on
+# M1: the events that made Cal who he is
 
-Pool picked from the model's knowledge of the novel, not the text; 35/35 checked by the reader, 34 true. Pool prompt `098852498603b60d`, judge input `cc07a831ba19de0b`.
+Pool picked from the model's knowledge of the novel, not the text; 0/30 checked by the reader. Pool prompt `428c3e46ef1d4fc7`, judge input `880fa683ce19a9e1`.
 
-5 judge run(s) over 34 candidates. Kept per run: 23, 28, 23, 25, 28; runs agree 88% on average (shared keeps / all keeps, per pair). Kept by most runs: **26 of 34**, drawn below.
+Not judged yet: 30 candidates, all shown. Run `python -m eden judge` to apply the significance test.
 
-Your reference set has 4 events. The pool contains 3 of them (recall 75%), and the judge keeps 3.
+Your reference set has 4 events. The pool contains 0 of them (recall 0%), and the judge hasn't ruled yet.
 
-Not in the pool: cal finds out about cathy (ch. ?).
-
-Kept by the judge but not on your list: Samuel Hamilton settles in the Salinas Valley; Cyrus Trask dies leaving a large fortune; Cathy burns her parents' house and fakes her death; Mr. Edwards beats Cathy nearly to death; Injured Cathy turns up at the Trask farmhouse; Adam buys the Bordoni ranch; Samuel comes to plan Adam's wells; Samuel delivers the twins and Cathy bites him; Cathy shoots Adam and abandons the family; Cathy goes to work at Faye's brothel as Kate; Samuel strikes Adam out of his stupor; Samuel, aging after Una's death, agrees to leave his ranch; Samuel tells Adam that Cathy runs a Salinas brothel; Adam confronts Kate and is freed of her; Adam moves the family to Salinas; Aron turns to the church; Cal is picked up in a Chinatown raid; Cal shadows Kate around Salinas; America enters the war; Adam joins the draft board; Lee lends Cal five thousand dollars; Cal and Will Hamilton profit from beans; Aron leaves for Stanford.
+Not in the pool: adam rejects cals money (ch. ?); cal finds out about cathy (ch. ?); cathy marrying adam (ch. ?); adam's business failure (ch. ?).
 
 The full pool; faded, dashed boxes are the events most runs cut. Open `graph.html` for the swimlanes of the kept events only.
 
 ```mermaid
 flowchart LR
-    n_samuel_arrives["Samuel Hamilton settles in the Salinas Valley<br/><i>Ch. 2</i>"]
-    n_cyrus_dies_fortune["Cyrus Trask dies leaving a large fortune<br/><i>Ch. 7</i>"]
-    n_cathy_burns_home["Cathy burns her parents' house and fakes her death<br/><i>Ch. 8</i>"]
-    n_edwards_beats_cathy["Mr. Edwards beats Cathy nearly to death<br/><i>Ch. 9</i>"]
-    n_cathy_on_porch["Injured Cathy turns up at the Trask farmhouse<br/><i>Ch. 10</i>"]
-    n_adam_marries_cathy["Adam marries Cathy<br/><i>Ch. 11</i>"]
-    n_cathy_sleeps_charles["Cathy drugs Adam and goes to Charles on the wedding night<br/><i>Ch. 11</i>"]
-    n_adam_buys_ranch["Adam buys the Bordoni ranch<br/><i>Ch. 13</i>"]
-    n_samuel_visits_ranch["Samuel comes to plan Adam's wells<br/><i>Ch. 15</i>"]
-    n_lee_drops_pidgin["Lee drops his pidgin with Samuel<br/><i>Ch. 15</i>"]
-    n_twins_born["Samuel delivers the twins and Cathy bites him<br/><i>Ch. 17</i>"]
-    n_cathy_shoots_adam["Cathy shoots Adam and abandons the family<br/><i>Ch. 17</i>"]
-    n_quinn_investigates["Horace Quinn investigates the shooting<br/><i>Ch. 18</i>"]
-    n_cathy_joins_faye["Cathy goes to work at Faye's brothel as Kate<br/><i>Ch. 19</i>"]
-    n_kate_poisons_faye["Kate poisons Faye and takes over the brothel<br/><i>Ch. 21</i>"]
-    n_samuel_strikes_adam["Samuel strikes Adam out of his stupor<br/><i>Ch. 22</i>"]
-    n_twins_named["The twins are named Caleb and Aron<br/><i>Ch. 22</i>"]
-    n_samuel_farewell["Samuel, aging after Una's death, agrees to leave his ranch<br/><i>Ch. 23</i>"]
-    n_samuel_tells_kate["Samuel tells Adam that Cathy runs a Salinas brothel<br/><i>Ch. 24</i>"]
-    n_adam_visits_kate["Adam confronts Kate and is freed of her<br/><i>Ch. 25</i>"]
-    n_aron_rabbit_abra["Aron gives Abra a rabbit<br/><i>Ch. 27</i>"]
-    n_abra_mother_alive["Abra tells Aron his mother may be alive<br/><i>Ch. 27</i>"]
-    n_move_salinas["Adam moves the family to Salinas<br/><i>Ch. 35</i>"]
-    n_lettuce_fails["Adam's iced-lettuce venture fails<br/><i>Ch. 36</i>"]
-    n_aron_religious["Aron turns to the church<br/><i>Ch. 37</i>"]
-    n_cal_arrested["Cal is picked up in a Chinatown raid<br/><i>Ch. 38</i>"]
-    n_cal_follows_kate["Cal shadows Kate around Salinas<br/><i>Ch. 39</i>"]
-    n_cal_confronts_kate["Cal confronts Kate in her room<br/><i>Ch. 39</i>"]
-    n_war_draft_board["America enters the war; Adam joins the draft board<br/><i>Ch. 42</i>"]
-    n_lee_lends["Lee lends Cal five thousand dollars<br/><i>Ch. 43</i>"]
-    n_bean_deal["Cal and Will Hamilton profit from beans<br/><i>Ch. 43</i>"]
-    n_aron_stanford["Aron leaves for Stanford<br/><i>Ch. 45</i>"]
-    n_thanksgiving_rejection["Adam rejects Cal's Thanksgiving gift<br/><i>Ch. 49</i>"]
-    n_cal_reveals_kate["Cal takes Aron to Kate's house<br/><i>Ch. 49</i>"]
-    n_cathy_burns_home --> n_edwards_beats_cathy
-    n_edwards_beats_cathy --> n_cathy_on_porch
-    n_cyrus_dies_fortune --> n_cathy_on_porch
-    n_cathy_on_porch --> n_adam_marries_cathy
-    n_adam_marries_cathy --> n_cathy_sleeps_charles
-    n_adam_marries_cathy --> n_adam_buys_ranch
-    n_cyrus_dies_fortune --> n_adam_buys_ranch
-    n_samuel_arrives --> n_samuel_visits_ranch
-    n_adam_buys_ranch --> n_samuel_visits_ranch
-    n_samuel_visits_ranch --> n_lee_drops_pidgin
-    n_cathy_sleeps_charles --> n_twins_born
-    n_adam_buys_ranch --> n_twins_born
-    n_samuel_visits_ranch --> n_twins_born
+    n_cathy_born_monster["Cathy Ames is introduced as a born monster<br/><i>Ch. 8</i>"]
+    n_cathy_wedding_night["Cathy marries Adam and goes to Charles on the wedding night<br/><i>Ch. 11</i>"]
+    n_twins_born["The twins are born and Cathy rejects them<br/><i>Ch. 17</i>"]
+    n_cathy_shoots_adam["Cathy shoots Adam and abandons the twins<br/><i>Ch. 17</i>"]
+    n_adam_covers_shooting["Adam hides the truth about the shooting<br/><i>Ch. 18</i>"]
+    n_cathy_becomes_kate["Cathy becomes 'Kate' at Faye's brothel in Salinas<br/><i>Ch. 19</i>"]
+    n_adam_stupor_lee_raises["Adam sinks into apathy while Lee raises the twins<br/><i>Ch. 22</i>"]
+    n_samuel_strikes_adam["Samuel strikes Adam to wake him<br/><i>Ch. 22</i>"]
+    n_naming_cain_abel["The twins are named after a talk about Cain and Abel<br/><i>Ch. 22</i>"]
+    n_lee_rejection_speech["Lee explains that rejection breeds rage and guilt<br/><i>Ch. 24</i>"]
+    n_timshel["Lee's elders arrive at 'timshel', thou mayest<br/><i>Ch. 24</i>"]
+    n_samuel_tells_adam_kate["Samuel tells Adam that Cathy runs a Salinas brothel<br/><i>Ch. 24</i>"]
+    n_adam_visits_kate["Adam confronts Kate and is freed from her<br/><i>Ch. 25</i>"]
+    n_bradley_visit_rabbit["Abra visits and warms to Aron's gift<br/><i>Ch. 27</i>"]
+    n_abra_tells_aron_mother["Abra tells Aron his mother is not dead<br/><i>Ch. 27</i>"]
+    n_cal_prayer["Cal prays not to be mean<br/><i>Ch. 27</i>"]
+    n_lettuce_failure["Adam's iced-lettuce venture fails<br/><i>Ch. 36</i>"]
+    n_aron_turns_religious["Aron turns devout and plans the ministry<br/><i>Ch. 37</i>"]
+    n_cal_learns_of_kate["Cal discovers that the madam Kate is his mother<br/><i>Ch. 38</i>"]
+    n_lee_tells_cal["Lee tells Cal the truth and that his choices are his own<br/><i>Ch. 39</i>"]
+    n_cal_meets_kate["Cal follows Kate and confronts her<br/><i>Ch. 40</i>"]
+    n_adam_draft_board["Adam serves on the wartime draft board<br/><i>Ch. 42</i>"]
+    n_cal_will_beans["Cal partners with Will Hamilton to grow beans<br/><i>Ch. 43</i>"]
+    n_lee_lends_cal["Lee lends Cal the money to start<br/><i>Ch. 43</i>"]
+    n_adam_pride_aron["Adam glows with pride over Aron's college plans<br/><i>Ch. 44</i>"]
+    n_aron_leaves_stanford["Aron goes away to Stanford<br/><i>Ch. 46</i>"]
+    n_cal_readies_gift["Cal makes a fortune and plans a Thanksgiving gift<br/><i>Ch. 48</i>"]
+    n_adam_rejects_gift["Adam rejects Cal's money and praises Aron instead<br/><i>Ch. 49</i>"]
+    n_lee_after_rejection["Lee tries to steady Cal after the rejection<br/><i>Ch. 49</i>"]
+    n_cal_reveals_kate_to_aron["Cal takes Aron to Kate's house and shows him their mother<br/><i>Ch. 49</i>"]
+    n_cathy_born_monster --> n_cathy_wedding_night
+    n_cathy_wedding_night --> n_twins_born
     n_twins_born --> n_cathy_shoots_adam
-    n_cathy_shoots_adam --> n_quinn_investigates
-    n_cathy_shoots_adam --> n_cathy_joins_faye
-    n_cathy_joins_faye --> n_kate_poisons_faye
-    n_cathy_shoots_adam --> n_samuel_strikes_adam
-    n_samuel_visits_ranch --> n_samuel_strikes_adam
-    n_samuel_strikes_adam --> n_twins_named
-    n_lee_drops_pidgin --> n_twins_named
-    n_samuel_arrives --> n_samuel_farewell
-    n_samuel_farewell --> n_samuel_tells_kate
-    n_kate_poisons_faye --> n_samuel_tells_kate
-    n_twins_named --> n_samuel_tells_kate
-    n_samuel_tells_kate --> n_adam_visits_kate
-    n_twins_named --> n_aron_rabbit_abra
-    n_aron_rabbit_abra --> n_abra_mother_alive
-    n_quinn_investigates --> n_abra_mother_alive
-    n_adam_visits_kate --> n_move_salinas
-    n_cyrus_dies_fortune --> n_lettuce_fails
-    n_move_salinas --> n_lettuce_fails
-    n_move_salinas --> n_aron_religious
-    n_move_salinas --> n_cal_arrested
-    n_cal_arrested --> n_cal_follows_kate
-    n_adam_visits_kate --> n_cal_follows_kate
-    n_cal_follows_kate --> n_cal_confronts_kate
-    n_kate_poisons_faye --> n_cal_confronts_kate
-    n_lettuce_fails --> n_lee_lends
-    n_lettuce_fails --> n_bean_deal
-    n_lee_lends --> n_bean_deal
-    n_war_draft_board --> n_bean_deal
-    n_aron_religious --> n_aron_stanford
-    n_bean_deal --> n_thanksgiving_rejection
-    n_war_draft_board --> n_thanksgiving_rejection
-    n_aron_stanford --> n_thanksgiving_rejection
-    n_thanksgiving_rejection --> n_cal_reveals_kate
-    n_cal_confronts_kate --> n_cal_reveals_kate
-    n_aron_religious --> n_cal_reveals_kate
-    n_abra_mother_alive --> n_cal_reveals_kate
-    classDef cut stroke-dasharray:4 3,opacity:0.45
-    class n_cathy_sleeps_charles,n_lee_drops_pidgin,n_quinn_investigates,n_kate_poisons_faye,n_twins_named,n_aron_rabbit_abra,n_abra_mother_alive,n_cal_confronts_kate cut
-    style n_cal_reveals_kate stroke-width:3px
+    n_cathy_shoots_adam --> n_adam_covers_shooting
+    n_cathy_shoots_adam --> n_cathy_becomes_kate
+    n_cathy_shoots_adam --> n_adam_stupor_lee_raises
+    n_adam_stupor_lee_raises --> n_samuel_strikes_adam
+    n_samuel_strikes_adam --> n_naming_cain_abel
+    n_naming_cain_abel --> n_lee_rejection_speech
+    n_naming_cain_abel --> n_timshel
+    n_cathy_becomes_kate --> n_samuel_tells_adam_kate
+    n_samuel_strikes_adam --> n_samuel_tells_adam_kate
+    n_samuel_tells_adam_kate --> n_adam_visits_kate
+    n_twins_born --> n_bradley_visit_rabbit
+    n_bradley_visit_rabbit --> n_abra_tells_aron_mother
+    n_adam_covers_shooting --> n_abra_tells_aron_mother
+    n_bradley_visit_rabbit --> n_cal_prayer
+    n_abra_tells_aron_mother --> n_cal_prayer
+    n_adam_visits_kate --> n_lettuce_failure
+    n_abra_tells_aron_mother --> n_aron_turns_religious
+    n_cathy_becomes_kate --> n_cal_learns_of_kate
+    n_abra_tells_aron_mother --> n_cal_learns_of_kate
+    n_cal_prayer --> n_cal_learns_of_kate
+    n_cal_learns_of_kate --> n_lee_tells_cal
+    n_timshel --> n_lee_tells_cal
+    n_lee_rejection_speech --> n_lee_tells_cal
+    n_cal_learns_of_kate --> n_cal_meets_kate
+    n_lee_tells_cal --> n_cal_meets_kate
+    n_adam_visits_kate --> n_adam_draft_board
+    n_lettuce_failure --> n_cal_will_beans
+    n_adam_draft_board --> n_cal_will_beans
+    n_cal_will_beans --> n_lee_lends_cal
+    n_lee_tells_cal --> n_lee_lends_cal
+    n_aron_turns_religious --> n_adam_pride_aron
+    n_adam_pride_aron --> n_aron_leaves_stanford
+    n_lee_lends_cal --> n_cal_readies_gift
+    n_aron_leaves_stanford --> n_cal_readies_gift
+    n_cal_readies_gift --> n_adam_rejects_gift
+    n_adam_draft_board --> n_adam_rejects_gift
+    n_adam_pride_aron --> n_adam_rejects_gift
+    n_adam_rejects_gift --> n_lee_after_rejection
+    n_lee_tells_cal --> n_lee_after_rejection
+    n_adam_rejects_gift --> n_cal_reveals_kate_to_aron
+    n_lee_after_rejection --> n_cal_reveals_kate_to_aron
+    n_cal_meets_kate --> n_cal_reveals_kate_to_aron
+    n_aron_turns_religious --> n_cal_reveals_kate_to_aron
+    n_lee_rejection_speech --> n_cal_reveals_kate_to_aron
+    style n_cal_reveals_kate_to_aron stroke-width:3px
 ```
 
-| # | Event | Thread | Ch. | Kept | Effect if removed | Affects | Judge's reason | Checked |
+| # | Event | What it does to Cal | Ch. | Kept | Without it, Cal… | Affects | Judge's reason | Checked |
 |---|---|---|---|---|---|---|---|---|
-| 1 | **Samuel Hamilton settles in the Salinas Valley** | Hamilton | 2 | 5/5 | path breaks | Samuel comes to plan Adam's wells, Samuel strikes Adam out of his stupor, Samuel, aging after Una's death, agrees to leave his ranch, Samuel tells Adam that Cathy runs a Salinas brothel, Adam confronts Kate and is freed of her | Without Samuel there is no friend to rouse Adam from his stupor or tell him that Cathy is Kate. Adam's confrontation and release, and the later move to Salinas, lose their source. | ✓ checked |
-| 2 | **Cyrus Trask dies leaving a large fortune** | Trask | 7 | 5/5 | path breaks | Injured Cathy turns up at the Trask farmhouse, Adam buys the Bordoni ranch, Adam's iced-lettuce venture fails, Lee lends Cal five thousand dollars, Cal and Will Hamilton profit from beans, Adam rejects Cal's Thanksgiving gift | The inheritance funds Adam's California ranch and the money he loses on lettuce. That loss is what Cal tries to repay, leading to the rejected gift. | ✓ checked |
-| 3 | **Cathy burns her parents' house and fakes her death** | Cathy/Kate | 8 | 5/5 | path breaks | Mr. Edwards beats Cathy nearly to death, Injured Cathy turns up at the Trask farmhouse | Cathy's escape from her family under a false identity starts the road that leads her to Edwards and then to the Trask door. | ✓ checked |
-| 4 | **Mr. Edwards beats Cathy nearly to death** | Cathy/Kate | 9 | 5/5 | path breaks | Injured Cathy turns up at the Trask farmhouse, Adam marries Cathy | The beating is what leaves Cathy helpless on the Trask porch, where Adam takes her in. Without it she never enters Adam's life. | ✓ checked |
-| 5 | **Injured Cathy turns up at the Trask farmhouse** | Cathy/Kate | 10 | 5/5 | path breaks | Adam marries Cathy, Adam buys the Bordoni ranch, Samuel delivers the twins and Cathy bites him | Adam meets and falls for Cathy only because she arrives broken at his house. | ✓ checked |
-| 6 | **Adam marries Cathy** | Trask | 11 | 5/5 | path breaks | Adam buys the Bordoni ranch, Samuel delivers the twins and Cathy bites him, Cathy shoots Adam and abandons the family | The marriage brings Cathy to California and produces the twins. | ✓ checked |
-| 7 | **Cathy drugs Adam and goes to Charles on the wedding night** | Cathy/Kate | 11 | 0/5 | no real change |  | The doubt over paternity is thematic. The twins are born and raised as Adam's sons either way, and the reveal does not rely on it. | ✓ checked |
-| 8 | **Adam buys the Bordoni ranch** | Trask | 13 | 5/5 | path breaks | Samuel comes to plan Adam's wells, Samuel delivers the twins and Cathy bites him, Cathy shoots Adam and abandons the family, Cathy goes to work at Faye's brothel as Kate | Settling in the Salinas Valley puts Cathy near Salinas, where she becomes Kate, and brings Adam into Samuel's orbit. | ✓ checked |
-| 9 | **Samuel comes to plan Adam's wells** | Hamilton | 15 | 5/5 | path breaks | Samuel strikes Adam out of his stupor, Samuel tells Adam that Cathy runs a Salinas brothel, Adam confronts Kate and is freed of her | This visit begins the friendship that later lets Samuel strike Adam awake and tell him the truth about Kate. | ✓ checked |
-| 10 | **Lee drops his pidgin with Samuel** | Lee | 15 | 0/5 | no real change |  | Lee's bond with Samuel deepens the novel's discussions, but Lee's devotion to Adam's household and his loan to Cal do not depend on it. | ✓ checked |
-| 11 | **Samuel delivers the twins and Cathy bites him** | Hamilton | 17 | 5/5 | path breaks | Cathy shoots Adam and abandons the family, Cathy goes to work at Faye's brothel as Kate, Cal takes Aron to Kate's house | Cal and Aron must exist, and Cathy leaves only after giving birth. | ✓ checked |
-| 12 | **Cathy shoots Adam and abandons the family** | Cathy/Kate | 17 | 5/5 | path breaks | Cathy goes to work at Faye's brothel as Kate, Kate poisons Faye and takes over the brothel, Samuel strikes Adam out of his stupor | Her violent departure is what turns her into Kate in Salinas and leaves Adam numb. | ✓ checked |
-| 13 | **Horace Quinn investigates the shooting** | Trask | 18 | 0/5 | no real change |  | The town would know Cathy ran off regardless, so the gossip Abra repeats does not hinge on this investigation. | ✓ checked |
-| 14 | **Cathy goes to work at Faye's brothel as Kate** | Cathy/Kate | 19 | 5/5 | path breaks | Kate poisons Faye and takes over the brothel, Samuel tells Adam that Cathy runs a Salinas brothel, Cal shadows Kate around Salinas, Cal confronts Kate in her room, Cal takes Aron to Kate's house | Cathy becoming the Salinas prostitute Kate is the very secret Cal later reveals. | ✓ checked |
-| 15 | **Kate poisons Faye and takes over the brothel** | Cathy/Kate | 21 | 2/5 | no real change |  | Even without becoming owner, Kate would still be a prostitute in a Salinas house where Cal could find her and show her to Aron. | ✓ checked |
-| 16 | **Samuel strikes Adam out of his stupor** | Hamilton | 22 | 4/5 | path breaks | The twins are named Caleb and Aron, Samuel tells Adam that Cathy runs a Salinas brothel | Without Samuel's blow Adam stays numb to his sons and his past, and the household that leads to the later events never forms as it does. | ✓ checked |
-| 17 | **The twins are named Caleb and Aron** | Lee | 22 | 0/5 | no real change |  | The boys would be named anyway once Adam woke. The Cain-and-Abel framing is thematic rather than causal. | ✓ checked |
-| 18 | **Samuel, aging after Una's death, agrees to leave his ranch** | Hamilton | 23 | 5/5 | path breaks | Samuel tells Adam that Cathy runs a Salinas brothel | Samuel reveals the secret he had kept only because he is leaving and senses his end is near. | ✓ checked |
-| 19 | **Samuel tells Adam that Cathy runs a Salinas brothel** | Hamilton | 24 | 5/5 | path breaks | Adam confronts Kate and is freed of her, Adam moves the family to Salinas, Cal is picked up in a Chinatown raid, Cal shadows Kate around Salinas | Adam learns where Cathy is only through Samuel. That knowledge lets him confront her and later tell Cal the truth. | ✓ checked |
-| 20 | **Adam confronts Kate and is freed of her** | Trask | 25 | 5/5 | path breaks | Adam moves the family to Salinas, Cal shadows Kate around Salinas | Freed of his obsession, Adam can move the family into Kate's town and later speak to Cal about her. | ✓ checked |
-| 21 | **Aron gives Abra a rabbit** | Trask | 27 | 0/5 | no real change |  | The scene sets up the Aron-Abra bond, but Cal's revelation of Kate to Aron does not depend on it. | ✓ checked |
-| 22 | **Abra tells Aron his mother may be alive** | Trask | 27 | 0/5 | no real change |  | Aron's belief in a pure, dead mother comes from Adam's story and survives Abra's gossip. The reveal shatters him either way. | ✓ checked |
-| 23 | **Adam moves the family to Salinas** | Trask | 35 | 5/5 | path breaks | Adam's iced-lettuce venture fails, Aron turns to the church, Cal is picked up in a Chinatown raid, Cal shadows Kate around Salinas, Cal takes Aron to Kate's house | Living in Salinas puts the twins within reach of Kate's house and sets up the lettuce venture and Aron's churchgoing. | ✓ checked |
-| 24 | **Adam's iced-lettuce venture fails** | Trask | 36 | 5/5 | path breaks | Lee lends Cal five thousand dollars, Cal and Will Hamilton profit from beans, Adam rejects Cal's Thanksgiving gift | Adam's loss is the reason Cal wants to earn money for him, which produces the gift Adam rejects. | ✓ checked |
-| 25 | **Aron turns to the church** | Trask | 37 | 3/5 | path breaks | Aron leaves for Stanford, Cal takes Aron to Kate's house | Aron's fervent purity is what makes the revelation so devastating to him, and it shapes the idealized son Adam favors. | ✓ checked |
-| 26 | **Cal is picked up in a Chinatown raid** | Trask | 38 | 3/5 | path breaks | Cal shadows Kate around Salinas, Cal confronts Kate in her room | On the way home after the raid Adam tells Cal that his mother is alive and in Salinas, which sends Cal after Kate. | ✓ checked |
-| 27 | **Adam tells Cal the truth about his mother** | Trask | 38 | not judged (marked false) |  |  |  | ✗ wrong |
-| 28 | **Cal shadows Kate around Salinas** | Trask | 39 | 5/5 | path breaks | Cal confronts Kate in her room, Cal takes Aron to Kate's house | Shadowing Kate is how Cal confirms who she is and comes to her attention. | ✓ checked |
-| 29 | **Cal confronts Kate in her room** | Trask | 39 | 2/5 | no real change |  | Cal already knows Kate and her house from following her, so he could still bring Aron there without this scene. | ✓ checked |
-| 30 | **America enters the war; Adam joins the draft board** | Trask | 42 | 5/5 | path breaks | Cal and Will Hamilton profit from beans, Adam rejects Cal's Thanksgiving gift | Wartime prices make the bean profit possible. Adam's draft-board guilt is why he refuses the money as war profit. | ✓ checked |
-| 31 | **Lee lends Cal five thousand dollars** | Lee | 43 | 5/5 | path breaks | Cal and Will Hamilton profit from beans, Adam rejects Cal's Thanksgiving gift | Cal needs Lee's money as capital to enter the bean deal. | ✓ checked |
-| 32 | **Cal and Will Hamilton profit from beans** | Trask | 43 | 5/5 | path breaks | Adam rejects Cal's Thanksgiving gift | The profit is the gift Cal offers and Adam rejects. | ✓ checked |
-| 33 | **Aron leaves for Stanford** | Trask | 45 | 3/5 | key motive changes | Adam rejects Cal's Thanksgiving gift | Aron's success at Stanford is what Adam holds up against Cal's money. Without it the rejection lacks its sharpest comparison, which is what stings Cal into revenge. | ✓ checked |
-| 34 | **Adam rejects Cal's Thanksgiving gift** | Trask | 49 | 5/5 | path breaks | Cal takes Aron to Kate's house | Adam's rejection drives Cal's jealous, vengeful decision to show Aron their mother that night. | ✓ checked |
-| 35 | **Cal takes Aron to Kate's house** | Trask | 49 | 5/5 | path breaks |  | This is the focal event. | ✓ checked |
+| 1 | **Cathy Ames is introduced as a born monster** | Cal will one day learn that his mother is this woman, and fear that her coldness lives in him. | 8 | not judged yet |  |  |  | unchecked |
+| 2 | **Cathy marries Adam and goes to Charles on the wedding night** | Cal is born from a marriage built on his mother's deceit, a secret kept from him. | 11 | not judged yet |  |  |  | unchecked |
+| 3 | **The twins are born and Cathy rejects them** | From birth Cal is unwanted by his mother, though he will not know it for years. | 17 | not judged yet |  |  |  | unchecked |
+| 4 | **Cathy shoots Adam and abandons the twins** | Cal loses his mother as a baby and grows up without knowing why. | 17 | not judged yet |  |  |  | unchecked |
+| 5 | **Adam hides the truth about the shooting** | The silence that will surround Cal's mother throughout his childhood begins here. | 18 | not judged yet |  |  |  | unchecked |
+| 6 | **Cathy becomes 'Kate' at Faye's brothel in Salinas** | Cal's mother is living a few miles away under a new name, a secret waiting for him. | 19 | not judged yet |  |  |  | unchecked |
+| 7 | **Adam sinks into apathy while Lee raises the twins** | Cal's first years are spent with an absent-minded father and a loving servant, Lee, in his place. | 22 | not judged yet |  |  |  | unchecked |
+| 8 | **Samuel strikes Adam to wake him** | Cal's father is forced to start paying attention to him, but only partly. | 22 | not judged yet |  |  |  | unchecked |
+| 9 | **The twins are named after a talk about Cain and Abel** | Cal is given a name tied to the Cain-and-Abel story he will half-live out with Aron. | 22 | not judged yet |  |  |  | unchecked |
+| 10 | **Lee explains that rejection breeds rage and guilt** | Lee forms an idea of the rejected son that will guide how he raises and counsels Cal. | 24 | not judged yet |  |  |  | unchecked |
+| 11 | **Lee's elders arrive at 'timshel', thou mayest** | Lee forms the belief in personal choice that he will later pass on to Cal. | 24 | not judged yet |  |  |  | unchecked |
+| 12 | **Samuel tells Adam that Cathy runs a Salinas brothel** | The adults around Cal now know his mother's whereabouts and will keep it from him. | 24 | not judged yet |  |  |  | unchecked |
+| 13 | **Adam confronts Kate and is freed from her** | Cal's father comes back to life but keeps the truth about Cal's mother locked away. | 25 | not judged yet |  |  |  | unchecked |
+| 14 | **Abra visits and warms to Aron's gift** | Cal feels that people naturally love Aron more than him, and resents it. | 27 | not judged yet |  |  |  | unchecked |
+| 15 | **Abra tells Aron his mother is not dead** | Cal begins to sense that the story of his dead mother may be a lie. | 27 | not judged yet |  |  |  | unchecked |
+| 16 | **Cal prays not to be mean** | Cal fears he is mean by nature and desperately wants to be loved like Aron. | 27 | not judged yet |  |  |  | unchecked |
+| 17 | **Adam's iced-lettuce venture fails** | Cal sees his father humiliated and poorer, and later wants to make it up to him. | 36 | not judged yet |  |  |  | unchecked |
+| 18 | **Aron turns devout and plans the ministry** | Cal watches his brother build a pure, protected world that the truth about their mother could shatter. | 37 | not judged yet |  |  |  | unchecked |
+| 19 | **Cal discovers that the madam Kate is his mother** | Cal learns his mother is a brothel keeper and fears her evil is in him. | 38 | not judged yet |  |  |  | unchecked |
+| 20 | **Lee tells Cal the truth and that his choices are his own** | Cal learns he cannot blame his mother's blood for what he does; he is free and responsible. | 39 | not judged yet |  |  |  | unchecked |
+| 21 | **Cal follows Kate and confronts her** | Cal meets his mother, refuses to be like her, and keeps the secret from Aron. | 40 | not judged yet |  |  |  | unchecked |
+| 22 | **Adam serves on the wartime draft board** | Cal's father grows morally burdened by the war in a way that will turn against Cal's gift. | 42 | not judged yet |  |  |  | unchecked |
+| 23 | **Cal partners with Will Hamilton to grow beans** | Cal hopes to win his father's love by earning back what he lost. | 43 | not judged yet |  |  |  | unchecked |
+| 24 | **Lee lends Cal the money to start** | Cal is trusted with Lee's savings and feels his plan to please his father can work. | 43 | not judged yet |  |  |  | unchecked |
+| 25 | **Adam glows with pride over Aron's college plans** | Cal sees his father lavish pride on Aron and feels himself overlooked. | 44 | not judged yet |  |  |  | unchecked |
+| 26 | **Aron goes away to Stanford** | With Aron gone and praised from afar, Cal plans a gift to win a share of his father's pride. | 46 | not judged yet |  |  |  | unchecked |
+| 27 | **Cal makes a fortune and plans a Thanksgiving gift** | Cal believes this gift will finally make his father love him. | 48 | not judged yet |  |  |  | unchecked |
+| 28 | **Adam rejects Cal's money and praises Aron instead** | Cal feels utterly rejected by his father and blinded by jealousy of Aron. | 49 | not judged yet |  |  |  | unchecked |
+| 29 | **Lee tries to steady Cal after the rejection** | Cal is reminded he can master his rage, but his pain is stronger than the warning. | 49 | not judged yet |  |  |  | unchecked |
+| 30 | **Cal takes Aron to Kate's house and shows him their mother** | Cal strikes out at the favored brother by destroying Aron's innocence, and soon will be crushed by guilt. | 49 | not judged yet |  |  |  | unchecked |
