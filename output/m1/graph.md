@@ -4,11 +4,9 @@ Pool picked from the model's knowledge of the novel, not the text; 35/35 checked
 
 Not judged yet: 34 candidates, all shown. Run `python -m eden judge` to apply the significance test.
 
-Your reference set has 4 events. The pool contains 3 of them (recall 75%), and the judge keeps 3.
+Your reference set has 4 events. The pool contains 3 of them (recall 75%), and the judge hasn't ruled yet.
 
 Not in the pool: cal finds out about cathy (ch. ?).
-
-Kept by the judge but not on your list: Samuel Hamilton settles in the Salinas Valley; Cyrus Trask dies leaving a large fortune; Cathy burns her parents' house and fakes her death; Mr. Edwards beats Cathy nearly to death; Injured Cathy turns up at the Trask farmhouse; Cathy drugs Adam and goes to Charles on the wedding night; Adam buys the Bordoni ranch; Samuel comes to plan Adam's wells; Lee drops his pidgin with Samuel; Samuel delivers the twins and Cathy bites him; Cathy shoots Adam and abandons the family; Horace Quinn investigates the shooting; Cathy goes to work at Faye's brothel as Kate; Kate poisons Faye and takes over the brothel; Samuel strikes Adam out of his stupor; The twins are named Caleb and Aron; Samuel, aging after Una's death, agrees to leave his ranch; Samuel tells Adam that Cathy runs a Salinas brothel; Adam confronts Kate and is freed of her; Aron gives Abra a rabbit; Abra tells Aron his mother may be alive; Adam moves the family to Salinas; Aron turns to the church; Cal is picked up in a Chinatown raid; Cal shadows Kate around Salinas; Cal confronts Kate in her room; America enters the war; Adam joins the draft board; Lee lends Cal five thousand dollars; Cal and Will Hamilton profit from beans; Aron leaves for Stanford.
 
 The full pool; faded, dashed boxes are the events most runs cut. Open `graph.html` for the swimlanes of the kept events only.
 

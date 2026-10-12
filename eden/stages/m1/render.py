@@ -53,13 +53,16 @@ class Summary:
         kept = [r for r in matched if r.pool_id in self.kept]
         listed = {r.pool_id for r in matched}
         extra = [e for e in self.kept_graph if e.id not in listed and not e.is_focal_event]  # the reveal is always kept
+        verdict = f"the judge keeps {len(kept)}" if self.runs else "the judge hasn't ruled yet"
         lines = [
             f"Your reference set has {len(ref)} events. The pool contains {len(matched)} of them "
-            f"(recall {len(matched) / len(ref):.0%}), and the judge keeps {len(kept)}.",
+            f"(recall {len(matched) / len(ref):.0%}), and {verdict}.",
         ]
         missing = [r for r in ref if r.pool_id not in self.by_id]
         if missing:
             lines.append("Not in the pool: " + "; ".join(f"{r.title} (ch. {r.chapter or '?'})" for r in missing) + ".")
+        if not self.runs:
+            return lines  # nothing is kept or cut until the judge has run
         cut = [r for r in matched if r.pool_id not in self.kept]
         if cut:
             lines.append("In the pool but cut by the judge: " + "; ".join(self.by_id[r.pool_id].title for r in cut) + ".")
