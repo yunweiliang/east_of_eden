@@ -7,27 +7,28 @@ import datetime as dt
 import json
 from pathlib import Path
 
-from .schema import Event
+from .stages import STAGES
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "output" / "mvp"
-RUNTIME_LEDGER = ROOT / "output" / "agent_runtime_costs.jsonl"
+OUTPUT = ROOT / "output"
+RUNTIME_LEDGER = OUTPUT / "agent_runtime_costs.jsonl"
 
 
 def cmd_extract(args) -> None:
-    from .extract import MODEL, extract_events, prompt_hash
+    from .core.llm import MODEL, extract_events, prompt_hash
+    from .core.pins import log_runtime_cost, pinned_hash, save_run
 
-    events_path = OUT / "events.json"
-    phash = prompt_hash(args.count)
-    if events_path.exists() and not args.force:
-        meta = json.loads(events_path.read_text())["meta"]
-        if meta["prompt_hash"] == phash:
-            print("Pinned picks already match this prompt; skipping the model call. Use --force to re-pick.")
-            return
+    stage = STAGES[args.stage]
+    out_dir = OUTPUT / stage.NAME
+    count = args.count or stage.DEFAULT_COUNT
+    phash = prompt_hash(stage, count)
+    if not args.force and pinned_hash(out_dir) == phash:
+        print("Pinned picks already match this prompt; skipping the model call. Use --force to re-pick.")
+        return
 
-    result = extract_events(args.count)
+    result = extract_events(stage, count)
     meta = {
-        "stage": "mvp",
+        "stage": stage.NAME,
         "model": MODEL,
         "served_by": result.served_by,
         "prompt_hash": phash,
@@ -39,16 +40,10 @@ def cmd_extract(args) -> None:
         "errors": result.report.errors,
         "warnings": result.report.warnings,
     }
-    OUT.mkdir(parents=True, exist_ok=True)
-    if events_path.exists():
-        # Keep the previous picks (and any user_verified marks on them) instead of silently overwriting.
-        stamp = json.loads(events_path.read_text())["meta"].get("created", "previous").replace(":", "")
-        backup = events_path.with_name(f"events.{stamp}.json")
-        events_path.rename(backup)
-        print(f"Previous picks kept as {backup.name}")
-    events_path.write_text(json.dumps({"meta": meta, "events": [e.model_dump() for e in result.events]}, indent=2) + "\n")
-    with RUNTIME_LEDGER.open("a") as f:
-        f.write(json.dumps({k: meta[k] for k in ("created", "stage", "served_by", "attempts", "usage", "cost_usd")}) + "\n")
+    backup = save_run(out_dir, meta, result.events)
+    if backup:
+        print(f"Previous picks kept as {backup}")
+    log_runtime_cost(RUNTIME_LEDGER, meta)
 
     print(f"{len(result.events)} events after {result.attempts} attempt(s); agent runtime cost ${result.cost_usd}")
     for line in result.report.errors:
@@ -59,22 +54,23 @@ def cmd_extract(args) -> None:
 
 
 def cmd_render(args) -> None:
-    from .render import to_html, to_markdown
+    from .core.pins import load_run
 
-    data = json.loads((OUT / "events.json").read_text())
-    events = [Event.model_validate(e) for e in data["events"]]
-    (OUT / "timeline.md").write_text(to_markdown(events, data["meta"]))
-    (OUT / "timeline.html").write_text(to_html(events, data["meta"]))
-    print(f"Wrote {OUT / 'timeline.md'} and {OUT / 'timeline.html'}")
+    stage = STAGES[args.stage]
+    out_dir = OUTPUT / stage.NAME
+    events, meta = load_run(out_dir, stage.Event)
+    written = stage.render(events, meta, out_dir)
+    print("Wrote " + " and ".join(str(p) for p in written))
 
 
 def cmd_portfolio(args) -> None:
-    from .render import splice_timeline, to_portfolio_timeline
+    from .core.pins import load_run
+    from .publish import splice_timeline
 
-    data = json.loads((OUT / "events.json").read_text())
-    events = [Event.model_validate(e) for e in data["events"]]
+    mvp = STAGES["mvp"]  # the portfolio shows the MVP timeline for now
+    events, _ = load_run(OUTPUT / mvp.NAME, mvp.Event)
     page = ROOT / "portfolio" / "home.html"
-    page.write_text(splice_timeline(page.read_text(), to_portfolio_timeline(events)))
+    page.write_text(splice_timeline(page.read_text(), mvp.to_portfolio_timeline(events)))
     print(f"Updated the timeline in {page}; your writing around it is unchanged.")
 
 
@@ -135,12 +131,16 @@ def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(prog="eden")
     sub = parser.add_subparsers(required=True)
 
+    stage_help = f"Which milestone to run: {', '.join(STAGES)} (default: mvp)"
+
     p = sub.add_parser("extract", help="Pick events with the model, validate them, pin them, then render")
-    p.add_argument("--count", type=int, default=10)
+    p.add_argument("--stage", choices=STAGES, default="mvp", help=stage_help)
+    p.add_argument("--count", type=int, help="Number of events (default: the stage's own)")
     p.add_argument("--force", action="store_true", help="Re-pick even if pinned picks match")
     p.set_defaults(func=cmd_extract)
 
-    p = sub.add_parser("render", help="Redraw the timeline from the pinned events.json (no model call)")
+    p = sub.add_parser("render", help="Redraw from the pinned events.json (no model call)")
+    p.add_argument("--stage", choices=STAGES, default="mvp", help=stage_help)
     p.set_defaults(func=cmd_render)
 
     p = sub.add_parser("portfolio", help="Refresh the timeline inside portfolio/home.html (no model call)")

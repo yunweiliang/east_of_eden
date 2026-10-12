@@ -51,6 +51,8 @@ export ANTHROPIC_API_KEY=...          # or `ant auth login`
 python -m eden extract                # picks, checks, pins, renders
 # check each event in your copy, then set "user_verified" in output/mvp/events.json
 python -m eden render                 # redraw from the pinned picks only, with no model call
+                                      # both take --stage mvp|m0 (default: mvp)
+python -m eden extract --stage m0     # M0: 20 events with causes, written to output/m0/
 pytest                                # uses a fake client, so it costs nothing
 ```
 

@@ -48,11 +48,25 @@ then builds a character-consistent alternate plot, to study a research question 
 - **Branching (user decision):** each milestone gets its own branch and a pull request into `main`, which
   the user reviews and merges. Small housekeeping (changelog and cost rows, doc fixes) may go straight to
   `main`.
+- **Versioning (user decision):** every milestone stays comparable, so the final report can compare all
+  versions of the agent.
+  - **Outputs are archived, never replaced:** each stage writes to its own `output/<stage>/`, and
+    `--force` backs up old picks instead of overwriting them.
+  - **Shared core, one package per stage (user decision, revised):** logic every stage uses lives in
+    `eden/core/`. Each milestone gets its own package in `eden/stages/<stage>/` with its own schema,
+    prompt, checks and renderer. No copied code: a stage reuses the core and may import from an
+    earlier stage (M0's event class extends the MVP's). Each stage loads only its own pinned files,
+    so no class needs optional placeholder fields for other stages.
+  - **Older stages stay runnable:** `python -m eden extract --stage <stage>` reruns any stage's prompt.
+  - **Git tag per milestone:** when a milestone is complete, tag its commit (`mvp`, `m0`, ...).
+    `git checkout <tag>` restores that version exactly.
+  - **Milestones are not training:** the model is the same at every stage. What changes is the prompt,
+    the schema, the checks and the rendering, so cross-stage differences come from the scaffolding.
 
 ## Shared data schema
 
-Each milestone reads and writes the same event format, so a single visualizer works across all of them.
-Fields are added as milestones progress.
+The fields grow milestone by milestone. Each stage defines its own event class, usually by extending
+the previous stage's class, so a later stage's events carry every earlier field plus its own.
 
 ```
 Event {
@@ -193,16 +207,27 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
   - **Output:** a small comparison table plus each model's timeline, side by side.
   - **When:** fits naturally alongside M1, which already measures stability across runs.
 
-## Code layout (MVP)
+## Code layout
 
-- `eden/extract.py`: the only model call. It uses structured outputs, append-only repair turns and refusal
-  fallbacks. No book text is sent.
-- `eden/validate.py`: deterministic checks. Errors trigger a repair turn. Warnings, such as story order
-  differing from page order, are only reported.
-- `eden/render.py`: a pure function from `events.json` to `timeline.md` (Mermaid) and `timeline.html`
-  (inline SVG).
-- `python -m eden {extract,render}`. `extract` skips the model call when the pinned picks match the prompt
-  hash.
+- `eden/core/`: shared by every stage.
+  - `llm.py`: the only model call. It uses structured outputs, append-only repair turns and refusal
+    fallbacks. No book text is sent. It takes a stage and uses that stage's prompt, schema and checks.
+  - `checks.py`: checks every stage shares (count, focal event, chapter range, phrase length).
+  - `pins.py`: reads and writes `output/<stage>/events.json`, with backups, plus the runtime cost ledger.
+  - `html.py`: small rendering helpers (safe Mermaid ids, table cells, the "Checked" mark).
+- `eden/stages/<stage>/`: one package per milestone. Each one exposes the same names, so the core can
+  run any of them: `NAME`, `DEFAULT_COUNT`, `PROMPT_VERSION`, `SYSTEM`, `TASK`, `ModelEvent`, `Event`,
+  `EventList`, `validate()` and `render()`. A test checks this.
+  - `ModelEvent` is what the model fills in. `Event` adds `user_verified`, which only the user sets, so
+    the model's schema never contains it.
+  - `mvp/`: the linear timeline. Also provides the portfolio timeline.
+  - `m0/`: 20 events with `causes` and `thread`. Checks: causes point backward (no loops), every event
+    leads to the reveal, at least two threads. Writes `output/m0/graph.md` (Mermaid, one box per thread)
+    and `output/m0/graph.html` (swimlanes: one lane per thread, events in story order, arrows from cause to
+    effect).
+- `eden/publish.py`: portfolio tooling (`portfolio`, `preview`, `publish`).
+- `python -m eden {extract,render} --stage <stage>`. `extract` skips the model call when the pinned picks
+  match the stage's prompt hash.
 - Tests use a fake client, so they never call the API.
 
 ## Stack (proposed)

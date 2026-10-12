@@ -1,6 +1,6 @@
 # MVP: 10 linear events leading to Cal's reveal
 
-Picked from the model's knowledge of the novel, not the text; each event needs the reader's check. Prompt `8627bdd4c644696f`. 10/10 events checked by the reader. Open `timeline.html` for the drawn plot line.
+Picked from the model's knowledge of the novel, not the text; each event needs the reader's check. Prompt `8627bdd4c644696f`. 10/10 checked by the reader, 10 true. Open `timeline.html` for the drawn plot line.
 
 ```mermaid
 flowchart LR

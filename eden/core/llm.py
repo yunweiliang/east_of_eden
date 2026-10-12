@@ -1,8 +1,8 @@
-"""The one non-deterministic step: the model picks the events. Everything around it is plain code.
+"""The one non-deterministic step, shared by every stage: the model picks the events.
 
-The model works from its own knowledge of the novel; no book text is sent. The user checks each event in
-their own copy. The run is pinned to disk (output/<stage>/events.json) with the prompt hash, so
-re-rendering never calls the model again unless --force is passed.
+Each stage supplies its own prompt, schema and checks (see eden/stages/). This module only calls the model,
+feeds check failures back as repair turns, and adds up the cost. The model works from its own knowledge of
+the novel; no book text is sent.
 """
 
 from __future__ import annotations
@@ -14,11 +14,9 @@ from dataclasses import dataclass
 
 import anthropic
 
-from .schema import Event, EventList
-from .validate import Report, validate
+from .checks import Report
 
 MODEL = "claude-opus-5-5"
-PROMPT_VERSION = "mvp-3"
 MAX_REPAIRS = 2
 
 # USD per million tokens, Claude API first-party rates. Used to log the agent's own runtime spend.
@@ -26,30 +24,10 @@ PRICES = {
     "claude-opus-5-5": {"input": 4.00, "cache_write": 5.00, "cache_read": 0.20, "output": 20.00},
 }
 
-SYSTEM = """You are a careful literary analyst of John Steinbeck's East of Eden, working from your own
-knowledge of the novel; no text is provided. Only include events you are confident happen in the book,
-in the chapter you name. A reader will check every event against their own copy, so precision matters
-more than coverage: if unsure of a chapter or detail, pick a different, well-known event instead."""
-
-TASK = """Pick exactly {count} significant events that form a single linear chain leading to the focal
-event: Cal takes Aron to Kate's house and reveals that Kate is their mother Cathy.
-
-Rules:
-- Order the events by when they happen in the story. The last event is the focal event itself, with
-  is_focal_event=true; every other event has is_focal_event=false.
-- Pick events that the focal event depends on, in a chain: each event should help cause or enable
-  a later one. Prefer turning points over background.
-- chapter is the chapter number (1-55) where the event happens.
-- citation is a short, distinctive phrase (under 15 words) from that chapter that a reader can type into
-  their ebook's search to find the scene. Only use a phrase you are confident appears in the book;
-  otherwise use a few distinctive words from the scene.
-- summary is your own words, two or three sentences. Do not paste long passages.
-- rationale says why the path to the focal event needs this event."""
-
 
 @dataclass
 class RunResult:
-    events: list[Event]
+    events: list
     report: Report
     attempts: int
     usage: dict
@@ -83,8 +61,10 @@ def strict_schema(model_cls) -> dict:
     return resolve(schema)
 
 
-def prompt_hash(count: int) -> str:
-    return hashlib.sha256(f"{PROMPT_VERSION}|{MODEL}|{SYSTEM}|{TASK.format(count=count)}".encode()).hexdigest()[:16]
+def prompt_hash(stage, count: int) -> str:
+    """Changes whenever the stage's prompt, its version or the model changes, so pinned picks go stale."""
+    text = f"{stage.PROMPT_VERSION}|{MODEL}|{stage.SYSTEM}|{stage.TASK.format(count=count)}"
+    return hashlib.sha256(text.encode()).hexdigest()[:16]
 
 
 def cost_of(usage: dict, model: str) -> float | None:
@@ -105,9 +85,10 @@ def _add_usage(total: dict, usage) -> None:
         total[key] += getattr(usage, key, 0) or 0
 
 
-def extract_events(count: int = 10, client: anthropic.Anthropic | None = None) -> RunResult:
+def extract_events(stage, count: int, client: anthropic.Anthropic | None = None) -> RunResult:
+    """Ask the model for `count` events in the stage's schema, repairing until the stage's checks pass."""
     client = client or anthropic.Anthropic()
-    messages = [{"role": "user", "content": TASK.format(count=count)}]
+    messages = [{"role": "user", "content": stage.TASK.format(count=count)}]
     usage = {"input_tokens": 0, "cache_creation_input_tokens": 0, "cache_read_input_tokens": 0, "output_tokens": 0}
     served_by = MODEL
 
@@ -115,11 +96,11 @@ def extract_events(count: int = 10, client: anthropic.Anthropic | None = None) -
         with client.beta.messages.stream(
             model=MODEL,
             max_tokens=64000,
-            system=SYSTEM,
+            system=stage.SYSTEM,
             messages=messages,
             output_config={
                 "effort": "high",
-                "format": {"type": "json_schema", "schema": strict_schema(EventList)},
+                "format": {"type": "json_schema", "schema": strict_schema(stage.EventList)},
             },
             betas=["server-side-fallback-2026-07-01"],
             fallbacks="default",
@@ -134,8 +115,8 @@ def extract_events(count: int = 10, client: anthropic.Anthropic | None = None) -
             raise RuntimeError("Response hit max_tokens before finishing the event list.")
 
         text = next(b.text for b in response.content if b.type == "text")
-        events = [Event(**e.model_dump()) for e in EventList.model_validate(json.loads(text)).events]
-        report = validate(events, count)
+        events = [stage.Event(**e.model_dump()) for e in stage.EventList.model_validate(json.loads(text)).events]
+        report = stage.validate(events, count)
         if report.ok or attempt > MAX_REPAIRS:
             return RunResult(events, report, attempt, usage, cost_of(usage, served_by), served_by)
 

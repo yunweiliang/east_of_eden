@@ -1,4 +1,4 @@
-"""Event schema shared by every milestone. MVP fields only; later milestones add fields."""
+"""MVP event schema."""
 
 from pydantic import BaseModel, Field
 
