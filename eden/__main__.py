@@ -11,6 +11,15 @@ from .stages import STAGES
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "output"
+# The readable home page lives in the private portfolio-drafts repo, so this repo can be public.
+DRAFTS = "~/portfolio-drafts"
+
+
+def drafts_page(args) -> Path:
+    page = Path(args.drafts).expanduser() / "home.html"
+    if not page.exists():
+        raise SystemExit(f"Can't find {page}, the home page draft. Use --drafts PATH.")
+    return page
 RUNTIME_LEDGER = OUTPUT / "agent_runtime_costs.jsonl"
 
 
@@ -112,7 +121,7 @@ def cmd_portfolio(args) -> None:
 
     mvp = STAGES["mvp"]  # the portfolio shows the MVP timeline for now
     events, _ = load_run(OUTPUT / mvp.NAME, mvp.Event)
-    page = ROOT / "portfolio" / "home.html"
+    page = drafts_page(args)
     page.write_text(splice_timeline(page.read_text(), mvp.to_portfolio_timeline(events)))
     print(f"Updated the timeline in {page}; your writing around it is unchanged.")
 
@@ -125,8 +134,9 @@ def cmd_preview(args) -> None:
     css = Path(args.site).expanduser() / "assets" / "css" / "site.css"
     if not css.exists():
         raise SystemExit(f"Can't find {css}, the site's stylesheet. Use --site PATH.")
-    out = ROOT / "portfolio" / "preview.html"
-    out.write_text(preview_page((ROOT / "portfolio" / "home.html").read_text(), css.read_text()))
+    page = drafts_page(args)
+    out = page.with_name("preview.html")
+    out.write_text(preview_page(page.read_text(), css.read_text()))
     print(f"Wrote {out}")
     if not args.no_open:
         webbrowser.open(out.as_uri())
@@ -139,7 +149,7 @@ def cmd_publish(args) -> None:
     from .publish import PLACEHOLDER, git, lock, lock_json, normalize, unlock
 
     site = Path(args.site).expanduser()
-    page = (ROOT / "portfolio" / "home.html").read_text()
+    page = drafts_page(args).read_text()
     if not (site / "_data" / "lock.json").exists():
         raise SystemExit(f"{site} doesn't look like the portfolio repo (no _data/lock.json). Use --site PATH.")
     if PLACEHOLDER in page:
@@ -158,7 +168,7 @@ def cmd_publish(args) -> None:
     try:
         git(site, "pull", "--no-rebase", "--no-edit")
         (site / "_data" / "lock.json").write_text(lock_json(data))
-        print(f"Locked portfolio/home.html into {site / '_data' / 'lock.json'}")
+        print(f"Locked home.html into {site / '_data' / 'lock.json'}")
         if args.no_push:
             print("--no-push: not committing. Review with `git diff` in the portfolio folder.")
             return
@@ -190,15 +200,20 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--runs", type=int, default=5, help="How many independent judge runs (default: 5)")
     p.set_defaults(func=cmd_judge)
 
-    p = sub.add_parser("portfolio", help="Refresh the timeline inside portfolio/home.html (no model call)")
+    drafts_help = f"Path to your portfolio-drafts repo (default: {DRAFTS})"
+
+    p = sub.add_parser("portfolio", help="Refresh the timeline inside the home page draft (no model call)")
+    p.add_argument("--drafts", default=DRAFTS, help=drafts_help)
     p.set_defaults(func=cmd_portfolio)
 
-    p = sub.add_parser("preview", help="Open portfolio/home.html styled like the site, before locking it")
+    p = sub.add_parser("preview", help="Open the home page draft styled like the site, before locking it")
+    p.add_argument("--drafts", default=DRAFTS, help=drafts_help)
     p.add_argument("--site", default="~/yunweiliang.github.io", help="Path to your portfolio repo")
     p.add_argument("--no-open", action="store_true", help="Only write the file; don't open a browser")
     p.set_defaults(func=cmd_preview)
 
-    p = sub.add_parser("publish", help="Lock portfolio/home.html with your passcode, then commit and push it")
+    p = sub.add_parser("publish", help="Lock the home page draft with your passcode, then commit and push it")
+    p.add_argument("--drafts", default=DRAFTS, help=drafts_help)
     p.add_argument("--site", default="~/yunweiliang.github.io", help="Path to your portfolio repo")
     p.add_argument("--message", default="Update locked home page", help="Commit message")
     p.add_argument("--no-push", action="store_true", help="Only write lock.json; don't commit or push")
