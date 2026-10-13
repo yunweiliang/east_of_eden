@@ -143,10 +143,10 @@ Prompt {html.escape(meta.get('prompt_hash', '?'))}. Hover a node for its summary
 
 
 def to_portfolio_timeline(events: list[Event]) -> str:
-    """The same plot line and table as timeline.html, restyled with the portfolio site's CSS variables so
-    it follows the site's light and dark themes. It breaks out of the narrow text column to the page width,
-    and scrolls sideways on small screens."""
-    checked = sum(e.user_verified is True for e in events)
+    """The same plot line as timeline.html, without its table (user's call: too much to take in at a
+    glance), restyled with the portfolio site's CSS variables so it follows the site's light and dark
+    themes. It breaks out of the narrow text column to the page width, and scrolls sideways on small
+    screens. The caption is the user's own sentence."""
     return "\n".join([
         '<figure class="eoe-timeline">',
         "  <style>",
@@ -160,27 +160,14 @@ def to_portfolio_timeline(events: list[Event]) -> str:
         "    .eoe-timeline .node.focal { fill: var(--accent); }",
         "    .eoe-timeline text { fill: var(--text); text-anchor: middle; font-family: var(--serif); font-size: 14px; }",
         "    .eoe-timeline text.chap { fill: var(--muted); font-family: var(--sans); font-size: 11px; }",
-        "    .eoe-timeline .eoe-table { overflow-x: auto; margin-top: 1.5rem; }",
-        "    .eoe-timeline table { border-collapse: collapse; width: 100%; font-size: 0.9rem; line-height: 1.5; }",
-        "    .eoe-timeline th, .eoe-timeline td { text-align: left; vertical-align: top; padding: 0.6rem 0.5rem;",
-        "      border-bottom: 1px solid var(--faint); }",
-        "    .eoe-timeline th { font-family: var(--sans); font-size: 0.75rem; font-weight: 600;",
-        "      letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }",
-        "    .eoe-timeline td:nth-child(2) { min-width: 16rem; }",
-        "    .eoe-timeline td:nth-child(6) { min-width: 14rem; }",
         "    .eoe-timeline figcaption { margin-top: 0.75rem; font-family: var(--sans); font-size: 0.8125rem;",
         "      color: var(--muted); }",
         "  </style>",
         '  <div class="eoe-scroll">',
         to_svg(events),
         "  </div>",
-        '  <div class="eoe-table">',
-        f"  <table>{TABLE_HEAD}<tbody>",
-        table_rows(events),
-        "  </tbody></table>",
-        "  </div>",
-        f"  <figcaption>{len(events)} events picked by the agent from its knowledge of the novel; "
-        f"{checked} of {len(events)} checked against the book by me. Hover a point for its summary.</figcaption>",
+        "  <figcaption>Ten events the agent chose, leading to the moment Cal takes Aron to meet their mother."
+        "</figcaption>",
         "</figure>",
     ])
 
