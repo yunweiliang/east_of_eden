@@ -80,3 +80,9 @@ python -m eden publish     # asks for your passcode (hidden), locks home.html, c
 saves or prints your passcode. Use `--no-push` to only write `_data/lock.json` and review it before
 committing. Remember to also commit your writing in `portfolio-drafts`, so your draft is saved privately
 too.
+
+## License
+
+The code is under the [MIT License](LICENSE). *East of Eden* is John Steinbeck's and remains under
+copyright; this repo holds no text from it, only chapter numbers, short search phrases and the agent's
+own summaries.
