@@ -298,8 +298,10 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
 - Visualizer: Mermaid for the MVP, then D3 or Cytoscape for swimlanes and side-by-side diffs.
 - Hosting (user decision, updated 2026-10-11): the user asked for project reflections on their portfolio
   (yunweiliang.github.io), behind its passcode.
-  - **Plain text stays private:** the readable page, `portfolio/home.html`, lives here in this private
-    repo. The user writes their own prose in it; Claude never writes their reflections for them.
+  - **Plain text stays private:** the readable page, `home.html`, lives in the private
+    `portfolio-drafts` repo, never in this one (user decision, 2026-10-13: this repo is being made
+    public). The user writes their own prose in it; Claude never writes their reflections for them.
+    The portfolio commands find it with `--drafts PATH` (default `~/portfolio-drafts`).
   - **Timeline refresh:** `python -m eden portfolio` refreshes only the timeline between the
     `eden:timeline` markers, leaving the user's writing untouched.
   - **Only ciphertext is public:** the portfolio repo is public and holds just the encrypted

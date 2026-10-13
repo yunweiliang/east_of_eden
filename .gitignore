@@ -8,5 +8,4 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 .venv/
-portfolio/preview.html
 build/

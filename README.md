@@ -66,8 +66,9 @@ Outputs:
 
 ## Portfolio
 
-`portfolio/home.html` is the home page of yunweiliang.github.io as it appears after the passcode. You write
-your reflections in it. It stays in this private repo, and only an encrypted copy goes to the public site.
+The home page of yunweiliang.github.io, as it appears after the passcode, is `home.html` in the private
+`portfolio-drafts` repo. Only an encrypted copy goes to the public site. These commands expect that repo at
+`~/portfolio-drafts` (change it with `--drafts PATH`):
 
 ```bash
 python -m eden portfolio   # refresh the timeline inside home.html; your writing is untouched
@@ -77,5 +78,5 @@ python -m eden publish     # asks for your passcode (hidden), locks home.html, c
 
 `publish` expects the portfolio repo at `~/yunweiliang.github.io` (change it with `--site PATH`). It never
 saves or prints your passcode. Use `--no-push` to only write `_data/lock.json` and review it before
-committing. Remember to also commit your writing in *this* repo (`git add portfolio/home.html`), so your
-draft is saved privately too.
+committing. Remember to also commit your writing in `portfolio-drafts`, so your draft is saved privately
+too.

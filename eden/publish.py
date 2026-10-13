@@ -1,4 +1,5 @@
-"""Lock portfolio/home.html with the site passcode and publish it to the portfolio repo.
+"""Lock the home page draft (portfolio-drafts/home.html) with the site passcode and publish it to the
+portfolio repo.
 
 The encryption must match the gate in the portfolio's index.html (and its tools/lock.html):
 passcode trimmed and lowercased, PBKDF2-SHA-256 with 600,000 iterations into an AES-256-GCM key.
@@ -82,7 +83,7 @@ def preview_page(page: str, css: str) -> str:
 </head>
 <body>
 <p style="margin:0;padding:6px 16px;font:13px var(--sans);color:var(--muted);background:var(--notice-bg)">
-  Preview of portfolio/home.html. Not locked, not published.</p>
+  Preview of home.html. Not locked, not published.</p>
 <main id="main" class="page">
 {page}
 </main>
