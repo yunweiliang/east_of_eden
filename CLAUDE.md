@@ -40,7 +40,7 @@ then builds a character-consistent alternate plot, to study a research question 
     copies are DRM-locked. Each citation is a short search phrase. The user checks every event in their
     own copy and records the result as `user_verified` in `events.json`. Code checks the count, the focal
     event, the chapter range (1–55) and the phrase length (under 15 words).
-  - **Book-text loading was removed** to keep the code simple. It is in git history (commit `71c13bc`,
+  - **Book-text loading was removed** to keep the code simple. It is in git history (commit `230312f`,
     `eden/source.py`) if a DRM-free text ever becomes available.
   - **Never remove DRM** or suggest doing so.
   - Revisit sourcing before M5: the critic is better grounded in the real text.
@@ -246,7 +246,7 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
     - *Cost:* low, about the same agent runtime as M1, plus the reader's checking time.
   - **Option 2, a novel the model has never seen (with the sourcing review before M5).**
     - *Tests:* reading and reasoning with no memory to lean on.
-    - *Needs:* text loading, removed earlier and kept in git history (commit `71c13bc`,
+    - *Needs:* text loading, removed earlier and kept in git history (commit `230312f`,
       `eden/source.py`). The model can't list events from a book it doesn't know.
     - *Sources:* a novel published after the model's training cutoff (legal, DRM-free copy only), a
       self-published or Creative Commons novel, an unpublished manuscript shared with permission, or a
