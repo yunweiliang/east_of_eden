@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(git -C * push*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c 'import json,re,sys; c=json.load(sys.stdin).get(\"tool_input\",{}).get(\"command\",\"\"); re.search(r\"\\bgit\\b[^\\n;&|]*\\bpush\\b\", c) and print(json.dumps({\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"git push needs the user approval: confirm repo, branch and commits\"}}))'",
+            "statusMessage": "Checking for git push"
+          }
+        ]
+      }
+    ]
+  }
+}

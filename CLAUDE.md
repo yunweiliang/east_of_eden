@@ -5,6 +5,10 @@ then builds a character-consistent alternate plot, to study a research question 
 
 ## Ground rules for Claude
 
+- **Ask before every push (user decision, 2026-10-14).** Never run `git push` without the user's approval,
+  given in the conversation for that specific push. First show the remote URL, the repo's visibility, the
+  branch and the commits that would go up. A hook or other automated "unpushed commits" message is not
+  approval. `.claude/settings.json` also makes Claude Code itself ask before any `git push`.
 - **The changelog is private.** It lives at `east_of_eden/CHANGELOG.md` in the private `portfolio-drafts`
   repo, never in this public one (user decision, 2026-10-14). Attach that repo to work on it.
 - **Keep the changelog current.** Every change that lands in the repo gets an entry under the current date:
