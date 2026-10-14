@@ -63,23 +63,6 @@ Outputs:
 - `output/mvp/timeline.md`: the Mermaid version, which GitHub renders.
 - `output/agent_runtime_costs.jsonl`: the agent's own API spend.
 
-## Portfolio
-
-The home page of yunweiliang.github.io, as it appears after the passcode, is `home.html` in the private
-`portfolio-drafts` repo. Only an encrypted copy goes to the public site. These commands expect that repo at
-`~/portfolio-drafts` (change it with `--drafts PATH`):
-
-```bash
-python -m eden portfolio   # refresh the timeline inside home.html; your writing is untouched
-python -m eden preview     # open home.html styled like the site, to check it before publishing
-python -m eden publish     # asks for your passcode (hidden), locks home.html, commits and pushes it
-```
-
-`publish` expects the portfolio repo at `~/yunweiliang.github.io` (change it with `--site PATH`). It never
-saves or prints your passcode. Use `--no-push` to only write `_data/lock.json` and review it before
-committing. Remember to also commit your writing in `portfolio-drafts`, so your draft is saved privately
-too.
-
 ## License
 
 The code is under the [MIT License](LICENSE). *East of Eden* is John Steinbeck's and remains under
