@@ -5,9 +5,11 @@ then builds a character-consistent alternate plot, to study a research question 
 
 ## Ground rules for Claude
 
-- **Keep `CHANGELOG.md` current.** Every change that lands in the repo gets an entry under the current date:
+- **The changelog is private.** It lives at `east_of_eden/CHANGELOG.md` in the private `portfolio-drafts`
+  repo, never in this public one (user decision, 2026-10-14). Attach that repo to work on it.
+- **Keep the changelog current.** Every change that lands in the repo gets an entry under the current date:
   what changed and which milestone it serves.
-- **Record cumulative build cost.** Append a row to the cost ledger in `CHANGELOG.md`:
+- **Record cumulative build cost.** Append a row to the changelog's cost ledger:
   - at least once per working session,
   - whenever a milestone completes,
   - before any commit that closes out a chunk of work.
@@ -22,11 +24,12 @@ then builds a character-consistent alternate plot, to study a research question 
   - **Agent API spend is separate.** Once the agent itself calls the Claude API, log its API spend in a
     separate "Agent runtime" column. That keeps the cost of building the agent apart from the cost of
     running it.
-- **Log learnings.** This project is also practice for the user in building agents. Each `CHANGELOG.md` entry
+- **Log learnings.** This project is also practice for the user in building agents. Each changelog entry
   has a "Learnings" subsection that records:
   - **Went wrong:** mistakes, dead ends, bugs, wrong assumptions.
   - **Learned:** what worked, what generalizes to building other agents.
-  - **User feedback:** the user's corrections and preferences, close to their own words.
+  - **User decisions:** decisions and corrections that change how the agent or its tooling should work,
+    paraphrased in a line. No verbatim quotes and nothing personal.
   - **Friction:** where Claude got stuck, was blocked, or had to work around a limitation. Say it plainly
     and in the moment, too, not only in the log.
 - **Every conclusion ships with a plot graph.** Any output that makes a claim (a significance pick, a

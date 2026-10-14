@@ -1,8 +1,7 @@
 # east_of_eden
 
 An agent that dissects John Steinbeck's *East of Eden* into a cause-and-effect plot graph, then builds
-character-consistent alternate plots to study free will. The plan and ground rules are in `CLAUDE.md`, and
-the history, costs and learnings are in `CHANGELOG.md`.
+character-consistent alternate plots to study free will. The plan and ground rules are in `CLAUDE.md`.
 
 ## MVP: 10 linear events leading to Cal's reveal
 
