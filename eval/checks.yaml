@@ -1,0 +1,205 @@
+# Checks for the visualization skillset: the renderers that turn a stage's events into a plot line.
+#
+# Every check is deterministic code in eval/grader.py, with the same name. Grading never calls a model.
+# What gets graded is either a fixed input (free, same answer every time) or events the agent picks
+# fresh in each try (costs API spend, and varies; see "Cases" below).
+#
+# Fields:
+#   what       what the check asserts, in one line
+#   why        what a reader would see go wrong if it failed
+#   stages     the stages it applies to (mvp, m0, m1)
+#   params     numbers the grader uses; a case can override them with "params"
+#
+# A case (eval/cases/*.jsonl) runs the default checks for its stage unless it lists its own "checks".
+# Its "kind" decides what a failure means:
+#   regression   must pass on every try (pass^k). A failure exits non-zero: something that used to work broke.
+#   capability   may fail. pass@1 and pass@k measure how far the agent and renderer have to go.
+#
+# Cases:
+#   input.file / input.events / input.synthetic   a fixed set of events, rendered and graded
+#   input.agent                                     the agent picks the events in each try, with --model
+# A try passes when every check passes or is skipped. Over k tries per case, with c passing:
+#   pass@1 = c / k     pass@k = 1 if c > 0     pass^k = 1 if c == k
+
+version: 1
+
+checks:
+  svg_well_formed:
+    what: The plot is one parseable SVG element with a viewBox.
+    why: A broken SVG draws nothing, or half a graph.
+    stages: [mvp, m0, m1]
+
+  one_node_per_event:
+    what: Every drawn event has exactly one node, and the nodes appear in event order.
+    why: A missing or doubled node silently changes the story the graph tells.
+    stages: [mvp, m0, m1]
+
+  focal_marked_once:
+    what: Exactly one node is styled as the reveal, and it is the last (rightmost) one.
+    why: The graph's whole point is the path into the reveal.
+    stages: [mvp, m0, m1]
+
+  time_runs_left_to_right:
+    what: Node x positions strictly increase in story order.
+    why: The reader is told time runs left to right.
+    stages: [mvp, m0, m1]
+
+  chapters_labeled:
+    what: Every node shows "Ch. N" for its own chapter.
+    why: Chapter labels are how the reader checks an event in their copy.
+    stages: [mvp, m0, m1]
+
+  hover_has_full_text:
+    what: Every node's hover text holds its full title and summary.
+    why: Labels are wrapped and cut; the hover is where the full text lives.
+    stages: [mvp, m0, m1]
+
+  edges_match_causes:
+    what: One arrow per cause link that points at a drawn event, from that cause to that effect.
+    why: An extra or missing arrow is a claim about causation the agent never made.
+    stages: [m0, m1]
+
+  edges_point_forward:
+    what: Every arrow starts left of where it ends.
+    why: Causes come earlier in the story; a backward arrow reads as a loop.
+    stages: [m0, m1]
+
+  focal_edges_highlighted:
+    what: Arrows into the reveal, and only those, carry the focal style.
+    why: The caption says red arrows feed the reveal.
+    stages: [m0, m1]
+
+  cross_lane_edges_dashed:
+    what: Arrows that change lanes, and only those, are dashed.
+    why: The caption says dashed arrows cross between threads.
+    stages: [m0, m1]
+
+  lanes_match_threads:
+    what: One lane per thread in use, named, in the fixed thread order.
+    why: Lanes that move between runs make two graphs impossible to compare.
+    stages: [m0, m1]
+
+  node_in_its_lane:
+    what: Each node sits inside its own thread's lane.
+    why: A node in the wrong lane puts an event in the wrong storyline.
+    stages: [m0, m1]
+
+  labels_inside_canvas:
+    what: No label runs past the edge of the drawing.
+    why: Clipped labels lose words, usually at the reveal on the right edge.
+    stages: [mvp, m0, m1]
+    params:
+      # Estimated glyph widths, as a fraction of the font size, per character class. Calibrated
+      # 2026-10-27 in Chromium against all 211 labels of the pinned MVP, M0 and M1 pages. Georgia wasn't
+      # installed, so the browser drew DejaVu Serif, a wider face: within 5% of every label, 9% wide at
+      # the median. On a machine with Georgia the estimate errs toward flagging.
+      char_width: &char_width {narrow: 0.30, wide: 0.85, capital: 0.68, other: 0.50}
+      slack: 2           # pixels of tolerance
+
+  labels_dont_overlap:
+    what: Labels of different nodes don't overlap.
+    why: Overlapping labels are unreadable.
+    stages: [mvp, m0, m1]
+    params:
+      char_width: *char_width
+      slack: 1
+
+  edges_avoid_nodes:
+    what: No arrow passes through a node that isn't one of its two ends.
+    why: An arrow through a node looks like it starts or stops there.
+    stages: [m0, m1]
+    params:
+      samples: 200       # points sampled along each curve
+      clearance: 0       # pixels beyond the node's radius; 0 means the arrow touches the node itself
+
+  edges_inside_canvas:
+    what: Every arrow stays inside the drawing.
+    why: An arc that leaves the canvas is cut off.
+    stages: [m0, m1]
+    params:
+      samples: 40
+
+  model_text_escaped:
+    what: Model text containing <, > or & never appears unescaped in the SVG, HTML or Mermaid.
+    why: Model output is untrusted; raw markup can break the page or run script.
+    stages: [mvp, m0, m1]
+
+  mermaid_consistent:
+    what: The Mermaid block is a flowchart whose edges only name declared nodes, one per expected link.
+    why: Mermaid fails silently on a bad id and draws a stray box instead.
+    stages: [mvp, m0, m1]
+
+  html_page_basics:
+    what: The HTML page has a doctype, a viewport meta tag, a dark-mode palette and a sideways scroll for the plot.
+    why: Without them the page breaks on phones or in dark mode.
+    stages: [mvp, m0, m1]
+
+  table_row_per_event:
+    what: The HTML table has one row per event in the input (for M1, the whole pool).
+    why: The table is the reader's checklist; a lost row is an unchecked event.
+    stages: [mvp, m0, m1]
+
+  no_html_comments:
+    what: No rendered output contains an HTML comment.
+    why: The portfolio is public, and comments are readable in the page source.
+    stages: [mvp, m0, m1]
+
+  stage_checks_pass:
+    what: Events the agent picked in this run pass the stage's own validate() after its repair turns.
+    why: A graph drawn from picks that broke the stage's rules (a dangling cause, a second reveal) misleads.
+    stages: [mvp, m0, m1]
+
+  deterministic:
+    what: Rendering the same input twice gives byte-identical output.
+    why: The same events.json must always produce the same files, so graphs can be compared across versions.
+    stages: [mvp, m0, m1]
+
+  expected_counts:
+    what: Measured counts (nodes, edges, lanes, table rows) match the case's "expect" values.
+    why: Pins a known-good render, so a change in what gets drawn shows up as a regression.
+    stages: [mvp, m0, m1]
+
+defaults:
+  mvp:
+    - svg_well_formed
+    - one_node_per_event
+    - focal_marked_once
+    - time_runs_left_to_right
+    - chapters_labeled
+    - hover_has_full_text
+    - labels_inside_canvas
+    - labels_dont_overlap
+    - model_text_escaped
+    - mermaid_consistent
+    - html_page_basics
+    - table_row_per_event
+    - no_html_comments
+    - stage_checks_pass
+    - deterministic
+    - expected_counts
+  m0: &graph_checks
+    - svg_well_formed
+    - one_node_per_event
+    - focal_marked_once
+    - time_runs_left_to_right
+    - chapters_labeled
+    - hover_has_full_text
+    - edges_match_causes
+    - edges_point_forward
+    - focal_edges_highlighted
+    - cross_lane_edges_dashed
+    - lanes_match_threads
+    - node_in_its_lane
+    - labels_inside_canvas
+    - labels_dont_overlap
+    - edges_avoid_nodes
+    - edges_inside_canvas
+    - model_text_escaped
+    - mermaid_consistent
+    - html_page_basics
+    - table_row_per_event
+    - no_html_comments
+    - stage_checks_pass
+    - deterministic
+    - expected_counts
+  m1: *graph_checks

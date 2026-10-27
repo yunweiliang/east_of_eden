@@ -20,9 +20,15 @@ MODEL = "claude-opus-5-5"
 MAX_REPAIRS = 2
 
 # USD per million tokens, Claude API first-party rates. Used to log the agent's own runtime spend.
+# A rate left out is unknown: a run that used those tokens reports its cost as unavailable.
 PRICES = {
     "claude-opus-5-5": {"input": 4.00, "cache_write": 5.00, "cache_read": 0.20, "output": 20.00},
+    "claude-sonnet-5-5": {"input": 2.00, "cache_read": 0.20, "output": 10.00},
+    "claude-haiku-5-5": {"input": 0.10, "output": 0.50},  # prompts up to 100K tokens
+    "claude-fable-5-1": {"input": 10.00, "cache_read": 0.25, "output": 50.00},
 }
+# Models that take the server-side refusal fallback ("default" routing). Haiku has none.
+FALLBACK_MODELS = {"claude-fable-5-1", "claude-opus-5-5", "claude-opus-5", "claude-sonnet-5-5"}
 
 
 @dataclass
@@ -71,13 +77,11 @@ def cost_of(usage: dict, model: str) -> float | None:
     p = PRICES.get(model)
     if p is None:
         return None
-    return round(
-        (usage["input_tokens"] * p["input"]
-         + usage["cache_creation_input_tokens"] * p["cache_write"]
-         + usage["cache_read_input_tokens"] * p["cache_read"]
-         + usage["output_tokens"] * p["output"]) / 1_000_000,
-        4,
-    )
+    rates = {"input_tokens": "input", "cache_creation_input_tokens": "cache_write",
+             "cache_read_input_tokens": "cache_read", "output_tokens": "output"}
+    if any(usage[k] and rate not in p for k, rate in rates.items()):
+        return None  # tokens of a kind we have no price for
+    return round(sum(usage[k] * p.get(rate, 0) for k, rate in rates.items()) / 1_000_000, 4)
 
 
 def _add_usage(total: dict, usage) -> None:
@@ -86,7 +90,7 @@ def _add_usage(total: dict, usage) -> None:
 
 
 def ask_with_repairs(system: str, task: str, list_cls, parse, check, redo: str,
-                     client: anthropic.Anthropic | None = None) -> RunResult:
+                     client: anthropic.Anthropic | None = None, model: str = MODEL) -> RunResult:
     """Ask for a structured list, then repair it until `check` passes or the repairs run out.
 
     parse turns the validated `list_cls` answer into the items to keep; check(items) returns a Report;
@@ -95,11 +99,12 @@ def ask_with_repairs(system: str, task: str, list_cls, parse, check, redo: str,
     client = client or anthropic.Anthropic()
     messages = [{"role": "user", "content": task}]
     usage = {"input_tokens": 0, "cache_creation_input_tokens": 0, "cache_read_input_tokens": 0, "output_tokens": 0}
-    served_by = MODEL
+    served_by = model
+    fallback = {"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"} if model in FALLBACK_MODELS else {}
 
     for attempt in range(1, MAX_REPAIRS + 2):
         with client.beta.messages.stream(
-            model=MODEL,
+            model=model,
             max_tokens=64000,
             system=system,
             messages=messages,
@@ -107,8 +112,7 @@ def ask_with_repairs(system: str, task: str, list_cls, parse, check, redo: str,
                 "effort": "high",
                 "format": {"type": "json_schema", "schema": strict_schema(list_cls)},
             },
-            betas=["server-side-fallback-2026-07-01"],
-            fallbacks="default",
+            **fallback,
         ) as stream:
             response = stream.get_final_message()
         _add_usage(usage, response.usage)
@@ -134,7 +138,7 @@ def ask_with_repairs(system: str, task: str, list_cls, parse, check, redo: str,
     raise AssertionError("unreachable")
 
 
-def extract_events(stage, count: int, client: anthropic.Anthropic | None = None) -> RunResult:
+def extract_events(stage, count: int, client: anthropic.Anthropic | None = None, model: str = MODEL) -> RunResult:
     """Ask the model for `count` events in the stage's schema, repairing until the stage's checks pass."""
     return ask_with_repairs(
         stage.SYSTEM, stage.TASK.format(count=count), stage.EventList,
@@ -142,4 +146,5 @@ def extract_events(stage, count: int, client: anthropic.Anthropic | None = None)
         check=lambda events: stage.validate(events, count),
         redo=f"the full corrected list of {count} events",
         client=client,
+        model=model,
     )
