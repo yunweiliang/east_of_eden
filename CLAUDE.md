@@ -295,6 +295,19 @@ Ideas to explore later. They are not scheduled into a milestone yet. Each item n
     The first version (`m1-pool-1`, `m1-judge-1`) measured plot significance; its pool and five runs are
     archived in `output/m1/` and git history.
 - `eden/publish.py`: portfolio tooling (`portfolio`, `preview`, `publish`).
+- `eval/`: the eval for the visualization skillset (user request, 2026-10-27).
+  - `checks.yaml` names each check and says what it asserts and why. `grader.py` implements each
+    one as deterministic code with the same name; grading never calls a model.
+  - `cases/devset.jsonl` is for tuning. `cases/heldout-set.jsonl` prints totals only, unless you
+    pass `--details`, so it stays a check on whether a change generalizes.
+  - Each case is a *regression* (must pass every try; a failure exits non-zero) or a *capability*
+    (measured, may fail). Its input is either fixed events (a pinned file, inline events, or a seeded
+    synthetic graph), or `agent`: the stage's prompt picks fresh events in every try, on `--model`.
+  - `runner.py` runs `-k` tries per case and reports pass@1, pass@k, pass^k and cost. Agent cases
+    only run with `--with-agent`. Their spend also goes to `output/agent_runtime_costs.jsonl`.
+  - Label checks estimate text widths, calibrated in Chromium (see `checks.yaml`). Arrows passing
+    through nodes are a known renderer defect, confirmed in the browser. They are tracked as
+    capability cases, and the regression cases skip that check.
 - `python -m eden {extract,render} --stage <stage>`. `extract` skips the model call when the pinned picks
   match the stage's prompt hash.
 - Tests use a fake client, so they never call the API.

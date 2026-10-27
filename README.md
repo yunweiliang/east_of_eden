@@ -56,12 +56,15 @@ python -m eden extract --stage m0     # M0: 20 events with causes, written to ou
 python -m eden extract --stage m1     # propose 30 events that shaped Cal; check each one in your copy
 python -m eden judge --runs 5         # the significance test, 5 times over the same pool
 pytest                                # uses a fake client, so it costs nothing
+python eval/runner.py                 # visualization eval, fixed inputs only: free
+python eval/runner.py --with-agent -k 5 --model MODEL_ID   # agent picks fresh events, 5 tries per case
 ```
 
 Outputs:
 - `output/mvp/timeline.html`: the drawn plot line.
 - `output/mvp/timeline.md`: the Mermaid version, which GitHub renders.
 - `output/agent_runtime_costs.jsonl`: the agent's own API spend.
+- `output/eval/<set>/run.<timestamp>.json`: each eval run, with pass@1, pass@k, pass^k and cost.
 
 ## License
 
